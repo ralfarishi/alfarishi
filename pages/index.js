@@ -36,7 +36,7 @@ const Home = () => (
         borderStyle="solid"
         w="100px"
         h="100px"
-        ml={[120, 200, 200]}
+        ml={[85, 170, 200]}
         display="inline-block"
         borderRadius="full"
         overflow="hidden"
