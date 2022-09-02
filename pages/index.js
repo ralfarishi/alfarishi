@@ -97,7 +97,10 @@ const Home = () => (
         </Paragraph>
         <Box align="center" my={4}>
           <NextLink href="/works" passHref scroll={false}>
-            <Button rightIcon={<ChevronRightIcon />} colorScheme="teal">
+            <Button
+              rightIcon={<ChevronRightIcon />}
+              colorScheme={useColorModeValue('purple', 'orange')}
+            >
               My portfolio
             </Button>
           </NextLink>
@@ -192,7 +195,10 @@ const Home = () => (
 
         <Box align="center" my={4}>
           <NextLink href="/posts" passHref scroll={false}>
-            <Button rightIcon={<ChevronRightIcon />} colorScheme="teal">
+            <Button
+              rightIcon={<ChevronRightIcon />}
+              colorScheme={useColorModeValue('purple', 'orange')}
+            >
               Popular posts
             </Button>
           </NextLink>
