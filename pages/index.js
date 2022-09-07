@@ -5,6 +5,7 @@ import {
   Heading,
   Box,
   Button,
+  Badge,
   List,
   ListItem,
   useColorModeValue,
@@ -15,6 +16,7 @@ import Paragraph from '../components/paragraph'
 import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
+import { SubTitle, WorkImage } from '../components/work'
 import {
   IoLogoInstagram,
   IoLogoGithub,
@@ -137,6 +139,17 @@ const Home = () => (
             Drawing
           </Link> */}
         </Paragraph>
+      </Section>
+
+      <Section delay={0.4}>
+        <Heading as="h3" variant="section-title">
+          Sertification
+        </Heading>
+
+        <SubTitle>
+          BWA Store Course <Badge>2022</Badge>
+        </SubTitle>
+        <WorkImage src="/images/coming-soon.jpg" width={400} />
       </Section>
 
       <Section delay={0.3}>
