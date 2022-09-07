@@ -5,6 +5,7 @@ import { WorkGridItem } from '../components/grid-item'
 
 import thumbShopnow from '../public/images/works/shopnow-thumb.png'
 import thumbARnimal from '../public/images/works/arnimal-thumb.jpg'
+import thumbComingSoon from '../public/images/coming-soon.jpg'
 
 const Works = () => (
   <Layout title="Works">
@@ -22,6 +23,15 @@ const Works = () => (
         <Section>
           <WorkGridItem id="shopnow" title="Shop Now" thumbnail={thumbShopnow}>
             Online Shop
+          </WorkGridItem>
+        </Section>
+        <Section>
+          <WorkGridItem
+            id="#"
+            title="Vehicle Detection"
+            thumbnail={thumbComingSoon}
+          >
+            Vehicle Detection with Machine Learning
           </WorkGridItem>
         </Section>
       </SimpleGrid>
