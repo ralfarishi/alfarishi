@@ -146,10 +146,11 @@ const Home = () => (
           Sertification
         </Heading>
 
-        <SubTitle>
-          BWA Store Course <Badge>2022</Badge>
-        </SubTitle>
-        <WorkImage src="/images/coming-soon.jpg" width={400} />
+        <Link>
+          <SubTitle>
+            BWA Store Course <Badge>2022</Badge>
+          </SubTitle>
+        </Link>
       </Section>
 
       <Section delay={0.3}>
