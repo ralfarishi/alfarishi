@@ -187,17 +187,6 @@ const Home = () => (
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://alfarishi.medium.com/" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={<IoLogoMedium />}
-              >
-                Ramiza Al Farishi
-              </Button>
-            </Link>
-          </ListItem>
-          <ListItem>
             <Link
               href="https://www.linkedin.com/in/ramiza-al-farishi-a82a55208/"
               target="_blank"
