@@ -129,9 +129,6 @@ const Home = () => (
         </Heading>
         <Paragraph>
           Movie, Music, Football, Programming, Augmented Reality.{' '}
-          {/* <Link href="https://illust.odoruinu.net/" target="_blank">
-            Drawing
-          </Link> */}
         </Paragraph>
       </Section>
 
