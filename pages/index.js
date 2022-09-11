@@ -11,12 +11,11 @@ import {
   useColorModeValue,
   chakra
 } from '@chakra-ui/react'
-import { ChevronRightIcon } from '@chakra-ui/icons'
+import { ChevronRightIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import Paragraph from '../components/paragraph'
 import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
-import { SubTitle, WorkImage } from '../components/work'
 import {
   IoLogoInstagram,
   IoLogoGithub,
@@ -146,11 +145,18 @@ const Home = () => (
           Sertification
         </Heading>
 
-        <Link>
-          <SubTitle>
-            BWA Store Course <Badge>2022</Badge>
-          </SubTitle>
-        </Link>
+        <List>
+          <ListItem>
+            <Link
+              href="https://buildwithangga.com/talent/ralfarishi/full-stack-web-developer-toko-online"
+              color={useColorModeValue('purple.600', 'orange.200')}
+              isExternal
+            >
+              BWA - Web Developer: E-Commerce <ExternalLinkIcon mx="2px" />{' '}
+            </Link>
+            <Badge>2022</Badge>
+          </ListItem>
+        </List>
       </Section>
 
       <Section delay={0.3}>
