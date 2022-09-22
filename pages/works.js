@@ -25,24 +25,27 @@ const Works = () => (
             Online Shop
           </WorkGridItem>
         </Section>
-        <Section>
-          <WorkGridItem
-            id="#"
-            title="Vehicle Detection"
-            thumbnail={thumbComingSoon}
-          >
-            Vehicle Detection with Machine Learning
-          </WorkGridItem>
-        </Section>
       </SimpleGrid>
 
-      <Section delay={0.4}>
-        <Divider my={6} />
+      <SimpleGrid columns={[1, 1, 2]} gap={6}>
+        <Section delay={0.4}>
+          <Divider my={6} />
 
-        <Heading as="h3" fontSize={20} mb={4}>
-          Coming soon
-        </Heading>
-      </Section>
+          <Heading as="h3" fontSize={20} mb={4}>
+            Coming soon
+          </Heading>
+
+          <Section>
+            <WorkGridItem
+              id="#"
+              title="Online Course"
+              thumbnail={thumbComingSoon}
+            >
+              Online course application built with REST API
+            </WorkGridItem>
+          </Section>
+        </Section>
+      </SimpleGrid>
     </Container>
   </Layout>
 )
