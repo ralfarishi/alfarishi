@@ -18,7 +18,10 @@ const Work = () => (
       <Title>
         Cheese Stick Koe <Badge>2022</Badge>
       </Title>
-      <P>Official website page for Cheese Stick Koe.</P>
+      <P>
+        Official website page for Cheese Stick Koe. Cheese Stick Koe is snacks &
+        cakes store based in Bekasi.
+      </P>
       <List ml={4} my={4}>
         <ListItem>
           <Meta>Stack</Meta>
@@ -29,8 +32,10 @@ const Work = () => (
           <span>Website & Mobile</span>
         </ListItem>
         <ListItem>
-          <Meta>Features</Meta>
-          <span>Coming soon</span>
+          <Meta>Live Preview</Meta>
+          <Link href="https://cheese-stick-koe.vercel.app/" target="_blank">
+            cheese-stick.koe.vercel.app <ExternalLinkIcon mx="2px" />
+          </Link>
         </ListItem>
         <ListItem>
           <Meta>Source</Meta>
