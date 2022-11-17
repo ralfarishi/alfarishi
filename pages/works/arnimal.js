@@ -39,7 +39,7 @@ const Work = () => (
         </ListItem>
         <ListItem>
           <Meta>Source</Meta>
-          <Link href="https://github.com/ralfarishi/Animal-AR">
+          <Link href="https://github.com/ralfarishi/Animal-AR" target="_blank">
             github.com/ralfarishi/Animal-AR <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>

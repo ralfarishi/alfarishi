@@ -39,8 +39,8 @@ const Work = () => (
         </ListItem>
         <ListItem>
           <Meta>Source</Meta>
-          <Link href="#">
-            Coming soon <ExternalLinkIcon mx="2px" />
+          <Link href="https://github.com/ralfarishi/Larastore" target="_blank">
+            github.com/ralfarishi/Larastore <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
       </List>
