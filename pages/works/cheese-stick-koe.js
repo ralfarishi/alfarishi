@@ -33,8 +33,8 @@ const Work = () => (
         </ListItem>
         <ListItem>
           <Meta>Live Preview</Meta>
-          <Link href="https://cheese-stick-koe.vercel.app/" target="_blank">
-            cheese-stick.koe.vercel.app <ExternalLinkIcon mx="2px" />
+          <Link href="https://cheesestick-koe.online/" target="_blank">
+            cheesestick.koe.online <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
         <ListItem>
