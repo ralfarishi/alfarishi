@@ -34,7 +34,7 @@ const Work = () => (
         <ListItem>
           <Meta>Live Preview</Meta>
           <Link href="https://cheesestick-koe.online/" target="_blank">
-            cheesestick.koe.online <ExternalLinkIcon mx="2px" />
+            cheesestick-koe.online <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
         <ListItem>
