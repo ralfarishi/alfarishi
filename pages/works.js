@@ -6,6 +6,7 @@ import { WorkGridItem } from '../components/grid-item'
 import thumbShopnow from '../public/images/works/shopnow-thumb.png'
 import thumbARnimal from '../public/images/works/arnimal-thumb.jpg'
 import thumbCheeseStick from '../public/images/works/cheese_stick_1.jpg'
+import thumbTrinitas from '../public/images/works/trinitas-thumb.png'
 import thumbComingSoon from '../public/images/coming-soon.jpg'
 
 const Works = () => (
@@ -33,6 +34,15 @@ const Works = () => (
             thumbnail={thumbCheeseStick}
           >
             Official Website
+          </WorkGridItem>
+        </Section>
+        <Section>
+          <WorkGridItem
+            id="trinitas-prima"
+            title="Trinitas Prima Sejahtera"
+            thumbnail={thumbTrinitas}
+          >
+            Official Website for PT. Trinitas Prima Sejahtera
           </WorkGridItem>
         </Section>
       </SimpleGrid>
