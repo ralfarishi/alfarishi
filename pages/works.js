@@ -5,7 +5,7 @@ import { WorkGridItem } from '../components/grid-item'
 
 import thumbShopnow from '../public/images/works/shopnow/shopnow-thumb.png'
 import thumbARnimal from '../public/images/works/arnimal/arnimal-thumb.jpg'
-import thumbCheeseStick from '../public/images/w  orks/cheese-stick-koe/cheese_stick_1.jpg'
+import thumbCheeseStick from '../public/images/works/cheese-stick-koe/cheese_stick_1.jpg'
 import thumbTrinitas from '../public/images/works/trinitas/trinitas-thumb.png'
 import thumbComingSoon from '../public/images/coming-soon.jpg'
 
