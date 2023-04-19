@@ -13,7 +13,7 @@ import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
 
 const Work = () => (
-  <Layout title="Cheese Stick">
+  <Layout title="Cheese Stick Koe">
     <Container>
       <Title>
         Cheese Stick Koe <Badge>2022</Badge>
