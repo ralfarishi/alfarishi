@@ -3,10 +3,10 @@ import Layout from '../components/layouts/article'
 import Section from '../components/section'
 import { WorkGridItem } from '../components/grid-item'
 
-import thumbShopnow from '../public/images/works/shopnow-thumb.png'
-import thumbARnimal from '../public/images/works/arnimal-thumb.jpg'
-import thumbCheeseStick from '../public/images/works/cheese_stick_1.jpg'
-import thumbTrinitas from '../public/images/works/trinitas-thumb.png'
+import thumbShopnow from '../public/images/works/shopnow/shopnow-thumb.png'
+import thumbARnimal from '../public/images/works/arnimal/arnimal-thumb.jpg'
+import thumbCheeseStick from '../public/images/w  orks/cheese-stick-koe/cheese_stick_1.jpg'
+import thumbTrinitas from '../public/images/works/trinitas/trinitas-thumb.png'
 import thumbComingSoon from '../public/images/coming-soon.jpg'
 
 const Works = () => (

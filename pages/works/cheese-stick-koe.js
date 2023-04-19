@@ -53,11 +53,11 @@ const Work = () => (
       </Heading>
 
       <WorkImage
-        src="/images/works/cheese_stick_1.jpg"
+        src="/images/works/cheese-stick-koe/cheese_stick_1.jpg"
         alt="Cheese Stick Koe"
       />
       <WorkImage
-        src="/images/works/cheese_stick_2.jpg"
+        src="/images/works/cheese-stick-koe/cheese_stick_2.jpg"
         alt="Cheese Stick Koe"
       />
     </Container>

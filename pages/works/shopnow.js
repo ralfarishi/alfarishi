@@ -49,10 +49,10 @@ const Work = () => (
         <Center>Preview</Center>
       </Heading>
 
-      <WorkImage src="/images/works/shopnow-thumb.png" alt="shopnow" />
-      <WorkImage src="/images/works/shopnow-category.png" alt="shopnow" />
-      <WorkImage src="/images/works/shopnow-product.png" alt="shopnow" />
-      <WorkImage src="/images/works/shopnow-checkout.png" alt="shopnow" />
+      <WorkImage src="/images/works/shopnow/shopnow-thumb.png" alt="shopnow" />
+      <WorkImage src="/images/works/shopnow/shopnow-category.png" alt="shopnow" />
+      <WorkImage src="/images/works/shopnow/shopnow-product.png" alt="shopnow" />
+      <WorkImage src="/images/works/shopnow/shopnow-checkout.png" alt="shopnow" />
     </Container>
   </Layout>
 )

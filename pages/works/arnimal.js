@@ -61,14 +61,20 @@ const Work = () => (
       </Box> */}
 
       <SimpleGrid columns={2} gap={2}>
-        <WorkImage src="/images/works/arnimal-cat.png" alt="arnimal" />
-        <WorkImage src="/images/works/arnimal-elephant.png" alt="arnimal" />
-        <WorkImage src="/images/works/arnimal-rabbit.png" alt="arnimal" />
-        <WorkImage src="/images/works/arnimal-wolf.png" alt="arnimal" />
+        <WorkImage src="/images/works/arnimal/arnimal-cat.png" alt="arnimal" />
+        <WorkImage
+          src="/images/works/arnimal/arnimal-elephant.png"
+          alt="arnimal"
+        />
+        <WorkImage
+          src="/images/works/arnimal/arnimal-rabbit.png"
+          alt="arnimal"
+        />
+        <WorkImage src="/images/works/arnimal/arnimal-wolf.png" alt="arnimal" />
       </SimpleGrid>
       <Box align="center" my={6}>
         <WorkImage
-          src="/images/works/arnimal-eagle.png"
+          src="/images/works/arnimal/arnimal-eagle.png"
           alt="arnimal"
           width="250px"
         />
