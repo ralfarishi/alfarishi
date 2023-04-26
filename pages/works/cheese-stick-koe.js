@@ -37,15 +37,6 @@ const Work = () => (
             cheesestick-koe.online <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
-        <ListItem>
-          <Meta>Source</Meta>
-          <Link
-            href="https://github.com/ralfarishi/Cheese-Stick-Koe"
-            target="_blank"
-          >
-            github.com/ralfarishi/Cheese-Stick-Koe <ExternalLinkIcon mx="2px" />
-          </Link>
-        </ListItem>
       </List>
 
       <Heading as="h4" fontSize={16} my={6}>
