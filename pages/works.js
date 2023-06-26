@@ -7,6 +7,7 @@ import thumbShopnow from '../public/images/works/shopnow/shopnow-thumb.png'
 import thumbARnimal from '../public/images/works/arnimal/arnimal-thumb.jpg'
 import thumbCheeseStick from '../public/images/works/cheese-stick-koe/cheese_stick_1.jpg'
 import thumbTrinitas from '../public/images/works/trinitas/trinitas-thumb.png'
+import thumbJWP from '../public/images/works/sekolah-jewepe/jwp-1.png'
 import thumbComingSoon from '../public/images/coming-soon.jpg'
 
 const Works = () => (
@@ -43,6 +44,15 @@ const Works = () => (
             thumbnail={thumbTrinitas}
           >
             Official Website for PT. Trinitas Prima Sejahtera
+          </WorkGridItem>
+        </Section>
+        <Section>
+          <WorkGridItem
+            id="sekolah-jewepe"
+            title="Sekolah JeWePe"
+            thumbnail={thumbJWP}
+          >
+            Online Article for JeWePe School
           </WorkGridItem>
         </Section>
       </SimpleGrid>
