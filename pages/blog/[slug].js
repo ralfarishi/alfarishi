@@ -8,7 +8,7 @@ import { Container, Badge, Link } from '@chakra-ui/react'
 
 import Layout from '../../components/layouts/article'
 import BlogSeo from '../../components/layouts/blog-seo'
-import { Code, CustomHeading, Title } from '../../components/blog'
+import { Code, CustomHeading, Title, BlogImage } from '../../components/blog'
 
 export default function BlogPostPage({ source, frontmatter }) {
   const date = new Date(frontmatter.date)
@@ -35,9 +35,10 @@ export default function BlogPostPage({ source, frontmatter }) {
             <MDXRemote
               {...source}
               components={{
-                Code,
                 Link,
-                CustomHeading
+                Code,
+                CustomHeading,
+                BlogImage
               }}
             />
           </Container>

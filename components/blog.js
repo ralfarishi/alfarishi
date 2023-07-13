@@ -3,7 +3,7 @@ import NextLink from 'next/link'
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 
-import { Heading, Box, Link } from '@chakra-ui/react'
+import { Heading, Box, Link, Center, Image } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 
 export const Code = ({ children, language }) => (
@@ -31,4 +31,10 @@ export const Title = ({ children }) => (
       {children}
     </Heading>
   </Box>
+)
+
+export const BlogImage = ({ src, alt, w }) => (
+  <Center>
+    <Image src={src} mb={4} w={w} alt={alt} />
+  </Center>
 )
