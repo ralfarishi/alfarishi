@@ -195,7 +195,7 @@ const Home = () => (
         </List>
 
         <Box align="center" my={4}>
-          <NextLink href="/posts" passHref scroll={false}>
+          <NextLink href="/blogs" passHref scroll={false}>
             <Button
               rightIcon={<ChevronRightIcon />}
               colorScheme={useColorModeValue('purple', 'orange')}

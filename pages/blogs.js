@@ -14,7 +14,7 @@ export default function Blog({ posts }) {
       <Layout title="Blogs">
         <Container>
           <Heading as="h3" fontSize={20} mb={4}>
-            Blog
+            Blogs
           </Heading>
 
           {/* <List>
