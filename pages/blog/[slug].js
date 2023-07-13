@@ -4,25 +4,11 @@ import matter from 'gray-matter'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 
-import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { Container, Heading, Badge, Link } from '@chakra-ui/react'
 
 import Layout from '../../components/layouts/article'
-import { Container, Heading, Badge, Link } from '@chakra-ui/react'
-// import Main from '../../components/layouts/main'
 import BlogSeo from '../../components/layouts/blog-seo'
-
-const WrappedSyntaxHighlighter = ({ children, language }) => (
-  <SyntaxHighlighter language={language} style={dracula}>
-    {children}
-  </SyntaxHighlighter>
-)
-
-const CustomHeading = ({ children, fs, mb }) => (
-  <Heading display="inline-block" as="h3" fontSize={fs} mb={mb}>
-    {children}
-  </Heading>
-)
+import { Code, CustomHeading } from '../../components/blog'
 
 export default function BlogPostPage({ source, frontmatter }) {
   const date = new Date(frontmatter.date)
@@ -49,7 +35,7 @@ export default function BlogPostPage({ source, frontmatter }) {
             <MDXRemote
               {...source}
               components={{
-                SyntaxHighlighter: WrappedSyntaxHighlighter,
+                Code,
                 Link,
                 CustomHeading
               }}

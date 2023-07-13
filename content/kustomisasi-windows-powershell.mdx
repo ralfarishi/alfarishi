@@ -39,30 +39,26 @@ disini.</Link>_**
 - Buka Windows Powershell yang telah di-install.
 - Download package Oh My Posh menggunakan winget.
 
-<SyntaxHighlighter language="bash">
+<Code language="bash">
   {`winget install JanDeDobbeleer.OhMyPosh -s winget`}
-</SyntaxHighlighter>
+</Code>
 
 - Jika sudah ter-install dengan benar, lakukan setup powershell profile dengan membuka file `$PROFILE`.
 
-<SyntaxHighlighter language="bash">{`notepad $PROFILE`}</SyntaxHighlighter>
+<Code language="bash">{`notepad $PROFILE`}</Code>
 
 - Tambahkan script berikut pada file tersebut.
 
-<SyntaxHighlighter language="bash">
-  {`oh-my-posh init pwsh | Invoke-Expression`}
-</SyntaxHighlighter>
+<Code language="bash">{`oh-my-posh init pwsh | Invoke-Expression`}</Code>
 
 - Jika sudah, reload powershell profile.
 
-<SyntaxHighlighter language="bash">{`. $PROFILE`}</SyntaxHighlighter>
+<Code language="bash">{`. $PROFILE`}</Code>
 
 - Selanjutnya install Nerd Font pada Oh My Posh agar dapat menggunakan beberapa icon.
 - Pada prompt powershell masukkan perintah seperti di bawah:
 
-<SyntaxHighlighter language="bash">
-  {`oh-my-posh font install`}
-</SyntaxHighlighter>
+<Code language="bash">{`oh-my-posh font install`}</Code>
 
 _jika perintah `oh-my-posh` tidak berfungsi, coba lakukan restart powershell dengan cara membuka ulang._
 
@@ -113,21 +109,21 @@ _jika perintah `oh-my-posh` tidak berfungsi, coba lakukan restart powershell den
   perintah di bawah pada powershell.
 </p>
 
-<SyntaxHighlighter language="bash">{`Get-PoshTheme`}</SyntaxHighlighter>
+<Code language="bash">{`Get-PoshTheme`}</Code>
 
 Atau bisa mengunjunginya langsung di link <Link href="https://ohmyposh.dev/docs/themes" target="_blank">ini.</Link>
 
 - Apabila sudah menetukan tema yang diinginkan, buka kembali file `$PROFILE`.
 - Kemudian ubah isi file tersebut menjadi seperti contoh di bawah.
 
-<SyntaxHighlighter language="bash">
+<Code language="bash">
   {`oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/nama-tema.omp.json" | Invoke-Expression
 
 # contoh
 
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/hul10.omp.json" | Invoke-Expression`}
 
-</SyntaxHighlighter>
+</Code>
 
 - Save dan reload file tersebut agar konfigurasi bisa diterapkan.
 
