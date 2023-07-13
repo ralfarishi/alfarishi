@@ -4,11 +4,11 @@ import matter from 'gray-matter'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 
-import { Container, Heading, Badge, Link } from '@chakra-ui/react'
+import { Container, Badge, Link } from '@chakra-ui/react'
 
 import Layout from '../../components/layouts/article'
 import BlogSeo from '../../components/layouts/blog-seo'
-import { Code, CustomHeading } from '../../components/blog'
+import { Code, CustomHeading, Title } from '../../components/blog'
 
 export default function BlogPostPage({ source, frontmatter }) {
   const date = new Date(frontmatter.date)
@@ -29,9 +29,9 @@ export default function BlogPostPage({ source, frontmatter }) {
       >
         <Layout>
           <Container>
-            <Heading display="inline-block" as="h3" fontSize={26} mb={4}>
+            <Title>
               {frontmatter.title} <Badge>{year}</Badge>
-            </Heading>
+            </Title>
             <MDXRemote
               {...source}
               components={{
