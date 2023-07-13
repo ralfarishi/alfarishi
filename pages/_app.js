@@ -3,28 +3,34 @@ import Fonts from '../components/fonts'
 import { AnimatePresence } from 'framer-motion'
 import Chakra from '../components/chakra'
 
+import { DefaultSeo } from 'next-seo'
+import SEOConfig from '../next-seo.config.js'
+
 if (typeof window !== 'undefined') {
   window.history.scrollRestoration = 'manual'
 }
 
 function Website({ Component, pageProps, router }) {
   return (
-    <Chakra cookies={pageProps.cookies}>
-      <Fonts />
-      <Layout router={router}>
-        <AnimatePresence
-          exitBeforeEnter
-          initial={true}
-          onExitComplete={() => {
-            if (typeof window !== 'undefined') {
-              window.scrollTo({ top: 0 })
-            }
-          }}
-        >
-          <Component {...pageProps} key={router.route} />
-        </AnimatePresence>
-      </Layout>
-    </Chakra>
+    <>
+      <Chakra cookies={pageProps.cookies}>
+        <Fonts />
+        <Layout router={router}>
+          <AnimatePresence
+            exitBeforeEnter
+            initial={true}
+            onExitComplete={() => {
+              if (typeof window !== 'undefined') {
+                window.scrollTo({ top: 0 })
+              }
+            }}
+          >
+            <DefaultSeo {...SEOConfig} />
+            <Component {...pageProps} key={router.route} />
+          </AnimatePresence>
+        </Layout>
+      </Chakra>
+    </>
   )
 }
 

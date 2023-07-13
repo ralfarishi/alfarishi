@@ -1,0 +1,133 @@
+---
+title: 'Kustomisasi Windows Powershell'
+date: 'December 30, 2021'
+description: 'Windows Powershell dapat dikustomisasi dengan memanfaatkan profil.'
+thumbnailUrl: 'contents/kustomisasi-windows-powershell/wsl-thumb.png'
+tags: ['tailwindcss', 'styling']
+---
+
+<img src="/images/contents/kustomisasi-windows-powershell/wsl-thumb.png" />
+
+<br />
+
+<p>
+  PowerShell adalah sebuah command line interface (CLI) berupa antarmuka baris
+  perintah dan bahasa scripting yang dikembangkan oleh Microsoft, untuk tujuan
+  otomatisasi tugas dan manajemen konfigurasi.
+</p>
+
+<br />
+
+<CustomHeading fs="22" mb="4">
+  Oh My Posh
+</CustomHeading>
+
+<p>
+  Oh My Posh adalah custom prompt engine yang mempunyai kemampuan untuk
+  menyesuaikan prompt string dengan fungsi atau variabel.
+</p>
+
+<br />
+
+<CustomHeading fs="18" mb="4">
+  Instalasi
+</CustomHeading>
+
+**_Pastikan sudah mendownload Windows Powershell <Link href="https://github.com/ralfarishi/Animal-AR" target="_blank">
+disini.</Link>_**
+
+- Buka Windows Powershell yang telah di-install.
+- Download package Oh My Posh menggunakan winget.
+
+<SyntaxHighlighter language="bash">
+  {`winget install JanDeDobbeleer.OhMyPosh -s winget`}
+</SyntaxHighlighter>
+
+- Jika sudah ter-install dengan benar, lakukan setup powershell profile dengan membuka file `$PROFILE`.
+
+<SyntaxHighlighter language="bash">{`notepad $PROFILE`}</SyntaxHighlighter>
+
+- Tambahkan script berikut pada file tersebut.
+
+<SyntaxHighlighter language="bash">
+  {`oh-my-posh init pwsh | Invoke-Expression`}
+</SyntaxHighlighter>
+
+- Jika sudah, reload powershell profile.
+
+<SyntaxHighlighter language="bash">{`. $PROFILE`}</SyntaxHighlighter>
+
+- Selanjutnya install Nerd Font pada Oh My Posh agar dapat menggunakan beberapa icon.
+- Pada prompt powershell masukkan perintah seperti di bawah:
+
+<SyntaxHighlighter language="bash">
+  {`oh-my-posh font install`}
+</SyntaxHighlighter>
+
+_jika perintah `oh-my-posh` tidak berfungsi, coba lakukan restart powershell dengan cara membuka ulang._
+
+- Pilih font yang ingin di-install. Font yang direkomendasikan adalah _Meslo_.
+
+<br />
+
+<img src="/images/contents/kustomisasi-windows-powershell/choose-font.png" />
+
+<br />
+
+- Buka halaman settings powershell untuk mengkonfigurasi font yang sudah di-install dengan cara menekan tombol `ctrl + ,`.
+- Pilih profile yang ingin dikustomisasi atau pilih default.
+
+<br />
+
+<img
+  src="/images/contents/kustomisasi-windows-powershell/font-config.png"
+  height="300"
+  width="250"
+/>
+
+<br />
+
+- Pada sub menu _Additional Settings_ pilih _Appearance_.
+
+<br />
+
+<img src="/images/contents/kustomisasi-windows-powershell/font-config-2.png" />
+
+<br />
+
+- Lalu, ubah font pada bagian _Font face_.
+
+<br />
+
+<img src="/images/contents/kustomisasi-windows-powershell/font-config-3.png" />
+
+<br />
+
+<CustomHeading fs="18" mb="4">
+  Kustomisasi Tema
+</CustomHeading>
+
+<p>
+  Tahap berikutnya adalah melakukan kustomisasi tema Oh My Posh. Untuk
+  mengetahui tema apa saja yang disediakan oleh Oh My Posh dapat menggunakan
+  perintah di bawah pada powershell.
+</p>
+
+<SyntaxHighlighter language="bash">{`Get-PoshTheme`}</SyntaxHighlighter>
+
+Atau bisa mengunjunginya langsung di link <Link href="https://ohmyposh.dev/docs/themes" target="_blank">ini.</Link>
+
+- Apabila sudah menetukan tema yang diinginkan, buka kembali file `$PROFILE`.
+- Kemudian ubah isi file tersebut menjadi seperti contoh di bawah.
+
+<SyntaxHighlighter language="bash">
+  {`oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/nama-tema.omp.json" | Invoke-Expression
+
+# contoh
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/hul10.omp.json" | Invoke-Expression`}
+
+</SyntaxHighlighter>
+
+- Save dan reload file tersebut agar konfigurasi bisa diterapkan.
+
+~ Selesai ~

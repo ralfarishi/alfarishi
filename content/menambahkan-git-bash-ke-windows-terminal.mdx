@@ -1,0 +1,70 @@
+---
+title: 'Menambahkan Git Bash ke Windows Terminal'
+date: 'February 5, 2021'
+description: 'Cara menambahkan git bash ke windows terminal/powershell'
+thumbnailUrl: 'contents/menambah-git-bash-ke-windows-terminal/bash-thumb.png'
+tags: ['tailwindcss', 'styling']
+---
+
+<img src="/images/contents/menambah-git-bash-ke-windows-terminal/bash-thumb.png" />
+
+<br />
+
+<p>
+  Pada artikel kali ini saya akan memberikan tutorial bagaimana cara menambahkan
+  Git Bash ke Windows Terminal.
+</p>
+
+<br />
+
+- Langkah pertama yang harus dilakukan adalah meng-install Git terlebih
+  dahulu. Download Git [disini](https://git-scm.com/downloads).
+- Jika sudah ter-install terdapat Git Bash seperti gambar di bawah.
+
+<br />
+
+<img src="/images/contents/menambah-git-bash-ke-windows-terminal/git-bash.webp" />
+
+<br />
+
+- Kemudian buka pengaturan windows terminal. (`ctrl + .`)
+
+<br />
+
+<img src="/images/contents/menambah-git-bash-ke-windows-terminal/terminal-settings.webp" />
+
+<br />
+
+- Pada bagian "list" tambahkan script berikut:
+
+<SyntaxHighlighter language="json">
+  {`{
+    "guid": "{a678b091-9b29-4807-b021-f7a543b4af4d}",
+    "hidden": false,
+    "name": "Git Bash",
+    "commandline": "C:/Program Files/Git/bin/bash.exe",
+    "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+    "startingDirectory": "%USERPROFILE%",
+}`}
+</SyntaxHighlighter>
+
+<br />
+
+<p>
+  Pada bagian guid terdapat kombinasi kode untuk membedakan setiap profile. Cara
+  mendapatkan guid:
+</p>
+
+- Pada windows terminal ketik `[guid]::NewGuid()`.
+- Lalu, enter.
+
+<br />
+
+<img src="/images/contents/menambah-git-bash-ke-windows-terminal/generate-guid.webp" />
+
+<br />
+
+- Salin kode tersebut ke attribut `"guid"` pada file json.
+- Save file yang telah dikonfigurasi.
+
+<p>~ Selesai ~</p>

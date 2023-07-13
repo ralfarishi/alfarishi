@@ -3,16 +3,24 @@ import Image from 'next/image'
 import { Box, Text, LinkBox, LinkOverlay } from '@chakra-ui/react'
 import { Global } from '@emotion/react'
 
-export const GridItem = ({ children, href, title, thumbnail, imgHeight }) => (
+export const GridItem = ({
+  children,
+  href,
+  title,
+  thumbnail,
+  imgHeight,
+  imgWidth
+}) => (
   <Box w="100%" textAlign="center">
     <LinkBox cursor="pointer">
       <Image
         src={thumbnail}
         alt={title}
         className="grid-item-thumbnail"
-        placeholder="blur"
+        // placeholder="blur"
         loading="lazy"
         height={imgHeight}
+        width={imgWidth}
       />
       <LinkOverlay href={href} target="_blank">
         <Text mt={2}>{title}</Text>
@@ -33,6 +41,35 @@ export const WorkGridItem = ({ children, id, title, thumbnail }) => (
           placeholder="blur"
         />
         <LinkOverlay href={`/works/${id}`}>
+          <Text mt={2} fontSize={20}>
+            {title}
+          </Text>
+        </LinkOverlay>
+        <Text fontSize={14}>{children}</Text>
+      </LinkBox>
+    </NextLink>
+  </Box>
+)
+
+export const BlogGridItem = ({
+  children,
+  slug,
+  title,
+  thumbnail,
+  imgWidth,
+  imgHeight
+}) => (
+  <Box w="100%" textAlign="center">
+    <NextLink href={`/blog/${slug}`} passHref scroll={false}>
+      <LinkBox cursor="pointer">
+        <Image
+          src={thumbnail}
+          alt={title}
+          className="grid-item-thumbnail"
+          width={imgWidth}
+          height={imgHeight}
+        />
+        <LinkOverlay href={`/blog/${slug}`}>
           <Text mt={2} fontSize={20}>
             {title}
           </Text>
