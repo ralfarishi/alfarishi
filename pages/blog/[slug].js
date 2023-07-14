@@ -28,7 +28,7 @@ export default function BlogPostPage({ source, frontmatter }) {
         }}
       >
         <Layout>
-          <Container>
+          <Container maxW="container.sm">
             <Title>
               {frontmatter.title} <Badge>{year}</Badge>
             </Title>
