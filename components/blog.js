@@ -5,6 +5,7 @@ import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 
 import {
+  Container,
   Heading,
   Box,
   Link,
@@ -41,7 +42,7 @@ export const Code = ({ children, language }) => {
         </CopyToClipboard>
 
         <Box ml={8} mr={2}>
-          <SyntaxHighlighter language={language} style={dracula}>
+          <SyntaxHighlighter language={language} style={dracula} wrapLongLines>
             {children}
           </SyntaxHighlighter>
         </Box>
