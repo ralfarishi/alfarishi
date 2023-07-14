@@ -17,7 +17,7 @@ import { ChevronRightIcon, CopyIcon } from '@chakra-ui/icons'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
 export const Code = ({ children, language }) => {
-  const [value, setValue] = useState(children)
+  const [value] = useState(children)
   const { hasCopied, onCopy } = useClipboard(value)
 
   return (
