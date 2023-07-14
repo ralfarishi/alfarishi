@@ -39,26 +39,26 @@ disini.</Link>_**
 - Buka Windows Powershell yang telah di-install.
 - Download package Oh My Posh menggunakan winget.
 
-<Code language="bash">
+<Code language="powershell">
   {`winget install JanDeDobbeleer.OhMyPosh -s winget`}
 </Code>
 
 - Jika sudah ter-install dengan benar, lakukan setup powershell profile dengan membuka file `$PROFILE`.
 
-<Code language="bash">{`notepad $PROFILE`}</Code>
+<Code language="powershell">{`notepad $PROFILE`}</Code>
 
 - Tambahkan script berikut pada file tersebut.
 
-<Code language="bash">{`oh-my-posh init pwsh | Invoke-Expression`}</Code>
+<Code language="powershell">{`oh-my-posh init pwsh | Invoke-Expression`}</Code>
 
 - Jika sudah, reload powershell profile.
 
-<Code language="bash">{`. $PROFILE`}</Code>
+<Code language="powershell">{`. $PROFILE`}</Code>
 
 - Selanjutnya install Nerd Font pada Oh My Posh agar dapat menggunakan beberapa icon.
 - Pada prompt powershell masukkan perintah seperti di bawah:
 
-<Code language="bash">{`oh-my-posh font install`}</Code>
+<Code language="powershell">{`oh-my-posh font install`}</Code>
 
 _jika perintah `oh-my-posh` tidak berfungsi, coba lakukan restart powershell dengan cara membuka ulang._
 
@@ -121,14 +121,14 @@ _jika perintah `oh-my-posh` tidak berfungsi, coba lakukan restart powershell den
   perintah di bawah pada powershell.
 </p>
 
-<Code language="bash">{`Get-PoshTheme`}</Code>
+<Code language="powershell">{`Get-PoshTheme`}</Code>
 
 Atau bisa mengunjunginya langsung di link <Link href="https://ohmyposh.dev/docs/themes" target="_blank">ini.</Link>
 
 - Apabila sudah menetukan tema yang diinginkan, buka kembali file `$PROFILE`.
 - Kemudian ubah isi file tersebut menjadi seperti contoh di bawah.
 
-<Code language="bash">
+<Code language="powershell">
   {`oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/nama-tema.omp.json" | Invoke-Expression
 
 # contoh
