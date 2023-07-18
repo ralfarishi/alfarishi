@@ -13,7 +13,7 @@ import {
   Button,
   useClipboard
 } from '@chakra-ui/react'
-import { ChevronRightIcon, CopyIcon } from '@chakra-ui/icons'
+import { ChevronRightIcon, CopyIcon, CheckIcon } from '@chakra-ui/icons'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
 export const Code = ({ children, language }) => {
@@ -35,7 +35,11 @@ export const Code = ({ children, language }) => {
             }}
           >
             <Button variant="ghost" size="xs" onClick={onCopy}>
-              {hasCopied ? 'Copied' : <CopyIcon boxSize={4} />}
+              {hasCopied ? (
+                <CheckIcon boxSize={4} color="green.400" />
+              ) : (
+                <CopyIcon boxSize={4} />
+              )}
             </Button>
           </Box>
         </CopyToClipboard>
