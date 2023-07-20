@@ -27,7 +27,7 @@ export const Code = ({ children, language }) => {
           <Box
             as="button"
             position="absolute"
-            right={2}
+            right={1}
             top={2}
             p={1}
             onClick={e => {
@@ -44,7 +44,7 @@ export const Code = ({ children, language }) => {
           </Box>
         </CopyToClipboard>
 
-        <Box ml={8} mr={2}>
+        <Box>
           <SyntaxHighlighter language={language} style={dracula} wrapLongLines>
             {children}
           </SyntaxHighlighter>
