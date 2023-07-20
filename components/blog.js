@@ -23,9 +23,8 @@ export const Code = ({ children, language }) => {
   return (
     <>
       <Box position="relative" overflow="auto">
-        <CopyToClipboard text={children}>
+        <CopyToClipboard text={value}>
           <Box
-            as="button"
             position="absolute"
             right={1}
             top={2}
