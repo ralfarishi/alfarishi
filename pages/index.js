@@ -84,7 +84,7 @@ const Home = () => (
           the projects he has made are online stores (
           <Link as={NextLink} href="/works/shopnow" passHref scroll={false}>Shop Now</Link>
           ) and AR (
-           <Link as={NextLink} href="/works/ar" passHref scroll={false}>ARnimal</Link>
+           <Link as={NextLink} href="/works/arnimal" passHref scroll={false}>ARnimal</Link>
           ).
         </Paragraph>
         <Box align="center" my={4}>
