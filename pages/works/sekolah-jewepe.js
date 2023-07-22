@@ -47,6 +47,12 @@ const Work = () => (
             github.com/ralfarishi/sekolah-jewepe <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
+        <ListItem>
+          <Meta>Live Preview</Meta>
+          <Link href="https://sekolahjewepe.my.id/" target="_blank">
+            sekolahjewepe.my.id <ExternalLinkIcon mx="2px" />
+          </Link>
+        </ListItem>
       </List>
 
       <Heading as="h4" fontSize={16} my={6}>
