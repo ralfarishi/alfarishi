@@ -32,22 +32,25 @@ export const GridItem = ({
 
 export const WorkGridItem = ({ children, id, title, thumbnail }) => (
   <Box w="100%" textAlign="center">
-    <NextLink href={`/works/${id}`} passHref scroll={false}>
-      <LinkBox cursor="pointer">
-        <Image
-          src={thumbnail}
-          alt={title}
-          className="grid-item-thumbnail"
-          placeholder="blur"
-        />
-        <LinkOverlay href={`/works/${id}`}>
-          <Text mt={2} fontSize={20}>
-            {title}
-          </Text>
-        </LinkOverlay>
-        <Text fontSize={14}>{children}</Text>
-      </LinkBox>
-    </NextLink>
+    <LinkBox
+      as={NextLink}
+      href={`/works/${id}`}
+      scroll={false}
+      cursor="pointer"
+    >
+      <Image
+        src={thumbnail}
+        alt={title}
+        className="grid-item-thumbnail"
+        placeholder="blur"
+      />
+      <LinkOverlay as="div" href={`/works/${id}`}>
+        <Text mt={2} fontSize={20}>
+          {title}
+        </Text>
+      </LinkOverlay>
+      <Text fontSize={14}>{children}</Text>
+    </LinkBox>
   </Box>
 )
 
@@ -60,23 +63,21 @@ export const BlogGridItem = ({
   imgHeight
 }) => (
   <Box w="100%" textAlign="center">
-    <NextLink href={`/blog/${slug}`} passHref scroll={false}>
-      <LinkBox cursor="pointer">
-        <Image
-          src={thumbnail}
-          alt={title}
-          className="grid-item-thumbnail"
-          width={imgWidth}
-          height={imgHeight}
-        />
-        <LinkOverlay href={`/blog/${slug}`}>
-          <Text mt={2} fontSize={20}>
-            {title}
-          </Text>
-        </LinkOverlay>
-        <Text fontSize={14}>{children}</Text>
-      </LinkBox>
-    </NextLink>
+    <LinkBox as={NextLink} passHref cursor="pointer" scroll={false} href={`/blog/${slug}`}>
+      <Image
+        src={thumbnail}
+        alt={title}
+        className="grid-item-thumbnail"
+        width={imgWidth}
+        height={imgHeight}
+      />
+      <LinkOverlay as="div" href={`/blog/${slug}`}>
+        <Text mt={2} fontSize={20}>
+          {title}
+        </Text>
+      </LinkOverlay>
+      <Text fontSize={14}>{children}</Text>
+    </LinkBox>
   </Box>
 )
 

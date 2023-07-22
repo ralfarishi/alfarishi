@@ -23,18 +23,16 @@ const LogoBox = styled.span`
 const Logo = () => {
   return (
     <Link href="/" scroll={false}>
-      <a>
-        <LogoBox>
-          <Text
-            color={useColorModeValue('gray.800', 'whiteAlpha.900')}
-            fontFamily='M PLUS Rounded 1c", sans-serif'
-            fontWeight="bold"
-            ml={3}
-          >
-            Ramiza Al Farishi
-          </Text>
-        </LogoBox>
-      </a>
+      <LogoBox>
+        <Text
+          color={useColorModeValue('gray.800', 'whiteAlpha.900')}
+          fontFamily='M PLUS Rounded 1c", sans-serif'
+          fontWeight="bold"
+          ml={3}
+        >
+          Ramiza Al Farishi
+        </Text>
+      </LogoBox>
     </Link>
   )
 }

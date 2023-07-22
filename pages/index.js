@@ -41,8 +41,8 @@ const Home = () => (
           src="/images/profile-pic.jpg"
           alt="Profile image"
           borderRadius="full"
-          width="100%"
-          height="150%"
+          width="100"
+          height="150"
         />
       </Box>
 
@@ -82,24 +82,21 @@ const Home = () => (
           in informatics engineering and was taking his final semester. He hopes
           to become a backend programmer when he graduates from college. Some of
           the projects he has made are online stores (
-          <NextLink href="/works/shopnow" passHref scroll={false}>
-            <Link>Shop Now</Link>
-          </NextLink>
+          <Link as={NextLink} href="/works/shopnow" passHref scroll={false}>Shop Now</Link>
           ) and AR (
-          <NextLink href="/works/ar" passHref scroll={false}>
-            <Link>ARnimal</Link>
-          </NextLink>
+           <Link as={NextLink} href="/works/ar" passHref scroll={false}>ARnimal</Link>
           ).
         </Paragraph>
         <Box align="center" my={4}>
-          <NextLink href="/works" passHref scroll={false}>
-            <Button
-              rightIcon={<ChevronRightIcon />}
-              colorScheme={useColorModeValue('purple', 'orange')}
-            >
-              My portfolio
-            </Button>
-          </NextLink>
+          <Button
+            as={NextLink}
+            rightIcon={<ChevronRightIcon />}
+            colorScheme={useColorModeValue('purple', 'orange')}
+            href="/works"
+            scroll={false}
+          >
+            My portfolio
+          </Button>
         </Box>
       </Section>
 
@@ -195,14 +192,15 @@ const Home = () => (
         </List>
 
         <Box align="center" my={4}>
-          <NextLink href="/blogs" passHref scroll={false}>
-            <Button
-              rightIcon={<ChevronRightIcon />}
-              colorScheme={useColorModeValue('purple', 'orange')}
-            >
-              Popular posts
-            </Button>
-          </NextLink>
+          <Button
+            as={NextLink}
+            rightIcon={<ChevronRightIcon />}
+            colorScheme={useColorModeValue('purple', 'orange')}
+            href="/blogs"
+            scroll={false}
+          >
+            Popular posts
+          </Button>
         </Box>
       </Section>
     </Container>
