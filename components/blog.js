@@ -76,6 +76,6 @@ export const Title = ({ children }) => (
 
 export const BlogImage = ({ src, alt, w }) => (
   <Center>
-    <Image src={src} mb={4} w={w} alt={alt} />
+    <Image src={src} mb={4} w={w} alt={alt} placeholder="blur" />
   </Center>
 )
