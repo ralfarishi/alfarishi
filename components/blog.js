@@ -61,9 +61,9 @@ export const CustomHeading = ({ children, fs, mb }) => (
 
 export const Title = ({ children }) => (
   <Box>
-    <NextLink href="/blogs" passHref>
-      <Link>Blogs</Link>
-    </NextLink>
+    <Link href="/blogs" passHref as={NextLink}>
+      Blogs
+    </Link>
     <span>
       {' '}
       <ChevronRightIcon />{' '}
