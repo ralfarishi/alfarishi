@@ -1,0 +1,169 @@
+---
+title: 'Hosting Laravel di cPanel'
+date: 'July 29, 2023'
+description: 'Tutorial hosting laravel 9 menggunakan cPanel.'
+thumbnailUrl: 'contents/hosting-laravel-cpanel/thumbnail.png'
+tags: ['hosting', 'laravel', 'tutorial']
+---
+
+<BlogImage
+  src="/images/contents/hosting-laravel-cpanel/thumbnail.png"
+  w="700px"
+  alt="Thumbnail"
+/>
+
+Pada tutorial ini, saya akan menjelaskan langkah-langkah untuk meng-hosting aplikasi Laravel di lingkungan cPanel. cPanel adalah salah satu kontrol panel web populer yang digunakan untuk mengelola hosting web.
+
+<br />
+
+<CustomHeading fs="22" mb="4">
+  Persiapan
+</CustomHeading>
+
+1. Buka folder project laravel yang kalian punya.
+2. Kompres folder public ke dalam format **`.zip`**.
+
+<br />
+
+<BlogImage
+  src="/images/contents/hosting-laravel-cpanel/public-to-zip-1.png"
+  alt="Folder public"
+  w="450px"
+/>
+
+Hasil:
+
+<BlogImage
+  src="/images/contents/hosting-laravel-cpanel/public-to-zip-2.png"
+  alt="kompres public ke zip"
+  w="470px"
+/>
+
+3. Selanjutnya, pilih semua folder menggunakan **`CTRL+A`** kecuali, folder **`public`** dan **`public.zip`**.
+
+<br />
+
+<BlogImage
+  src="/images/contents/hosting-laravel-cpanel/seleksi-selain-folder-public.png"
+  alt="Seleksi folder selain public"
+  w="250px"
+/>
+
+<BlogImage
+  src="/images/contents/hosting-laravel-cpanel/seleksi-selain-folder-public-2.png"
+  alt="Seleksi folder selain public 2"
+  w="250px"
+/>
+
+4. Ubah nama folder hasil zip menjadi nama project. Contoh **`lara-blog.zip`**.
+
+<br />
+
+<BlogImage
+  src="/images/contents/hosting-laravel-cpanel/zip-laravel.png"
+  alt="Folder zip laravel"
+  w="300px"
+/>
+
+5. Sehingga hasil akhirnya terdapat dua buah folder **`.zip`**, yaitu **`public.zip`** dan **`nama-project.zip`**.
+
+<BlogImage
+  src="/images/contents/hosting-laravel-cpanel/semua-folder-zip.png"
+  alt="Semua folder zip"
+  w="250px"
+/>
+
+<CustomHeading fs="22" mb="4">
+  Upload ke cPanel
+</CustomHeading>
+
+6. Buka File Manager di cPanel.
+7. Buka folder **`public_html`** dan upload **`public.zip`** di folder tersebut.
+8. Jika upload telah selesai, extract folder **`.zip`**. Sehingga terlihat seperti gambar di bawah:
+
+<br />
+
+<BlogImage
+  src="/images/contents/hosting-laravel-cpanel/extract-public-zip.png"
+  alt="Extract folder public"
+  w="350px"
+/>
+
+9. Masuk ke folder **`public`** yang telah di extract. Lalu, pilih semua folder dan file.
+
+<br />
+
+<BlogImage
+  src="/images/contents/hosting-laravel-cpanel/select-all.png"
+  alt="Pilih semua"
+  w="350px"
+/>
+
+10. Pindahkan folder dan file yang telah dipilih ke halaman **`public_html`**.
+
+<br />
+
+<BlogImage
+  src="/images/contents/hosting-laravel-cpanel/pindah-folder.png"
+  alt="Pindah folder ke public html"
+  w="350px"
+/>
+
+11. Selanjutnya, edit file **`index.php`** yang ada pada folder **`public_html`**.
+12. Ubah kode program dari:
+
+<Code language="php">
+  {`$maintenance = __DIR__.'/.. /storage/framework
+require __DIR__.'/.. /vendor/autoload.php';
+$app = require_once __DIR__.'/../bootstrap/app.php';
+`}
+</Code>
+
+Menjadi:
+
+<Code language="php">
+  {`$maintenance = __DIR__.'/.. /lara-blog/storage/framework
+require __DIR__.'/.. /lara-blog/vendor/autoload.php';
+$app = require_once __DIR__.'/../lara-blog/bootstrap/app.php';
+`}
+</Code>
+
+_Ubah nama folder **`lara-blog`** menjadi nama project masing-masing._
+
+13. Buat folder baru dengan nama project di folder root (halaman folder awal).
+
+<br />
+
+<BlogImage
+  src="/images/contents/hosting-laravel-cpanel/buat-folder-di-root.png"
+  alt="Buat folder baru"
+  w="400px"
+/>
+
+14. Upload dan extract project laravel di folder baru tersebut. Sehingga hasilnya seperti gambar di bawah.
+
+<br />
+
+<BlogImage
+  src="/images/contents/hosting-laravel-cpanel/upload-laravel.png"
+  alt="Upload laravel"
+  w="300px"
+/>
+
+15. Edit kode pada file .env dari:
+
+<Code language="dot">
+  {`APP_ENV=local
+APP_DEBUG=true
+`}
+</Code>
+
+Menjadi:
+
+<Code language="dot">
+  {`APP_ENV=production
+APP_DEBUG=false
+`}
+</Code>
+
+~ SELESAI ~
