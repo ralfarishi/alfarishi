@@ -29,7 +29,7 @@ const Work = () => (
         </ListItem>
         <ListItem>
           <Meta>Platform</Meta>
-          <span>Website Only</span>
+          <span>Website</span>
         </ListItem>
         <ListItem>
           <Meta>Features</Meta>
@@ -43,6 +43,12 @@ const Work = () => (
             github.com/ralfarishi/Larastore <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
+        <ListItem>
+          <Meta>Live Preview</Meta>
+          <Link href="https://store.sekolahjewepe.my.id" target="_blank">
+            store.sekolahjewepe.my.id <ExternalLinkIcon mx="2px" />
+          </Link>
+        </ListItem>
       </List>
 
       <Heading as="h4" fontSize={16} my={6}>
@@ -50,9 +56,18 @@ const Work = () => (
       </Heading>
 
       <WorkImage src="/images/works/shopnow/shopnow-thumb.png" alt="shopnow" />
-      <WorkImage src="/images/works/shopnow/shopnow-category.png" alt="shopnow" />
-      <WorkImage src="/images/works/shopnow/shopnow-product.png" alt="shopnow" />
-      <WorkImage src="/images/works/shopnow/shopnow-checkout.png" alt="shopnow" />
+      <WorkImage
+        src="/images/works/shopnow/shopnow-category.png"
+        alt="shopnow"
+      />
+      <WorkImage
+        src="/images/works/shopnow/shopnow-product.png"
+        alt="shopnow"
+      />
+      <WorkImage
+        src="/images/works/shopnow/shopnow-checkout.png"
+        alt="shopnow"
+      />
     </Container>
   </Layout>
 )
