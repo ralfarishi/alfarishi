@@ -49,8 +49,8 @@ const Work = () => (
         </ListItem>
         <ListItem>
           <Meta>Live Preview</Meta>
-          <Link href="https://sekolahjewepe.my.id/" target="_blank">
-            sekolahjewepe.my.id <ExternalLinkIcon mx="2px" />
+          <Link href="https://blog.sekolahjewepe.my.id/" target="_blank">
+            blog.sekolahjewepe.my.id <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
       </List>
