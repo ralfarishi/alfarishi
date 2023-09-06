@@ -17,13 +17,15 @@ export const GridItem = ({
         src={thumbnail}
         alt={title}
         className="grid-item-thumbnail"
-        // placeholder="blur"
+        placeholder="blur"
         loading="lazy"
         height={imgHeight}
         width={imgWidth}
       />
       <LinkOverlay href={href} target="_blank">
-        <Text mt={2}>{title}</Text>
+        <Text mt={2} fontSize={20}>
+          {title}
+        </Text>
       </LinkOverlay>
       <Text fontSize={14}>{children}</Text>
     </LinkBox>
@@ -45,33 +47,6 @@ export const WorkGridItem = ({ children, id, title, thumbnail }) => (
         placeholder="blur"
       />
       <LinkOverlay as="div" href={`/works/${id}`}>
-        <Text mt={2} fontSize={20}>
-          {title}
-        </Text>
-      </LinkOverlay>
-      <Text fontSize={14}>{children}</Text>
-    </LinkBox>
-  </Box>
-)
-
-export const BlogGridItem = ({
-  children,
-  slug,
-  title,
-  thumbnail,
-  imgWidth,
-  imgHeight
-}) => (
-  <Box w="100%" textAlign="center">
-    <LinkBox as={NextLink} passHref cursor="pointer" scroll={false} href={`/blog/${slug}`}>
-      <Image
-        src={thumbnail}
-        alt={title}
-        className="grid-item-thumbnail"
-        width={imgWidth}
-        height={imgHeight}
-      />
-      <LinkOverlay as="div" href={`/blog/${slug}`}>
         <Text mt={2} fontSize={20}>
           {title}
         </Text>

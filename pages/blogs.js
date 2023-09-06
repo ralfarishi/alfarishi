@@ -1,70 +1,41 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-
 import { Container, Heading, SimpleGrid } from '@chakra-ui/react'
-
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
-import { BlogGridItem } from '../components/grid-item'
+import { GridItem } from '../components/grid-item'
 
-export default function Blog({ posts }) {
-  return (
-    <>
-      <Layout title="Blogs">
-        <Container>
-          <Heading as="h3" fontSize={20} mb={4}>
-            Blogs
-          </Heading>
+import thumbLaravelCpanel from '../public/images/blogs/laravel-cpanel-thumb.png'
+import thumbVbaExcel from '../public/images/blogs/excel-vba-thumb.png'
+import thumbWsl from '../public/images/blogs/wsl-thumb.png'
 
-          {/* <List>
-              {posts.map(post => (
-                <ListItem key={post.slug}>
-                  <NextLink href={`/blog/${post.slug}`}>
-                    <Link>{post.frontmatter.title}</Link>
-                  </NextLink>
-                </ListItem>
-              ))}
-            </List> */}
-          <Section delay={0.1}>
-            <SimpleGrid columns={[1, 2, 2]} gap={6}>
-              {posts.map(post => (
-                <BlogGridItem
-                  key={post.slug}
-                  slug={post.slug}
-                  title={post.frontmatter.title}
-                  thumbnail={`/images/${post.frontmatter.thumbnailUrl}`}
-                  imgHeight={500}
-                  imgWidth={800}
-                ></BlogGridItem>
-              ))}
-            </SimpleGrid>
-          </Section>
-        </Container>
-      </Layout>
-    </>
-  )
-}
+const Blogs = () => (
+  <Layout title="Blogs">
+    <Container>
+      <Heading as="h3" fontSize={20} mb={4}>
+        Blogs
+      </Heading>
 
-export async function getStaticProps() {
-  const files = fs.readdirSync('content')
-  const posts = files.map(filename => {
-    const slug = filename.replace('.mdx', '')
-    const markdownWithMeta = fs.readFileSync(
-      path.join('content', filename),
-      'utf-8'
-    )
-    const { data: frontmatter } = matter(markdownWithMeta)
-    return {
-      slug,
-      frontmatter
-    }
-  })
-  return {
-    props: {
-      posts
-    }
-  }
-}
+      <Section delay={0.1}>
+        <SimpleGrid columns={[1, 1, 2]} gap={6}>
+          <GridItem
+            title="Hosting Laravel di cPanel"
+            thumbnail={thumbLaravelCpanel}
+            href="https://blog.alfarishi.my.id/blog/hosting-laravel-di-cpanel"
+          />
+          <GridItem
+            title="Menyimpan Tabel di Excel Menjadi Format Gambar"
+            thumbnail={thumbVbaExcel}
+            href="https://blog.alfarishi.my.id/blog/menyimpan-tabel-di-excel-menjadi-format-gambar-dengan-vba"
+          />
+          <GridItem
+            title="Kustomisasi Windows Powershell"
+            thumbnail={thumbWsl}
+            href="https://blog.alfarishi.my.id/blog/kustomisasi-windows-powershell"
+          />
+        </SimpleGrid>
+      </Section>
+    </Container>
+  </Layout>
+)
 
-// export { getServerSideProps } from '../components/chakra'
+export default Blogs
+export { getServerSideProps } from '../components/chakra'
