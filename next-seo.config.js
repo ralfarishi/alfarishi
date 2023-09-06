@@ -5,7 +5,7 @@ const SEO = {
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://www.alfarishi.xyz/',
+    url: 'https://www.alfarishi.my.id/',
     site_name: 'Ramiza Al Farishi | Personal Website'
   },
   twitter: {
