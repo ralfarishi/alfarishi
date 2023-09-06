@@ -43,12 +43,6 @@ const Work = () => (
             github.com/ralfarishi/Larastore <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
-        <ListItem>
-          <Meta>Live Preview</Meta>
-          <Link href="https://store.sekolahjewepe.my.id" target="_blank">
-            store.sekolahjewepe.my.id <ExternalLinkIcon mx="2px" />
-          </Link>
-        </ListItem>
       </List>
 
       <Heading as="h4" fontSize={16} my={6}>
