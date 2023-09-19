@@ -28,7 +28,7 @@ const Work = () => {
         <List ml={4} my={4}>
           <ListItem>
             <Meta>Stack</Meta>
-            <span>Laravel 9 & Bootstrap</span>
+            <span>Laravel 10, Bootstrap 5 & AOS </span>
           </ListItem>
           <ListItem>
             <Meta>Platform</Meta>
@@ -37,8 +37,8 @@ const Work = () => {
           <ListItem>
             <Meta>Features</Meta>
             <span>
-              Admin: CRUD article, delete comment. User: Add comment. Filter
-              comments if there are rude sentences & search article{' '}
+              CRUD article, comment management, category management, make
+              comment, search article.
             </span>
           </ListItem>
           <ListItem>
@@ -62,15 +62,15 @@ const Work = () => {
           alt="jwp preview"
         />
         <WorkImage
-          src="/images/works/sekolah-jewepe/jwp-4.png"
-          alt="jwp preview"
-        />
-        <WorkImage
           src="/images/works/sekolah-jewepe/jwp-2.png"
           alt="jwp preview"
         />
         <WorkImage
           src="/images/works/sekolah-jewepe/jwp-3.png"
+          alt="jwp preview"
+        />
+        <WorkImage
+          src="/images/works/sekolah-jewepe/jwp-4.png"
           alt="jwp preview"
         />
       </Container>
