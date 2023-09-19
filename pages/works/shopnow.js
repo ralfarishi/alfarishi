@@ -11,6 +11,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Title, WorkImage, Meta } from '../../components/work'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
+import CommitInfo from '../../components/commit-info'
 
 const Work = () => (
   <Layout title="Shop Now">
@@ -43,6 +44,7 @@ const Work = () => (
             github.com/ralfarishi/Larastore <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
+        <CommitInfo repoName="Larastore" />
       </List>
 
       <Heading as="h4" fontSize={16} my={6}>

@@ -11,6 +11,7 @@ import Layout from '../../components/layouts/article'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Title, WorkImage, Meta } from '../../components/work'
 import P from '../../components/paragraph'
+import CommitInfo from '../../components/commit-info'
 
 const Work = () => (
   <Layout title="ARnimal">
@@ -43,6 +44,7 @@ const Work = () => (
             github.com/ralfarishi/Animal-AR <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
+        <CommitInfo repoName="Animal-AR" />
       </List>
 
       {/* <Box align="center" my={6}>
