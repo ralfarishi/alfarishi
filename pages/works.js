@@ -8,7 +8,9 @@ import thumbARnimal from '../public/images/works/arnimal/arnimal-thumb.jpg'
 import thumbCheeseStick from '../public/images/works/cheese-stick-koe/cheese_stick_1.jpg'
 import thumbTrinitas from '../public/images/works/trinitas/trinitas-thumb.png'
 import thumbJWP from '../public/images/works/sekolah-jewepe/jwp-1.png'
-import thumbComingSoon from '../public/images/coming-soon.jpg'
+import thumbEduflex from '../public/images/works/eduflex/edu-2.png'
+
+// import thumbComingSoon from '../public/images/coming-soon.jpg'
 
 const Works = () => (
   <Layout title="Works">
@@ -55,6 +57,11 @@ const Works = () => (
             Online Article for JeWePe School
           </WorkGridItem>
         </Section>
+        <Section>
+          <WorkGridItem id="eduflex" title="Eduflex" thumbnail={thumbEduflex}>
+            Online course RESTful API
+          </WorkGridItem>
+        </Section>
       </SimpleGrid>
 
       <SimpleGrid columns={[1, 1, 2]} gap={6}>
@@ -64,16 +71,6 @@ const Works = () => (
           <Heading as="h3" fontSize={20} mb={4}>
             Coming soon
           </Heading>
-
-          <Section>
-            <WorkGridItem
-              id="#"
-              title="Online Course"
-              thumbnail={thumbComingSoon}
-            >
-              Online course application built with REST API
-            </WorkGridItem>
-          </Section>
         </Section>
       </SimpleGrid>
     </Container>
