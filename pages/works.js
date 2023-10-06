@@ -9,6 +9,7 @@ import thumbCheeseStick from '../public/images/works/cheese-stick-koe/cheese_sti
 import thumbTrinitas from '../public/images/works/trinitas/trinitas-thumb.png'
 import thumbJWP from '../public/images/works/sekolah-jewepe/jwp-1.png'
 import thumbEduflex from '../public/images/works/eduflex/edu-2.png'
+import thumbCredx from '../public/images/works/credx/thumb.png'
 
 // import thumbComingSoon from '../public/images/coming-soon.jpg'
 
@@ -60,6 +61,11 @@ const Works = () => (
         <Section>
           <WorkGridItem id="eduflex" title="Eduflex" thumbnail={thumbEduflex}>
             Online course RESTful API
+          </WorkGridItem>
+        </Section>
+        <Section>
+          <WorkGridItem id="credx" title="CredX" thumbnail={thumbCredx}>
+            Account manager program
           </WorkGridItem>
         </Section>
       </SimpleGrid>
