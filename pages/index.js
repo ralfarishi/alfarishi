@@ -82,9 +82,13 @@ const Home = () => (
           in informatics engineering and was taking his final semester. He hopes
           to become a backend programmer when he graduates from college. Some of
           the projects he has made are online stores (
-          <Link as={NextLink} href="/works/shopnow" passHref scroll={false}>Shop Now</Link>
+          <Link as={NextLink} href="/works/shopnow" passHref scroll={false}>
+            Shop Now
+          </Link>
           ) and AR (
-           <Link as={NextLink} href="/works/arnimal" passHref scroll={false}>ARnimal</Link>
+          <Link as={NextLink} href="/works/arnimal" passHref scroll={false}>
+            ARnimal
+          </Link>
           ).
         </Paragraph>
         <Box align="center" my={4}>
@@ -124,14 +128,12 @@ const Home = () => (
         <Heading as="h3" variant="section-title">
           Things I ♥
         </Heading>
-        <Paragraph>
-          Movie, Music, Football, Programming, Augmented Reality.{' '}
-        </Paragraph>
+        <Paragraph>Web Programming, Music, & Football. </Paragraph>
       </Section>
 
       <Section delay={0.4}>
         <Heading as="h3" variant="section-title">
-          Sertification
+          Certifications
         </Heading>
 
         <List>
