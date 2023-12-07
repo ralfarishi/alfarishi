@@ -36,8 +36,8 @@ const Work = () => {
           </ListItem>
           <ListItem>
             <Meta>Live Preview</Meta>
-            <Link href="https://cheesestick-koe.online/" target="_blank">
-              cheesestick-koe.online <ExternalLinkIcon mx="2px" />
+            <Link href="https://cheesestick-koe.my.id/" target="_blank">
+              cheesestick-koe.my.id <ExternalLinkIcon mx="2px" />
             </Link>
           </ListItem>
           <CommitInfo repoName="Cheese-Stick-Koe" />
