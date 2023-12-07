@@ -10,6 +10,7 @@ import thumbTrinitas from '../public/images/works/trinitas/trinitas-thumb.png'
 import thumbJWP from '../public/images/works/sekolah-jewepe/jwp-1.png'
 import thumbEduflex from '../public/images/works/eduflex/edu-2.png'
 import thumbCredx from '../public/images/works/credx/thumb.png'
+import thumbIaas from '../public/images/works/iaas/iaas-1.png'
 
 // import thumbComingSoon from '../public/images/coming-soon.jpg'
 
@@ -66,6 +67,11 @@ const Works = () => (
         <Section>
           <WorkGridItem id="credx" title="CredX" thumbnail={thumbCredx}>
             Account manager program
+          </WorkGridItem>
+        </Section>
+        <Section>
+          <WorkGridItem id="iaas" title="Intan Angkasa Air Service" thumbnail={thumbIaas}>
+            Company Profile Website
           </WorkGridItem>
         </Section>
       </SimpleGrid>
