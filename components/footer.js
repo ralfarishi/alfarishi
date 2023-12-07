@@ -3,7 +3,7 @@ import { Box, Link, Text } from '@chakra-ui/react'
 const Footer = () => {
   return (
     <Box align="center" opacity={0.4} fontSize="sm" mt={4}>
-      &copy; {new Date().getFullYear()} Ramiza Al Farishi. All Rights Reserved.
+      &copy; {new Date().getFullYear()} Al Farishi. All Rights Reserved.
       <Text fontSize="xs">
         Inspired by{' '}
         <Link href="https://www.craftz.dog/" target="_blank">
