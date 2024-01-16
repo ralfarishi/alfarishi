@@ -43,14 +43,11 @@ const Work = () => {
           </ListItem>
           <ListItem>
             <Meta>Source</Meta>
-            <Link
-              href="https://github.com/ralfarishi/sekolah-jewepe"
-              target="_blank"
-            >
-              github.com/ralfarishi/sekolah-jewepe <ExternalLinkIcon mx="2px" />
+            <Link href="https://github.com/ralfarishi/larablog" target="_blank">
+              github.com/ralfarishi/larablog <ExternalLinkIcon mx="2px" />
             </Link>
           </ListItem>
-          <CommitInfo repoName="sekolah-jewepe" />
+          <CommitInfo repoName="larablog" />
         </List>
 
         <Heading as="h4" fontSize={16} my={6}>

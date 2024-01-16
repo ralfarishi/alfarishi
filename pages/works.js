@@ -56,7 +56,7 @@ const Works = () => (
             title="Sekolah JeWePe"
             thumbnail={thumbJWP}
           >
-            Online Article for JeWePe School
+            Laravel blog application
           </WorkGridItem>
         </Section>
         <Section>
@@ -70,7 +70,11 @@ const Works = () => (
           </WorkGridItem>
         </Section>
         <Section>
-          <WorkGridItem id="iaas" title="Intan Angkasa Air Service" thumbnail={thumbIaas}>
+          <WorkGridItem
+            id="iaas"
+            title="Intan Angkasa Air Service"
+            thumbnail={thumbIaas}
+          >
             Company Profile Website
           </WorkGridItem>
         </Section>
