@@ -1,23 +1,27 @@
 import NextLink from 'next/link'
+import Image from 'next/image'
+
 import {
   Link,
   Container,
   Heading,
   Box,
   Button,
-  Badge,
   List,
   ListItem,
   useColorModeValue,
   chakra
 } from '@chakra-ui/react'
-import { ChevronRightIcon, ExternalLinkIcon } from '@chakra-ui/icons'
+
+import { ChevronRightIcon } from '@chakra-ui/icons'
+
+import { IoLogoInstagram, IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5'
+
 import Paragraph from '../components/paragraph'
 import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
-import { IoLogoInstagram, IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5'
-import Image from 'next/image'
+import Certificate from '../components/certificate'
 
 const ProfileImage = chakra(Image, {
   shouldForwardProp: prop => ['width', 'height', 'src', 'alt'].includes(prop)
@@ -118,9 +122,9 @@ const Home = () => (
           at KORPRI Bekasi High School
         </BioSection>
         <BioSection>
-          <BioYear>2019-</BioYear>
-          Studying in the department of Informatics Engineering at Gunadarma
-          University
+          <BioYear>2023</BioYear>
+          Graduated with a bachelor&lsquo;s degree in computer science at
+          Gunadarma University
         </BioSection>
       </Section>
 
@@ -137,16 +141,22 @@ const Home = () => (
         </Heading>
 
         <List>
-          <ListItem>
-            <Link
-              href="https://buildwithangga.com/talent/ralfarishi/full-stack-web-developer-toko-online"
-              color={useColorModeValue('purple.600', 'orange.200')}
-              isExternal
-            >
-              BWA - Web Developer: E-Commerce <ExternalLinkIcon mx="2px" />{' '}
-            </Link>
-            <Badge>2022</Badge>
-          </ListItem>
+          <Certificate
+            link="https://buildwithangga.com/talent/ralfarishi/full-stack-web-developer-toko-online"
+            name="BWA - Web Developer: E-Commerce"
+            year="2022"
+          />
+          <Certificate
+            link="https://buildwithangga.com/talent/ralfarishi/web-development-microservice-website-kelas-online"
+            name="BWA - Web Development: Online Course Website"
+            year="2023"
+          />
+          <Certificate
+            link="https://drive.google.com/file/d/1bUUSmKtXWwBjaBLCHcqpZ-w_21dmvDJl/view?usp=sharing"
+            name="Indonesian Professional Certification Authority: Junior Web
+              Programmer"
+            year="2023"
+          />
         </List>
       </Section>
 
