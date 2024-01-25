@@ -38,7 +38,7 @@ const Work = () => {
           </ListItem>
           <ListItem>
             <Meta>Platform</Meta>
-            <span>Web browser</span>
+            <span>Website</span>
           </ListItem>
           <ListItem>
             <Meta>Live Preview</Meta>

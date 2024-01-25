@@ -26,7 +26,7 @@ const Work = () => (
         </ListItem>
         <ListItem>
           <Meta>Platform</Meta>
-          <span>Website & Mobile</span>
+          <span>Website</span>
         </ListItem>
         <ListItem>
           <Meta>Live Preview</Meta>
