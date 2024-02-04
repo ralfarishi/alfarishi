@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/react'
+
 import Layout from '../components/layouts/main'
 import Fonts from '../components/fonts'
 import { AnimatePresence } from 'framer-motion'
@@ -17,7 +19,7 @@ function Website({ Component, pageProps, router }) {
         <Fonts />
         <Layout router={router}>
           <AnimatePresence
-            mode='wait'
+            mode="wait"
             initial={true}
             onExitComplete={() => {
               if (typeof window !== 'undefined') {
@@ -27,6 +29,7 @@ function Website({ Component, pageProps, router }) {
           >
             <DefaultSeo {...SEOConfig} />
             <Component {...pageProps} key={router.route} />
+            <Analytics />
           </AnimatePresence>
         </Layout>
       </Chakra>
