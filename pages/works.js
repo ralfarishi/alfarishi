@@ -11,6 +11,8 @@ import thumbJWP from '../public/images/works/sekolah-jewepe/jwp-1.png'
 import thumbEduflex from '../public/images/works/eduflex/edu-2.png'
 import thumbCredx from '../public/images/works/credx/thumb.png'
 import thumbIaas from '../public/images/works/iaas/iaas-1.png'
+import thumbPsTopUp from '../public/images/works/pstopup/pstopup.png'
+import thumbAryaTech from '../public/images/works/arya-tech/arya-tech.png'
 
 // import thumbComingSoon from '../public/images/coming-soon.jpg'
 
@@ -38,7 +40,7 @@ const Works = () => (
             title="Cheese Stick Koe"
             thumbnail={thumbCheeseStick}
           >
-            Official Website
+            Official website for Cheese Stick Koe store
           </WorkGridItem>
         </Section>
         <Section>
@@ -47,7 +49,7 @@ const Works = () => (
             title="Trinitas Prima Sejahtera"
             thumbnail={thumbTrinitas}
           >
-            Official Website for PT. Trinitas Prima Sejahtera
+            Official website for Trinitas Prima Sejahtera company
           </WorkGridItem>
         </Section>
         <Section>
@@ -75,7 +77,25 @@ const Works = () => (
             title="Intan Angkasa Air Service"
             thumbnail={thumbIaas}
           >
-            Company Profile Website
+            Official website for Intan Angkasa Air Service company
+          </WorkGridItem>
+        </Section>
+        <Section>
+          <WorkGridItem
+            id="pstopup"
+            title="Pasar Top Up"
+            thumbnail={thumbPsTopUp}
+          >
+            A modern platform for seamless game top-ups
+          </WorkGridItem>
+        </Section>
+        <Section>
+          <WorkGridItem
+            id="arya-tech"
+            title="Arya Tech Company"
+            thumbnail={thumbAryaTech}
+          >
+            Official website for Arya Tech Mandiri company
           </WorkGridItem>
         </Section>
       </SimpleGrid>
