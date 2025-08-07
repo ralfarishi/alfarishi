@@ -18,7 +18,11 @@ const Work = () => (
       <Title>
         Trinias Prima Sejahtera <Badge>2023</Badge>
       </Title>
-      <P>Official landing page for Trinitas Prima Sejahtera.</P>
+      <P>
+        An official landing page developed for Trinitas Prima Sejahtera. The
+        page was designed to represent the company&apos;s identity and promote
+        their services in a clean and professional layout.
+      </P>
       <List ml={4} my={4}>
         <ListItem>
           <Meta>Stack</Meta>

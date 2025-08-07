@@ -22,8 +22,10 @@ const Work = () => {
           Sekolah JeWePe <Badge>2023</Badge>
         </Title>
         <P>
-          Web based online article application for Jewepe schools was made to
-          fulfill the final assignment from the Gunadarma Certification Agency
+          A web-based article application developed for Jewepe Schools. This
+          project was created to fulfill the final assignment requirement from
+          the Gunadarma Certification Agency, focusing on functionality and
+          simplicity for school use.
         </P>
         <List ml={4} my={4}>
           <ListItem>

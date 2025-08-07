@@ -21,9 +21,10 @@ const Work = () => {
           Pasar Top Up <Badge>2024</Badge>
         </Title>
         <P>
-          A website designed to provide gamers with a quick and secure way to
-          purchase in-game credits. I did not made the whole website, but i
-          maintained and refactored some of the web code functionality.
+          A platform that allows gamers to purchase in-game credits quickly and
+          securely. While I didn&apos;t develop the entire website, I was
+          responsible for maintaining and refactoring several key parts of the
+          codebase to improve performance and readability.
         </P>
         <List ml={4} my={4}>
           <ListItem>

@@ -3,6 +3,8 @@ import Layout from '../components/layouts/article'
 import Section from '../components/section'
 import { WorkGridItem } from '../components/grid-item'
 
+import suzerainThumbnail from '../public/images/works/suzerain-file-modifier/suzerain-thumbnail.webp'
+import dashboardCheeseStickKoe from '../public/images/works/cheese-stick-koe/dashboard.png'
 import thumbShopnow from '../public/images/works/shopnow/shopnow-thumb.png'
 import thumbARnimal from '../public/images/works/arnimal/arnimal-thumb.jpg'
 import thumbCheeseStick from '../public/images/works/cheese-stick-koe/cheese_stick_1.jpg'
@@ -25,10 +27,24 @@ const Works = () => (
 
       <SimpleGrid columns={[1, 1, 2]} gap={6}>
         <Section>
-          <WorkGridItem id="arnimal" title="ARnimal" thumbnail={thumbARnimal}>
-            Media learning using Augmented Reality
+          <WorkGridItem
+            id="suzerain-file-modifier"
+            title="Suzerain The Game"
+            thumbnail={suzerainThumbnail}
+          >
+            A tool to modified Suzerain game data
           </WorkGridItem>
         </Section>
+        <Section>
+          <WorkGridItem
+            id="dashboard-cheese-stick-koe"
+            title="Cheese Stick Koe"
+            thumbnail={dashboardCheeseStickKoe}
+          >
+            A dashboard for Cheese Stick Koe store
+          </WorkGridItem>
+        </Section>
+
         <Section>
           <WorkGridItem id="shopnow" title="Shop Now" thumbnail={thumbShopnow}>
             Online Shop
@@ -61,16 +77,7 @@ const Works = () => (
             Laravel blog application
           </WorkGridItem>
         </Section>
-        <Section>
-          <WorkGridItem id="eduflex" title="Eduflex" thumbnail={thumbEduflex}>
-            Online course RESTful API
-          </WorkGridItem>
-        </Section>
-        <Section>
-          <WorkGridItem id="credx" title="CredX" thumbnail={thumbCredx}>
-            Account manager program
-          </WorkGridItem>
-        </Section>
+
         <Section>
           <WorkGridItem
             id="iaas"
@@ -89,6 +96,7 @@ const Works = () => (
             A modern platform for seamless game top-ups
           </WorkGridItem>
         </Section>
+
         <Section>
           <WorkGridItem
             id="arya-tech"
@@ -96,6 +104,22 @@ const Works = () => (
             thumbnail={thumbAryaTech}
           >
             Official website for Arya Tech Mandiri company
+          </WorkGridItem>
+        </Section>
+
+        <Section>
+          <WorkGridItem id="arnimal" title="ARnimal" thumbnail={thumbARnimal}>
+            Media learning using Augmented Reality
+          </WorkGridItem>
+        </Section>
+        <Section>
+          <WorkGridItem id="eduflex" title="Eduflex" thumbnail={thumbEduflex}>
+            Online course RESTful API
+          </WorkGridItem>
+        </Section>
+        <Section>
+          <WorkGridItem id="credx" title="CredX" thumbnail={thumbCredx}>
+            Account manager program
           </WorkGridItem>
         </Section>
       </SimpleGrid>

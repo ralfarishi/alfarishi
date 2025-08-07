@@ -21,9 +21,9 @@ const Work = () => {
           Intan Angkasa Air Service <Badge>2023</Badge>
         </Title>
         <P>
-          A company profile website for Intan Angkasa Air Service (IAAS)
-          includes a dashboard for managing data such as clients, fleet, news,
-          and many more.
+          A company profile website created for IAAS, an aviation service
+          provider. It includes a dynamic dashboard for managing client data,
+          fleet details, news updates, and other company information.
         </P>
         <List ml={4} my={4}>
           <ListItem>

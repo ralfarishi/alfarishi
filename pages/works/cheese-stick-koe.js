@@ -22,8 +22,9 @@ const Work = () => {
           Cheese Stick Koe <Badge>2022</Badge>
         </Title>
         <P>
-          Official website page for Cheese Stick Koe. Cheese Stick Koe is snack
-          & cake store based in Bekasi.
+          An official website built for Cheese Stick Koe, a snack and cake store
+          based in Bekasi. The site showcases their product offerings and helps
+          build a stronger brand presence online.
         </P>
         <List ml={4} my={4}>
           <ListItem>
