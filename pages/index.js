@@ -15,7 +15,12 @@ import {
 
 import { ChevronRightIcon } from '@chakra-ui/icons'
 
-import { IoLogoInstagram, IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5'
+import {
+  IoLogoInstagram,
+  IoLogoGithub,
+  IoLogoLinkedin,
+  IoMailOutline
+} from 'react-icons/io5'
 
 import Paragraph from '../components/paragraph'
 import { BioSection, BioYear } from '../components/bio'
@@ -74,26 +79,33 @@ const Home = () => (
         bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
         css={{ backdropFilter: 'blur(10px)' }}
       >
-        Hello, I&apos;m self taught web developer based in Indonesia!
+        Self-taught web developer from Indonesia — I build websites people love
+        to use.
       </Box>
 
       <Section delay={0.1}>
         <Heading as="h3" variant="section-title">
-          Work
+          About
         </Heading>
         <Paragraph>
-          Ramiza is a student who is very interested in programming. He majored
-          in informatics engineering and was taking his final semester. He hopes
-          to become a backend programmer when he graduates from college. Some of
-          the projects he has made are online stores (
-          <Link as={NextLink} href="/works/shopnow" passHref scroll={false}>
-            Shop Now
-          </Link>
-          ) and AR (
-          <Link as={NextLink} href="/works/arnimal" passHref scroll={false}>
-            ARnimal
-          </Link>
-          ).
+          Hi, I&apos;m Ramiza — an Informatics Engineering graduate who&apos;s
+          really into programming, especially backend development. I&apos;ve
+          worked on a bunch of cool projects like{' '}
+          <Link
+            as={NextLink}
+            href="/works/suzerain-file-modifier"
+            passHref
+            scroll={false}
+          >
+            Suzerain Save Editor
+          </Link>{' '}
+          (a save editor tool) and{' '}
+          <Link as={NextLink} href="/works/iaas" passHref scroll={false}>
+            IAAS
+          </Link>{' '}
+          (a dynamic company profile web). I love building systems that run
+          smoothly, solve real problems, and make life a bit easier for the
+          people who use them.
         </Paragraph>
         <Box align="center" my={4}>
           <Button
@@ -132,7 +144,7 @@ const Home = () => (
         <Heading as="h3" variant="section-title">
           Things I ♥
         </Heading>
-        <Paragraph>Web Programming, Music, & Football. </Paragraph>
+        <Paragraph>Music, football, movie, & programming. </Paragraph>
       </Section>
 
       <Section delay={0.4}>
@@ -198,6 +210,17 @@ const Home = () => (
                 leftIcon={<IoLogoLinkedin />}
               >
                 Ramiza Al Farishi
+              </Button>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="mailto:ralfarishi@gmail.com" target="_blank">
+              <Button
+                variant="ghost"
+                colorScheme="teal"
+                leftIcon={<IoMailOutline />}
+              >
+                ralfarishi@gmail.com
               </Button>
             </Link>
           </ListItem>
