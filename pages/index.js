@@ -56,11 +56,10 @@ const Home = () => (
       </Box>
 
       <Box display={{ md: 'flex' }}>
-        <Box flexGrow={1} textAlign="center">
+        <Box flexGrow={1} textAlign="center" marginBottom={3} marginTop={3}>
           <Heading as="h2" variant="page-title">
             Ramiza Al Farishi
           </Heading>
-          <p>College Student</p>
         </Box>
 
         <Box
@@ -88,9 +87,9 @@ const Home = () => (
           About
         </Heading>
         <Paragraph>
-          Hi, I&apos;m Ramiza — an Informatics Engineering graduate who&apos;s
-          really into programming, especially backend development. I&apos;ve
-          worked on a bunch of cool projects like{' '}
+          Hi, I&apos;m Ramiza — a Computer Science graduate who&apos;s really
+          into programming, especially website development. I&apos;ve worked on
+          a bunch of cool projects like{' '}
           <Link
             as={NextLink}
             href="/works/suzerain-file-modifier"

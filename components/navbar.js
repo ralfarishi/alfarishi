@@ -20,15 +20,20 @@ import { forwardRef } from 'react'
 
 const LinkItem = ({ href, path, target, children, ...props }) => {
   const active = path === href
+
+  const activeBackgorundColor = useColorModeValue('purple.600', 'orange.200')
+
+  const activeColor = useColorModeValue('whiteAlpha.900', 'gray.800')
   const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
+
   return (
     <Link
       as={NextLink}
       href={href}
       scroll={false}
       p={2}
-      bg={active ? 'grassTeal' : undefined}
-      color={active ? '#202023' : inactiveColor}
+      bg={active ? activeBackgorundColor : undefined}
+      color={active ? activeColor : inactiveColor}
       target={target}
       {...props}
     >
