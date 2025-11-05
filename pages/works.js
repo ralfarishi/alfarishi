@@ -3,21 +3,6 @@ import Layout from '../components/layouts/article'
 import Section from '../components/section'
 import { WorkGridItem } from '../components/grid-item'
 
-import suzerainThumbnail from '../public/images/works/suzerain-file-modifier/suzerain-thumbnail.webp'
-import dashboardCheeseStickKoe from '../public/images/works/cheese-stick-koe/dashboard.png'
-import thumbShopnow from '../public/images/works/shopnow/shopnow-thumb.png'
-import thumbARnimal from '../public/images/works/arnimal/arnimal-thumb.jpg'
-import thumbCheeseStick from '../public/images/works/cheese-stick-koe/cheese_stick_1.jpg'
-import thumbTrinitas from '../public/images/works/trinitas/trinitas-thumb.png'
-import thumbJWP from '../public/images/works/sekolah-jewepe/jwp-1.png'
-import thumbEduflex from '../public/images/works/eduflex/edu-2.png'
-import thumbCredx from '../public/images/works/credx/thumb.png'
-import thumbIaas from '../public/images/works/iaas/iaas-1.png'
-import thumbPsTopUp from '../public/images/works/pstopup/pstopup.png'
-import thumbAryaTech from '../public/images/works/arya-tech/arya-tech.png'
-
-// import thumbComingSoon from '../public/images/coming-soon.jpg'
-
 const Works = () => (
   <Layout title="Works">
     <Container>
@@ -30,7 +15,7 @@ const Works = () => (
           <WorkGridItem
             id="suzerain-file-modifier"
             title="Suzerain The Game"
-            thumbnail={suzerainThumbnail}
+            thumbnail="/images/works/suzerain-file-modifier/suzerain-thumbnail.webp"
           >
             A tool to modified Suzerain game data
           </WorkGridItem>
@@ -39,14 +24,18 @@ const Works = () => (
           <WorkGridItem
             id="dashboard-cheese-stick-koe"
             title="Cheese Stick Koe"
-            thumbnail={dashboardCheeseStickKoe}
+            thumbnail="/images/works/cheese-stick-koe/dashboard.png"
           >
             A dashboard for Cheese Stick Koe store
           </WorkGridItem>
         </Section>
 
         <Section>
-          <WorkGridItem id="shopnow" title="Shop Now" thumbnail={thumbShopnow}>
+          <WorkGridItem
+            id="shopnow"
+            title="Shop Now"
+            thumbnail="/images/works/shopnow/shopnow-thumb.png"
+          >
             Online Shop
           </WorkGridItem>
         </Section>
@@ -54,7 +43,7 @@ const Works = () => (
           <WorkGridItem
             id="cheese-stick-koe"
             title="Cheese Stick Koe"
-            thumbnail={thumbCheeseStick}
+            thumbnail="/images/works/cheese-stick-koe/cheese_stick_1.jpg"
           >
             Official website for Cheese Stick Koe store
           </WorkGridItem>
@@ -63,7 +52,7 @@ const Works = () => (
           <WorkGridItem
             id="trinitas-prima"
             title="Trinitas Prima Sejahtera"
-            thumbnail={thumbTrinitas}
+            thumbnail="/images/works/trinitas/trinitas-thumb.png"
           >
             Official website for Trinitas Prima Sejahtera company
           </WorkGridItem>
@@ -72,7 +61,7 @@ const Works = () => (
           <WorkGridItem
             id="sekolah-jewepe"
             title="Sekolah JeWePe"
-            thumbnail={thumbJWP}
+            thumbnail="/images/works/sekolah-jewepe/jwp-1.png"
           >
             Laravel blog application
           </WorkGridItem>
@@ -82,7 +71,7 @@ const Works = () => (
           <WorkGridItem
             id="iaas"
             title="Intan Angkasa Air Service"
-            thumbnail={thumbIaas}
+            thumbnail="/images/works/iaas/iaas-1.png"
           >
             Official website for Intan Angkasa Air Service company
           </WorkGridItem>
@@ -91,7 +80,7 @@ const Works = () => (
           <WorkGridItem
             id="pstopup"
             title="Pasar Top Up"
-            thumbnail={thumbPsTopUp}
+            thumbnail="/images/works/pstopup/pstopup.png"
           >
             A modern platform for seamless game top-ups
           </WorkGridItem>
@@ -101,24 +90,36 @@ const Works = () => (
           <WorkGridItem
             id="arya-tech"
             title="Arya Tech Company"
-            thumbnail={thumbAryaTech}
+            thumbnail="/images/works/arya-tech/arya-tech.png"
           >
             Official website for Arya Tech Mandiri company
           </WorkGridItem>
         </Section>
 
         <Section>
-          <WorkGridItem id="arnimal" title="ARnimal" thumbnail={thumbARnimal}>
+          <WorkGridItem
+            id="arnimal"
+            title="ARnimal"
+            thumbnail="/images/works/arnimal/arnimal-thumb.jpg"
+          >
             Media learning using Augmented Reality
           </WorkGridItem>
         </Section>
         <Section>
-          <WorkGridItem id="eduflex" title="Eduflex" thumbnail={thumbEduflex}>
+          <WorkGridItem
+            id="eduflex"
+            title="Eduflex"
+            thumbnail="/images/works/eduflex/edu-2.png"
+          >
             Online course RESTful API
           </WorkGridItem>
         </Section>
         <Section>
-          <WorkGridItem id="credx" title="CredX" thumbnail={thumbCredx}>
+          <WorkGridItem
+            id="credx"
+            title="CredX"
+            thumbnail="/images/works/credx/thumb.png"
+          >
             Account manager program
           </WorkGridItem>
         </Section>
@@ -138,4 +139,3 @@ const Works = () => (
 )
 
 export default Works
-export { getServerSideProps } from '../components/chakra'

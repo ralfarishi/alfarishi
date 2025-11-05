@@ -1,23 +1,31 @@
 import { useEffect, useState } from 'react'
-
-import { getLatestCommitInfo } from '../lib/githubApi'
 import { ListItem } from '@chakra-ui/react'
 import { Meta } from './work'
 
 const CommitInfo = ({ repoName }) => {
-  const [latestCommitInfo, setLatestCommitInfo] = useState(null)
+  const [commitInfo, setCommitInfo] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const fetchLatestCommitInfo = async () => {
+    const fetchcommitInfo = async () => {
       try {
-        const commitInfo = await getLatestCommitInfo(repoName)
-        setLatestCommitInfo(commitInfo)
+        const response = await fetch(`/api/commit/${repoName}`)
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch commit info')
+        }
+
+        const commitInfo = await response.json()
+        setCommitInfo(commitInfo)
       } catch (error) {
-        console.error('Error fetching latest commit info:', error)
+        console.error('Error fetching commit info:', error)
+        setCommitInfo(null)
+      } finally {
+        setIsLoading(false)
       }
     }
 
-    fetchLatestCommitInfo()
+    fetchcommitInfo()
   }, [repoName])
 
   return (
@@ -25,24 +33,25 @@ const CommitInfo = ({ repoName }) => {
       <ListItem>
         <Meta>Last Update</Meta>
         <span>
-          {latestCommitInfo
-            ? new Date(latestCommitInfo.commit.author.date).toLocaleDateString(
-                'en-US',
-                {
+          {isLoading
+            ? 'Loading...'
+            : commitInfo
+              ? new Date(commitInfo.date).toLocaleDateString('en-US', {
                   month: 'short',
                   day: '2-digit',
                   year: 'numeric'
-                }
-              )
-            : 'No last commit information'}
+                })
+              : 'Not available'}
         </span>
       </ListItem>
       <ListItem>
         <Meta>Last Commit</Meta>
         <span>
-          {latestCommitInfo
-            ? latestCommitInfo.commit.message
-            : 'No last commit information'}
+          {isLoading
+            ? 'Loading...'
+            : commitInfo
+              ? commitInfo.message
+              : 'Not available'}
         </span>
       </ListItem>
     </>

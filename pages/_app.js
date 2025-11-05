@@ -1,12 +1,14 @@
 import { Analytics } from '@vercel/analytics/react'
+import dynamic from 'next/dynamic.js'
 
 import Layout from '../components/layouts/main'
-import Fonts from '../components/fonts'
 import { AnimatePresence } from 'framer-motion'
 import Chakra from '../components/chakra'
 
 import { DefaultSeo } from 'next-seo'
 import SEOConfig from '../next-seo.config.js'
+
+const Fonts = dynamic(() => import('../components/fonts'), { ssr: true })
 
 if (typeof window !== 'undefined') {
   window.history.scrollRestoration = 'manual'
@@ -15,7 +17,8 @@ if (typeof window !== 'undefined') {
 function Website({ Component, pageProps, router }) {
   return (
     <>
-      <Chakra cookies={pageProps.cookies}>
+      <DefaultSeo {...SEOConfig} />
+      <Chakra>
         <Fonts />
         <Layout router={router}>
           <AnimatePresence
@@ -27,10 +30,9 @@ function Website({ Component, pageProps, router }) {
               }
             }}
           >
-            <DefaultSeo {...SEOConfig} />
             <Component {...pageProps} key={router.route} />
-            <Analytics />
           </AnimatePresence>
+          <Analytics />
         </Layout>
       </Chakra>
     </>

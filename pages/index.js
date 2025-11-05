@@ -1,5 +1,6 @@
 import NextLink from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 
 import {
   Link,
@@ -26,7 +27,11 @@ import Paragraph from '../components/paragraph'
 import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
-import Certificate from '../components/certificate'
+
+const Certificate = dynamic(() => import('../components/certificate'), {
+  loading: () => null,
+  ssr: true
+})
 
 const ProfileImage = chakra(Image, {
   shouldForwardProp: prop => ['width', 'height', 'src', 'alt'].includes(prop)
@@ -35,24 +40,25 @@ const ProfileImage = chakra(Image, {
 const Home = () => (
   <Layout>
     <Container>
-      <Box
-        borderColor="whiteAlpha.800"
-        borderWidth={2}
-        borderStyle="solid"
-        w="100px"
-        h="100px"
-        ml={[85, 170, 200]}
-        display="inline-block"
-        borderRadius="full"
-        overflow="hidden"
-      >
-        <ProfileImage
-          src="/images/profile-pic.jpg"
-          alt="Profile image"
+      <Box display="flex" justifyContent="center" mb={6}>
+        <Box
+          borderColor="whiteAlpha.800"
+          borderWidth={2}
+          borderStyle="solid"
+          w="100px"
+          h="100px"
+          display="inline-block"
           borderRadius="full"
-          width="100"
-          height="150"
-        />
+          overflow="hidden"
+        >
+          <ProfileImage
+            src="/images/profile-pic.jpg"
+            alt="Profile image"
+            borderRadius="full"
+            width="100"
+            height="150"
+          />
+        </Box>
       </Box>
 
       <Box display={{ md: 'flex' }}>
@@ -242,4 +248,3 @@ const Home = () => (
 )
 
 export default Home
-export { getServerSideProps } from '../components/chakra'
