@@ -14,11 +14,11 @@ if (typeof window !== 'undefined') {
   window.history.scrollRestoration = 'manual'
 }
 
-function Website({ Component, pageProps, router }) {
+function Website({ Component, pageProps, router, cookies }) {
   return (
     <>
       <DefaultSeo {...SEOConfig} />
-      <Chakra>
+      <Chakra cookies={cookies}>
         <Fonts />
         <Layout router={router}>
           <AnimatePresence
@@ -37,6 +37,20 @@ function Website({ Component, pageProps, router }) {
       </Chakra>
     </>
   )
+}
+
+// Pass cookies to Chakra for SSR color mode support
+Website.getInitialProps = async ({ Component, ctx }) => {
+  let pageProps = {}
+
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx)
+  }
+
+  return {
+    pageProps,
+    cookies: ctx.req?.headers.cookie ?? ''
+  }
 }
 
 export default Website

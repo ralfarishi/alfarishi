@@ -33,6 +33,7 @@ export default class Document extends NextDocument {
           <ColorModeScript
             initialColorMode={theme.config.initialColorMode}
             storageKey="chakra-ui-color-mode"
+            type="cookie"
           />
           <Main />
           <NextScript />
