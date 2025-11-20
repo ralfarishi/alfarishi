@@ -34,7 +34,7 @@ const Certificate = dynamic(() => import('../components/certificate'), {
 })
 
 const ProfileImage = chakra(Image, {
-  shouldForwardProp: prop => ['width', 'height', 'src', 'alt'].includes(prop)
+  shouldForwardProp: prop => ['width', 'height', 'src', 'alt', 'priority'].includes(prop)
 })
 
 const Home = () => (
@@ -57,6 +57,7 @@ const Home = () => (
             borderRadius="full"
             width="100"
             height="150"
+            priority={true}
           />
         </Box>
       </Box>

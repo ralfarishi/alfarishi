@@ -1,5 +1,6 @@
 import NextLink from 'next/link'
-import { Heading, Box, Image, Link, Badge } from '@chakra-ui/react'
+import NextImage from 'next/image'
+import { Heading, Box, Link, Badge } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 
 export const Title = ({ children }) => (
@@ -23,8 +24,17 @@ export const SubTitle = ({ children }) => (
   </Box>
 )
 
-export const WorkImage = ({ src, alt, width }) => (
-  <Image borderRadius="lg" w="full" src={src} alt={alt} mb={4} width={width} />
+export const WorkImage = ({ src, alt }) => (
+  <Box borderRadius="lg" overflow="hidden" mb={4} position="relative" width="100%">
+    <NextImage
+      src={src}
+      alt={alt}
+      width={800}
+      height={600}
+      style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
+      loading="lazy"
+    />
+  </Box>
 )
 
 export const Meta = ({ children }) => (

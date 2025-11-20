@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion'
-// import Head from 'next/head'
-import { GridItemStyle } from '../grid-item'
 
 const variants = {
   hidden: { opacity: 0, x: 0, y: 20 },
@@ -9,7 +7,6 @@ const variants = {
 }
 
 const Layout = ({ children }) => {
-  // const t = `${title} - Ramiza Al Farishi`
   return (
     <motion.article
       initial="hidden"
@@ -19,18 +16,7 @@ const Layout = ({ children }) => {
       transition={{ duration: 0.4, type: 'easeInOut' }}
       style={{ position: 'relative' }}
     >
-      <>
-        {/* {title && (
-          <Head>
-            <title>{t}</title>
-            <meta name="twitter:title" content={t} />
-            <meta property="og:title" content={t} />
-          </Head>
-        )} */}
-        {children}
-
-        <GridItemStyle />
-      </>
+      {children}
     </motion.article>
   )
 }
