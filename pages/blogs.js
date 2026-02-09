@@ -4,14 +4,18 @@ import Section from '../components/section'
 import { GridItem } from '../components/grid-item'
 
 const Blogs = () => (
-  <Layout title="Blogs">
-    <Container>
-      <Heading as="h3" fontSize={20} mb={4}>
+  <Layout
+    title="Blogs"
+    description="Articles and tutorials about web development, Laravel, system administration, and modern tech tools."
+    slug="blogs"
+  >
+    <Container maxW="container.lg" px={6}>
+      <Heading as="h3" variant="section-title" mb={{ base: 4, md: 8 }}>
         Blogs
       </Heading>
 
-      <Section delay={0.1}>
-        <SimpleGrid columns={[1, 1, 2]} gap={6}>
+      <Section delay={0.1} mb={0}>
+        <SimpleGrid columns={[1, 1, 2]} gap={{ base: 4, md: 6 }}>
           <GridItem
             title="Hosting Laravel di cPanel"
             thumbnail="/images/blogs/laravel-cpanel-thumb.png"

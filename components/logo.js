@@ -11,12 +11,10 @@ const LogoBox = styled.span`
   line-height: 20px;
   padding: 10px;
 
-  img {
-    transition: 200ms ease;
-  }
+  transition: 200ms ease;
 
-  &:hover img {
-    transform: rotate(20deg);
+  &:hover {
+    transform: translateY(-1px);
   }
 `
 
@@ -25,10 +23,11 @@ const Logo = () => {
     <Link href="/" scroll={false}>
       <LogoBox>
         <Text
-          color={useColorModeValue('gray.800', 'whiteAlpha.900')}
-          fontFamily='M PLUS Rounded 1c", sans-serif'
-          fontWeight="bold"
-          ml={3}
+          color={useColorModeValue('#2D2D2A', '#F0EAD6')}
+          fontFamily="'Outfit', sans-serif"
+          fontWeight="800"
+          fontSize="22px"
+          letterSpacing="-0.02em"
         >
           Ramiza Al Farishi
         </Text>

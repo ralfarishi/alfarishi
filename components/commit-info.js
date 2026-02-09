@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ListItem } from '@chakra-ui/react'
-import { Meta } from './work'
+import { StatBox } from './work'
 
 const CommitInfo = ({ repoName }) => {
   const [commitInfo, setCommitInfo] = useState(null)
@@ -17,8 +16,7 @@ const CommitInfo = ({ repoName }) => {
 
         const commitInfo = await response.json()
         setCommitInfo(commitInfo)
-      } catch (error) {
-        console.error('Error fetching commit info:', error)
+      } catch {
         setCommitInfo(null)
       } finally {
         setIsLoading(false)
@@ -30,30 +28,24 @@ const CommitInfo = ({ repoName }) => {
 
   return (
     <>
-      <ListItem>
-        <Meta>Last Update</Meta>
-        <span>
-          {isLoading
-            ? 'Loading...'
-            : commitInfo
-              ? new Date(commitInfo.date).toLocaleDateString('en-US', {
-                  month: 'short',
-                  day: '2-digit',
-                  year: 'numeric'
-                })
-              : 'Not available'}
-        </span>
-      </ListItem>
-      <ListItem>
-        <Meta>Last Commit</Meta>
-        <span>
-          {isLoading
-            ? 'Loading...'
-            : commitInfo
-              ? commitInfo.message
-              : 'Not available'}
-        </span>
-      </ListItem>
+      <StatBox label="Last Update">
+        {isLoading
+          ? 'Summoning the dates...'
+          : commitInfo
+            ? new Date(commitInfo.date).toLocaleDateString('en-US', {
+                month: 'short',
+                day: '2-digit',
+                year: 'numeric'
+              })
+            : 'Stuck in 1970'}
+      </StatBox>
+      <StatBox label="Last Commit">
+        {isLoading
+          ? 'Reading the manual...'
+          : commitInfo
+            ? commitInfo.message
+            : 'Commitment issues'}
+      </StatBox>
     </>
   )
 }

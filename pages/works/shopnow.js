@@ -1,71 +1,101 @@
 import {
-  Container,
   Badge,
+  Box,
   Link,
-  List,
-  ListItem,
-  Heading,
-  Center
+  SimpleGrid,
+  Text,
+  useColorModeValue
 } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { Title, WorkImage, Meta } from '../../components/work'
+import {
+  Title,
+  WorkImage,
+  SubTitle,
+  WorkStats,
+  StatBox
+} from '../../components/work'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
 import CommitInfo from '../../components/commit-info'
 
-const Work = () => (
-  <Layout title="Shop Now">
-    <Container>
+const Work = () => {
+  const accentColor = useColorModeValue('#E29578', '#D4A373')
+
+  return (
+    <Layout
+      title="Shop Now"
+      description="A Laravel e-commerce platform with payments and shipping. Your wallet's worst enemy, your browser's best friend."
+      image="/images/works/shopnow/shopnow-thumb.png"
+      slug="works/shopnow"
+    >
       <Title>
-        Shop Now <Badge>2022</Badge>
+        Shop Now{' '}
+        <Badge
+          ml={2}
+          px={2}
+          py={1}
+          fontSize="10px"
+          fontWeight="bold"
+          letterSpacing="0.1em"
+          variant="subtle"
+          borderRadius="full"
+          colorScheme="orange"
+          opacity={0.8}
+        >
+          2022
+        </Badge>
       </Title>
-      <P>
-        A useful website for shopping from anywhere and anytime. Provides a wide
-        range of products such as gadgets, furniture, fashion, and others.
-      </P>
-      <List ml={4} my={4}>
-        <ListItem>
-          <Meta>Stack</Meta>
-          <span>Laravel</span>
-        </ListItem>
-        <ListItem>
-          <Meta>Platform</Meta>
-          <span>Website</span>
-        </ListItem>
-        <ListItem>
-          <Meta>Features</Meta>
-          <span>
-            Login/Logout, Checkout with Midtrans, Shipping Information
-          </span>
-        </ListItem>
-        <ListItem>
-          <Meta>Source</Meta>
-          <Link href="https://github.com/ralfarishi/Larastore" target="_blank">
-            github.com/ralfarishi/Larastore <ExternalLinkIcon mx="2px" />
+
+      <WorkStats>
+        <StatBox label="Stack">Laravel</StatBox>
+        <StatBox label="Platform">Website</StatBox>
+        <StatBox label="Features">Payments, Shipping</StatBox>
+        <StatBox label="Source">
+          <Link
+            href="https://github.com/ralfarishi/Larastore"
+            isExternal
+            color={accentColor}
+          >
+            Larastore <ExternalLinkIcon ml={1} />
           </Link>
-        </ListItem>
+        </StatBox>
         <CommitInfo repoName="Larastore" />
-      </List>
+      </WorkStats>
 
-      <Heading as="h4" fontSize={16} my={6}>
-        <Center>Preview</Center>
-      </Heading>
+      <Box mb={16}>
+        <SubTitle>The Mission</SubTitle>
+        <P>
+          A retail therapy engine. It does exactly what it says on the button,
+          but it won&apos;t pay for your shopping spree. Adding items to
+          Cart&lt;T&gt; since 2022. Your wallet&apos;s worst enemy, your
+          browser&apos;s best friend.
+        </P>
+      </Box>
 
-      <WorkImage src="/images/works/shopnow/shopnow-thumb.png" alt="shopnow" />
-      <WorkImage
-        src="/images/works/shopnow/shopnow-category.png"
-        alt="shopnow"
-      />
-      <WorkImage
-        src="/images/works/shopnow/shopnow-product.png"
-        alt="shopnow"
-      />
-      <WorkImage
-        src="/images/works/shopnow/shopnow-checkout.png"
-        alt="shopnow"
-      />
-    </Container>
-  </Layout>
-)
+      <SimpleGrid columns={1} spacing={{ base: 4, md: 12 }}>
+        <WorkImage
+          my={0}
+          src="/images/works/shopnow/shopnow-thumb.png"
+          alt="shopnow"
+        />
+        <WorkImage
+          my={0}
+          src="/images/works/shopnow/shopnow-category.png"
+          alt="shopnow"
+        />
+        <WorkImage
+          my={0}
+          src="/images/works/shopnow/shopnow-product.png"
+          alt="shopnow"
+        />
+        <WorkImage
+          my={0}
+          src="/images/works/shopnow/shopnow-checkout.png"
+          alt="shopnow"
+        />
+      </SimpleGrid>
+    </Layout>
+  )
+}
 
 export default Work

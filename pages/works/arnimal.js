@@ -1,88 +1,124 @@
 import {
-  Container,
   Badge,
+  Box,
   Link,
-  List,
-  ListItem,
+  useColorModeValue,
   SimpleGrid,
-  Box
+  Heading
 } from '@chakra-ui/react'
 import Layout from '../../components/layouts/article'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { Title, WorkImage, Meta } from '../../components/work'
+import {
+  Title,
+  WorkImage,
+  SubTitle,
+  WorkStats,
+  StatBox
+} from '../../components/work'
 import P from '../../components/paragraph'
 import CommitInfo from '../../components/commit-info'
 
-const Work = () => (
-  <Layout title="ARnimal">
-    <Container>
+const Work = () => {
+  const accentColor = useColorModeValue('#E29578', '#D4A373')
+
+  return (
+    <Layout
+      title="ARnimal"
+      description="Bringing the zoo to your living room with augmented reality. Pokemon Go, but you actually learn something."
+      image="/images/works/arnimal/arnimal-cat.png"
+      slug="works/arnimal"
+    >
       <Title>
-        ARnimal <Badge>2022</Badge>
-      </Title>
-      <P>
-        AR project that is useful for animal education for children. There are
-        five different types of animals and there are fun facts about each
-        animal.
-      </P>
-
-      <List ml={4} my={4}>
-        <ListItem>
-          <Meta>Platform</Meta>
-          <span>Instagram (Android & iOS)</span>
-        </ListItem>
-        <ListItem>
-          <Meta>Stack</Meta>
-          <span>Javascript, Spark AR</span>
-        </ListItem>
-        <ListItem>
-          <Meta>Feature</Meta>
-          <span>User can tap the phone to change the animal</span>
-        </ListItem>
-        <ListItem>
-          <Meta>Source</Meta>
-          <Link href="https://github.com/ralfarishi/Animal-AR" target="_blank">
-            github.com/ralfarishi/Animal-AR <ExternalLinkIcon mx="2px" />
-          </Link>
-        </ListItem>
-        <CommitInfo repoName="Animal-AR" />
-      </List>
-
-      {/* <Box align="center" my={6}>
-        <Link
-          className="link-appstore"
-          href="https://itunes.apple.com/app/id1035645520?mt=8"
-          target="_blank"
+        ARnimal{' '}
+        <Badge
+          ml={2}
+          px={2}
+          py={1}
+          fontSize="10px"
+          fontWeight="bold"
+          letterSpacing="0.1em"
+          variant="subtle"
+          borderRadius="full"
+          colorScheme="orange"
+          opacity={0.8}
         >
-          <Image
-            maxW={240}
-            src="/images/works/appstore.png"
-            className="image-appstore"
-            alt="Download on App Store"
-          />
-        </Link>
-      </Box> */}
+          2022
+        </Badge>
+      </Title>
 
-      <SimpleGrid columns={2} gap={2}>
-        <WorkImage src="/images/works/arnimal/arnimal-cat.png" alt="arnimal" />
+      <WorkStats>
+        <StatBox label="Stack">Spark AR, JS</StatBox>
+        <StatBox label="Platform">Instagram</StatBox>
+        <StatBox label="Nature">Augmented Reality</StatBox>
+        <StatBox label="Source">
+          <Link
+            href="https://github.com/ralfarishi/Animal-AR"
+            isExternal
+            color={accentColor}
+          >
+            Animal-AR <ExternalLinkIcon ml={1} />
+          </Link>
+        </StatBox>
+        <CommitInfo repoName="Animal-AR" />
+      </WorkStats>
+
+      <Box mb={16}>
+        <SubTitle>The Mission</SubTitle>
+        <P>
+          Bringing the zoo to your living room without the smell or the danger.
+          Pokemon Go, but you actually learn something. Augmenting reality
+          because the base version had too many bugs. Animals in 3D, physics in
+          C#.
+        </P>
+      </Box>
+
+      <Heading
+        as="h4"
+        fontSize={16}
+        mb={6}
+        textAlign="center"
+        opacity={0.5}
+        textTransform="uppercase"
+        letterSpacing="widest"
+      >
+        Experience Preview
+      </Heading>
+
+      <SimpleGrid
+        columns={{ base: 1, md: 2 }}
+        spacing={{ base: 4, md: 6 }}
+        mb={6}
+      >
         <WorkImage
+          my={0}
+          src="/images/works/arnimal/arnimal-cat.png"
+          alt="arnimal"
+        />
+        <WorkImage
+          my={0}
           src="/images/works/arnimal/arnimal-elephant.png"
           alt="arnimal"
         />
         <WorkImage
+          my={0}
           src="/images/works/arnimal/arnimal-rabbit.png"
           alt="arnimal"
         />
-        <WorkImage src="/images/works/arnimal/arnimal-wolf.png" alt="arnimal" />
+        <WorkImage
+          my={0}
+          src="/images/works/arnimal/arnimal-wolf.png"
+          alt="arnimal"
+        />
       </SimpleGrid>
-      <Box align="center" my={6}>
+
+      <Box maxW="400px" mx="auto">
         <WorkImage
           src="/images/works/arnimal/arnimal-eagle.png"
           alt="arnimal"
-          width="250px"
         />
       </Box>
-    </Container>
-  </Layout>
-)
+    </Layout>
+  )
+}
 
 export default Work

@@ -1,4 +1,8 @@
-import { ChakraProvider, cookieStorageManagerSSR, localStorageManager } from '@chakra-ui/react'
+import {
+  ChakraProvider,
+  cookieStorageManagerSSR,
+  localStorageManager
+} from '@chakra-ui/react'
 import theme from '../lib/theme'
 
 export default function Chakra({ cookies, children }) {
