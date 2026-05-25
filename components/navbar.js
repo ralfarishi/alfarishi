@@ -20,7 +20,7 @@ import ThemeToggleButton from './theme-toggle-button'
 import Logo from './logo'
 import NextLink from 'next/link'
 
-const DockItem = ({ href, icon: Icon, active }) => {
+const DockItem = ({ href, icon: Icon, active, 'aria-label': ariaLabel }) => {
   const activeBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
   const activeColor = useColorModeValue('#2D2D2A', '#F0EAD6')
   const inactiveColor = useColorModeValue('#2D2D2A80', '#F0EAD680')
@@ -35,12 +35,13 @@ const DockItem = ({ href, icon: Icon, active }) => {
       bg={active ? activeBg : 'transparent'}
       color={active ? activeColor : inactiveColor}
       transition="all 0.3s ease"
+      aria-label={ariaLabel}
       _hover={{
         textDecoration: 'none',
         bg: hoverBg
       }}
     >
-      <Icon size={24} />
+      <Icon size={24} aria-hidden="true" />
     </Link>
   )
 }
@@ -67,16 +68,18 @@ const BottomDock = ({ path }) => {
       py={2}
     >
       <Stack direction="row" spacing={2} align="center">
-        <DockItem href="/" icon={IoHomeOutline} active={path === '/'} />
+        <DockItem href="/" icon={IoHomeOutline} active={path === '/'} aria-label="Home" />
         <DockItem
           href="/works"
           icon={IoCodeWorkingOutline}
-          active={path === '/works'}
+          active={path === '/works' || path.startsWith('/works/')}
+          aria-label="Works"
         />
         <DockItem
           href="/blogs"
           icon={IoBookOutline}
-          active={path === '/blogs'}
+          active={path === '/blogs' || path.startsWith('/blogs/')}
+          aria-label="Blogs"
         />
       </Stack>
     </Box>
@@ -84,7 +87,7 @@ const BottomDock = ({ path }) => {
 }
 
 const LinkItem = ({ href, path, target, children, ...props }) => {
-  const active = path === href
+  const active = path === href || (href !== '/' && path.startsWith(href + '/'))
   const activeColor = useColorModeValue('#2D2D2A', '#F0EAD6')
   const inactiveColor = useColorModeValue('#2D2D2A80', '#F0EAD680')
 

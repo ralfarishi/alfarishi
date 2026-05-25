@@ -30,7 +30,7 @@ const CommitInfo = ({ repoName }) => {
     <>
       <StatBox label="Last Update">
         {isLoading
-          ? 'Summoning the dates...'
+          ? 'Summoning the dates…'
           : commitInfo
             ? new Date(commitInfo.date).toLocaleDateString('en-US', {
                 month: 'short',
@@ -41,7 +41,7 @@ const CommitInfo = ({ repoName }) => {
       </StatBox>
       <StatBox label="Last Commit">
         {isLoading
-          ? 'Reading the manual...'
+          ? 'Reading the manual…'
           : commitInfo
             ? commitInfo.message
             : 'Commitment issues'}
