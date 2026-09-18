@@ -3,7 +3,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 const Certificate = ({ link, name, year }) => {
   const bgColor = useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
-  const accentColor = useColorModeValue('#E29578', '#D4A373')
+  const accentColor = useColorModeValue('#B85D3B', '#D4A373')
 
   return (
     <Box as="div" w="full" mb={3}>
@@ -11,7 +11,7 @@ const Certificate = ({ link, name, year }) => {
         href={link}
         isExternal
         style={{ textDecoration: 'none' }}
-        group="true"
+        role="group"
         display="block"
       >
         <Box
@@ -38,9 +38,12 @@ const Certificate = ({ link, name, year }) => {
           <Text
             fontSize="xs"
             fontWeight="800"
-            fontFamily="'Outfit', sans-serif"
-            opacity={0.5}
-            letterSpacing="0.1em"
+            fontFamily="heading"
+            fontVariantNumeric="tabular-nums"
+            opacity={0.6}
+            letterSpacing="0.05em"
+            flexShrink={0}
+            ml={3}
           >
             {year}
           </Text>

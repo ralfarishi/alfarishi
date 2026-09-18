@@ -3,6 +3,7 @@ import Image from 'next/image'
 import {
   Box,
   Text,
+  Badge,
   LinkBox,
   LinkOverlay,
   useColorModeValue
@@ -13,15 +14,18 @@ export const GridItem = ({
   href,
   title,
   thumbnail,
+  tags,
   imgHeight,
   imgWidth
 }) => {
   const bg = useColorModeValue('blackAlpha.50', 'whiteAlpha.50')
   const borderColor = useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
   const hoverBorderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200')
+  const tagBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
+  const tagColor = useColorModeValue('blackAlpha.800', 'whiteAlpha.800')
 
   return (
-    <Box w="100%" px={2}>
+    <Box w="100%">
       <LinkBox cursor="pointer">
         <Box
           p={4}
@@ -31,8 +35,8 @@ export const GridItem = ({
           borderColor={borderColor}
           transition="all 0.5s cubic-bezier(0.16, 1, 0.3, 1)"
           _hover={{
-            transform: 'translateY(-8px)',
-            boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+            transform: 'translateY(-6px)',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.08)',
             borderColor: hoverBorderColor
           }}
         >
@@ -51,32 +55,67 @@ export const GridItem = ({
               }}
             />
           </Box>
-          <LinkOverlay href={href} target="_blank">
+          <LinkOverlay href={href} target="_blank" rel="noopener noreferrer">
             <Text
               fontSize="xl"
               fontWeight="700"
-              fontFamily="'Outfit', sans-serif"
+              fontFamily="heading"
               letterSpacing="-0.02em"
             >
               {title}
             </Text>
           </LinkOverlay>
-          <Text fontSize="sm" opacity={0.7} mt={2} noOfLines={1}>
-            {children}
-          </Text>
+          {tags && tags.length > 0 && (
+            <Box display="flex" flexWrap="wrap" gap={1.5} mt={2} mb={1}>
+              {tags.map(tag => (
+                <Badge
+                  key={tag}
+                  variant="subtle"
+                  bg={tagBg}
+                  color={tagColor}
+                  borderRadius="md"
+                  px={2}
+                  py={0.5}
+                  fontSize="10px"
+                  fontWeight="700"
+                  letterSpacing="0.05em"
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </Box>
+          )}
+          {children && (
+            <Text
+              fontSize="sm"
+              opacity={0.7}
+              mt={2}
+              lineHeight="1.6"
+              noOfLines={{ base: 2, md: 3 }}
+            >
+              {children}
+            </Text>
+          )}
         </Box>
       </LinkBox>
     </Box>
   )
 }
 
-export const WorkGridItem = ({ children, id, title, thumbnail }) => {
+export const WorkGridItem = ({
+  children,
+  id,
+  title,
+  thumbnail,
+  tags,
+  priority = false
+}) => {
   const bg = useColorModeValue('blackAlpha.50', 'whiteAlpha.50')
   const borderColor = useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
   const hoverBorderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200')
 
   return (
-    <Box w="100%" px={2}>
+    <Box w="100%">
       <LinkBox
         as={NextLink}
         href={`/works/${id}`}
@@ -92,8 +131,8 @@ export const WorkGridItem = ({ children, id, title, thumbnail }) => {
           borderColor={borderColor}
           transition="all 0.5s cubic-bezier(0.16, 1, 0.3, 1)"
           _hover={{
-            transform: 'translateY(-8px)',
-            boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+            transform: 'translateY(-6px)',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.08)',
             borderColor: hoverBorderColor
           }}
         >
@@ -104,28 +143,50 @@ export const WorkGridItem = ({ children, id, title, thumbnail }) => {
               className="grid-item-thumbnail"
               width={500}
               height={350}
+              priority={priority}
               style={{
                 width: '100%',
                 height: '240px',
                 objectFit: 'cover'
               }}
-              loading="lazy"
+              loading={priority ? 'eager' : 'lazy'}
             />
           </Box>
           <Text
             fontSize="2xl"
             fontWeight="800"
-            fontFamily="'Outfit', sans-serif"
+            fontFamily="heading"
             letterSpacing="-0.02em"
           >
             {title}
           </Text>
+          {tags && tags.length > 0 && (
+            <Box display="flex" flexWrap="wrap" gap={1.5} mt={2} mb={1}>
+              {tags.map(tag => (
+                <Badge
+                  key={tag}
+                  variant="subtle"
+                  bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
+                  color={useColorModeValue('blackAlpha.800', 'whiteAlpha.800')}
+                  borderRadius="md"
+                  px={2}
+                  py={0.5}
+                  fontSize="10px"
+                  fontWeight="700"
+                  letterSpacing="0.05em"
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </Box>
+          )}
           <Text
-            fontSize="md"
-            opacity={0.6}
+            fontSize="sm"
+            opacity={0.7}
             fontWeight="500"
-            mt={1}
-            noOfLines={1}
+            lineHeight="1.6"
+            mt={2}
+            noOfLines={{ base: 2, md: 3 }}
           >
             {children}
           </Text>
