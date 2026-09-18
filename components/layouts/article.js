@@ -16,9 +16,11 @@ const Layout = ({ children, title, description, image, slug }) => {
   const pageDescription =
     description ||
     `${title} - A project by Ramiza Al Farishi. Explore the details, tech stack, and features.`
-  const pageUrl = slug === '' ? BASE_URL : `${BASE_URL}/${slug}`
+  const pageUrl = slug ? `${BASE_URL}/${slug.replace(/^\//, '')}` : BASE_URL
   const pageImage = image
-    ? `${BASE_URL}${image}`
+    ? image.startsWith('http')
+      ? image
+      : `${BASE_URL}${image}`
     : `${BASE_URL}/images/og-default.png`
 
   return (

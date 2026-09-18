@@ -1,5 +1,5 @@
 import { Analytics } from '@vercel/analytics/react'
-import dynamic from 'next/dynamic.js'
+import { Outfit, Plus_Jakarta_Sans, Instrument_Serif } from 'next/font/google'
 
 import Layout from '../components/layouts/main'
 import { AnimatePresence } from 'framer-motion'
@@ -8,7 +8,27 @@ import Chakra from '../components/chakra'
 import { DefaultSeo } from 'next-seo'
 import SEOConfig from '../next-seo.config.js'
 
-const Fonts = dynamic(() => import('../components/fonts'), { ssr: true })
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-outfit',
+  display: 'swap'
+})
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-jakarta',
+  display: 'swap'
+})
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: ['400'],
+  style: ['normal', 'italic'],
+  variable: '--font-instrument-serif',
+  display: 'swap'
+})
 
 if (typeof window !== 'undefined') {
   window.history.scrollRestoration = 'manual'
@@ -16,10 +36,16 @@ if (typeof window !== 'undefined') {
 
 function Website({ Component, pageProps, router, cookies }) {
   return (
-    <>
+    <div
+      className={`${outfit.variable} ${jakarta.variable} ${instrumentSerif.variable}`}
+      style={{
+        '--font-outfit': outfit.style.fontFamily,
+        '--font-jakarta': jakarta.style.fontFamily,
+        '--font-instrument-serif': instrumentSerif.style.fontFamily
+      }}
+    >
       <DefaultSeo {...SEOConfig} />
       <Chakra cookies={cookies}>
-        <Fonts />
         <Layout router={router}>
           <AnimatePresence
             mode="wait"
@@ -35,7 +61,7 @@ function Website({ Component, pageProps, router, cookies }) {
           <Analytics />
         </Layout>
       </Chakra>
-    </>
+    </div>
   )
 }
 

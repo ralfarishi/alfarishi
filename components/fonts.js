@@ -1,7 +1,3 @@
-const Fonts = () => (
-  <style jsx global>{`
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap');
-  `}</style>
-)
+const Fonts = () => null
 
 export default Fonts
