@@ -1,160 +1,218 @@
-import { Container, Heading, SimpleGrid } from '@chakra-ui/react'
+import { useState, useMemo } from 'react'
+import {
+  Box,
+  Heading,
+  SimpleGrid,
+  Stack,
+  useColorModeValue
+} from '@chakra-ui/react'
+import { AnimatePresence, motion } from 'framer-motion'
 import Layout from '../components/layouts/article'
-import Section from '../components/section'
 import { WorkGridItem } from '../components/grid-item'
+import { WORKS_DATA, CATEGORIES } from '../lib/works-data'
 
-const Works = () => (
-  <Layout
-    title="Works"
-    description="A showcase of projects I've built, ranging from web applications and e-commerce platforms to AR experiences and CLI tools."
-    slug="works"
-  >
-    <Container maxW="container.lg" px={6}>
-      <Heading as="h3" variant="section-title" mb={{ base: 4, md: 8 }}>
-        Works
-      </Heading>
+const gridContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.04
+    }
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.15 }
+  }
+}
 
-      <SimpleGrid columns={[1, 1, 2]} gap={{ base: 4, md: 6 }}>
-        <Section mb={0}>
-          <WorkGridItem
-            id="labalab"
-            title="LabaLab"
-            thumbnail="/images/works/labalab/thumbnail.png"
-          >
-            A retail operating system for the organized and the overwhelmed.
-            Turning stockroom chaos into structured data with a side of profit.
-          </WorkGridItem>
-        </Section>
-        <Section mb={0}>
-          <WorkGridItem
-            id="suzerain-save-editor"
-            title="Suzerain"
-            thumbnail="/images/works/suzerain-save-editor/suzerain-thumbnail.webp"
-          >
-            Because being a president is hard enough without living with your
-            choices. Manipulate Sordland&apos;s political fabric with this save
-            editor.
-          </WorkGridItem>
-        </Section>
-        <Section mb={0}>
-          <WorkGridItem
-            id="dashboard-cheese-stick-koe"
-            title="Cheese Stick Koe Dashboard"
-            thumbnail="/images/works/cheese-stick-koe/dashboard.png"
-          >
-            The &quot;big cheese&quot; of data visualization. A dashboard where
-            the CRUD operations are as crisp as the snacks themselves.
-          </WorkGridItem>
-        </Section>
+const gridItemVariants = {
+  hidden: { opacity: 0, y: 16, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] }
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.98,
+    transition: { duration: 0.15 }
+  }
+}
 
-        <Section mb={0}>
-          <WorkGridItem
-            id="shopnow"
-            title="Shop Now"
-            thumbnail="/images/works/shopnow/shopnow-thumb.png"
-          >
-            A retail therapy engine. Adding items to Cart&lt;T&gt; since 2022.
-            Your wallet&apos;s worst enemy, your browser&apos;s best friend.
-          </WorkGridItem>
-        </Section>
-        <Section mb={0}>
-          <WorkGridItem
-            id="cheese-stick-koe"
-            title="Cheese Stick Koe"
-            thumbnail="/images/works/cheese-stick-koe/cheese_stick_1.jpg"
-          >
-            Serving snacks over HTTP. 100% responsive, 0% trans-fat (on the
-            website, at least). Bekasi&apos;s crunchiest exports gone digital.
-          </WorkGridItem>
-        </Section>
-        <Section mb={0}>
-          <WorkGridItem
-            id="trinitas-prima"
-            title="Trinitas Prima Sejahtera"
-            thumbnail="/images/works/trinitas/trinitas-thumb.png"
-          >
-            A corporate landing page that actually lands. Scaling corporate
-            presence without the overflow:hidden on their ambitions.
-          </WorkGridItem>
-        </Section>
-        <Section mb={0}>
-          <WorkGridItem
-            id="sekolah-jewepe"
-            title="Sekolah JeWePe"
-            thumbnail="/images/works/sekolah-jewepe/jwp-1.png"
-          >
-            Where Eloquent models meet academic deadlines. A blog platform built
-            with Laravel because PHP is still alive and kicking.
-          </WorkGridItem>
-        </Section>
+const Works = () => {
+  const [selectedCategory, setSelectedCategory] = useState('All')
+  const accentColor = useColorModeValue('#B85D3B', '#D4A373')
+  const activeColor = useColorModeValue('white', '#1A1A1A')
+  const inactiveColor = useColorModeValue('blackAlpha.800', 'whiteAlpha.800')
+  const pillBorderColor = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
+  const countBadgeBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
 
-        <Section mb={0}>
-          <WorkGridItem
-            id="iaas"
-            title="Intan Angkasa Air Service"
-            thumbnail="/images/works/iaas/iaas-1.png"
-          >
-            Deploying high-altitude solutions. A website for a helicopter
-            company that helps their business take off. Higher than your
-            localhost.
-          </WorkGridItem>
-        </Section>
-        <Section mb={0}>
-          <WorkGridItem
-            id="pstopup"
-            title="Pasar Top Up"
-            thumbnail="/images/works/pstopup/pstopup.png"
-          >
-            Asynchronous transactions for synchronous victories. Fueling gaming
-            addictions with minimal friction. Like a gas station for pixels.
-          </WorkGridItem>
-        </Section>
+  const catCounts = useMemo(
+    () => ({
+      All: WORKS_DATA.length,
+      'Web App': WORKS_DATA.filter(w => w.category === 'Web App').length,
+      'Client Work': WORKS_DATA.filter(w => w.category === 'Client Work')
+        .length,
+      Tools: WORKS_DATA.filter(w => w.category === 'Tools').length
+    }),
+    []
+  )
 
-        <Section mb={0}>
-          <WorkGridItem
-            id="arya-tech"
-            title="Arya Tech Company"
-            thumbnail="/images/works/arya-tech/arya-tech.png"
-          >
-            The digital storefront for a tech company that actually does tech.
-            Clean lines, zero bugs (mostly), and 100% corporate chic.
-          </WorkGridItem>
-        </Section>
+  const filteredWorks = useMemo(() => {
+    return selectedCategory === 'All'
+      ? WORKS_DATA
+      : WORKS_DATA.filter(work => work.category === selectedCategory)
+  }, [selectedCategory])
 
-        <Section mb={0}>
-          <WorkGridItem
-            id="arnimal"
-            title="ARnimal"
-            thumbnail="/images/works/arnimal/arnimal-thumb.jpg"
+  return (
+    <Layout
+      title="Works"
+      description="A showcase of projects I've built, ranging from web applications and e-commerce platforms to AR experiences and CLI tools."
+      slug="works"
+    >
+      <Box as="div">
+        <Box
+          display="flex"
+          flexDirection={{ base: 'column', md: 'row' }}
+          alignItems={{ base: 'flex-start', md: 'center' }}
+          justifyContent="space-between"
+          gap={4}
+          mb={{ base: 6, md: 8 }}
+        >
+          <Heading as="h3" variant="section-title" m={0}>
+            Works
+          </Heading>
+
+          {/* Category Filter Pills with Sliding Active Capsule */}
+          <Stack
+            direction="row"
+            spacing={2}
+            overflowX="auto"
+            py={1}
+            maxW="full"
+            role="tablist"
+            aria-label="Filter works by category"
+            css={{
+              '&::-webkit-scrollbar': { display: 'none' },
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
+            }}
           >
-            Bringing the zoo to your living room. Pokemon Go, but you actually
-            learn something. Animals in 3D, physics in C#.
-          </WorkGridItem>
-        </Section>
-        <Section mb={0}>
-          <WorkGridItem
-            id="eduflex"
-            title="Eduflex"
-            thumbnail="/images/works/eduflex/edu-2.png"
+            {CATEGORIES.map(cat => {
+              const isActive = selectedCategory === cat
+              return (
+                <Box
+                  as="button"
+                  type="button"
+                  key={cat}
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setSelectedCategory(cat)}
+                  position="relative"
+                  px={4}
+                  py={2}
+                  borderRadius="full"
+                  fontSize="xs"
+                  fontWeight="700"
+                  fontFamily="heading"
+                  letterSpacing="0.03em"
+                  whiteSpace="nowrap"
+                  flexShrink={0}
+                  color={isActive ? activeColor : inactiveColor}
+                  transition="color 0.2s ease"
+                  border="1px solid"
+                  borderColor={isActive ? 'transparent' : pillBorderColor}
+                  bg="transparent"
+                  cursor="pointer"
+                  outline="none"
+                  userSelect="none"
+                  _hover={{
+                    borderColor: isActive
+                      ? 'transparent'
+                      : useColorModeValue('blackAlpha.400', 'whiteAlpha.400')
+                  }}
+                  _focusVisible={{
+                    outline: '2px solid',
+                    outlineColor: accentColor,
+                    outlineOffset: '2px'
+                  }}
+                >
+                  {/* Sliding capsule indicator */}
+                  {isActive && (
+                    <Box
+                      as={motion.div}
+                      layoutId="activeFilterPill"
+                      position="absolute"
+                      inset={0}
+                      borderRadius="full"
+                      bg={accentColor}
+                      zIndex={0}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 450,
+                        damping: 35
+                      }}
+                    />
+                  )}
+                  <Box
+                    as="span"
+                    position="relative"
+                    zIndex={1}
+                    display="inline-flex"
+                    alignItems="center"
+                    gap={1.5}
+                  >
+                    {cat}
+                    <Box
+                      as="span"
+                      fontSize="10px"
+                      opacity={isActive ? 0.9 : 0.7}
+                      px={1.5}
+                      py={0.2}
+                      borderRadius="full"
+                      bg={isActive ? 'blackAlpha.200' : countBadgeBg}
+                      fontWeight="800"
+                    >
+                      {catCounts[cat]}
+                    </Box>
+                  </Box>
+                </Box>
+              )
+            })}
+          </Stack>
+        </Box>
+
+        {/* Animated Grid with Coordinated Stagger */}
+        <AnimatePresence mode="wait">
+          <Box
+            as={motion.div}
+            key={selectedCategory}
+            variants={gridContainerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
           >
-            CRUD-ing your way to a degree. A RESTful API for people who want to
-            flex their brain. Status: 200 OK (Knowledge Received).
-          </WorkGridItem>
-        </Section>
-        <Section mb={0}>
-          <WorkGridItem
-            id="credx"
-            title="CredX"
-            thumbnail="/images/works/credx/thumb.png"
-          >
-            Command-line credential crating. Because &quot;123456&quot;
-            isn&apos;t a security strategy, it&apos;s a prayer. A digital vault
-            in your terminal.
-          </WorkGridItem>
-        </Section>
-      </SimpleGrid>
-    </Container>
-  </Layout>
-)
+            <SimpleGrid columns={[1, 1, 2]} gap={{ base: 6, md: 6 }}>
+              {filteredWorks.map((work, index) => (
+                <Box as={motion.div} key={work.id} variants={gridItemVariants}>
+                  <WorkGridItem
+                    id={work.id}
+                    title={work.title}
+                    thumbnail={work.thumbnail}
+                    tags={work.tags}
+                    priority={index < 2}
+                  >
+                    {work.description}
+                  </WorkGridItem>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </Box>
+        </AnimatePresence>
+      </Box>
+    </Layout>
+  )
+}
 
 export default Works

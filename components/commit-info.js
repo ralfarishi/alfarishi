@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Skeleton, Text } from '@chakra-ui/react'
 import { StatBox } from './work'
 
 const CommitInfo = ({ repoName }) => {
@@ -6,7 +7,9 @@ const CommitInfo = ({ repoName }) => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const fetchcommitInfo = async () => {
+    let isMounted = true
+
+    const fetchCommitInfo = async () => {
       try {
         const response = await fetch(`/api/commit/${repoName}`)
 
@@ -14,37 +17,53 @@ const CommitInfo = ({ repoName }) => {
           throw new Error('Failed to fetch commit info')
         }
 
-        const commitInfo = await response.json()
-        setCommitInfo(commitInfo)
+        const data = await response.json()
+        if (isMounted) {
+          setCommitInfo(data)
+        }
       } catch {
-        setCommitInfo(null)
+        if (isMounted) {
+          setCommitInfo(null)
+        }
       } finally {
-        setIsLoading(false)
+        if (isMounted) {
+          setIsLoading(false)
+        }
       }
     }
 
-    fetchcommitInfo()
+    fetchCommitInfo()
+
+    return () => {
+      isMounted = false
+    }
   }, [repoName])
 
   return (
     <>
       <StatBox label="Last Update">
-        {isLoading
-          ? 'Summoning the dates…'
-          : commitInfo
-            ? new Date(commitInfo.date).toLocaleDateString('en-US', {
-                month: 'short',
-                day: '2-digit',
-                year: 'numeric'
-              })
-            : 'Stuck in 1970'}
+        <Skeleton isLoaded={!isLoading} minH="20px" borderRadius="md">
+          <Text as="span">
+            {commitInfo?.date
+              ? new Date(commitInfo.date).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: '2-digit',
+                  year: 'numeric'
+                })
+              : 'Public on GitHub'}
+          </Text>
+        </Skeleton>
       </StatBox>
       <StatBox label="Last Commit">
-        {isLoading
-          ? 'Reading the manual…'
-          : commitInfo
-            ? commitInfo.message
-            : 'Commitment issues'}
+        <Skeleton isLoaded={!isLoading} minH="20px" borderRadius="md">
+          <Text
+            as="span"
+            noOfLines={1}
+            title={commitInfo?.message || 'Active Repository'}
+          >
+            {commitInfo?.message || 'Active Repository'}
+          </Text>
+        </Skeleton>
       </StatBox>
     </>
   )
