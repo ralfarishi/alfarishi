@@ -24,7 +24,7 @@ const Logo = () => {
       <LogoBox>
         <Text
           color={useColorModeValue('#2D2D2A', '#F0EAD6')}
-          fontFamily="'Outfit', sans-serif"
+          fontFamily="heading"
           fontWeight="800"
           fontSize="22px"
           letterSpacing="-0.02em"

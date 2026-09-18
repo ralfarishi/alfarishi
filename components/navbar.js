@@ -5,13 +5,10 @@ import {
   Heading,
   Link,
   Stack,
+  Text,
   useColorModeValue
 } from '@chakra-ui/react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState, forwardRef } from 'react'
 import {
-  IoCloseOutline,
-  IoMenuOutline,
   IoHomeOutline,
   IoCodeWorkingOutline,
   IoBookOutline
@@ -20,64 +17,94 @@ import ThemeToggleButton from './theme-toggle-button'
 import Logo from './logo'
 import NextLink from 'next/link'
 
-const DockItem = ({ href, icon: Icon, active, 'aria-label': ariaLabel }) => {
+const DockItem = ({
+  href,
+  icon: Icon,
+  label,
+  active,
+  'aria-label': ariaLabel
+}) => {
   const activeBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
-  const activeColor = useColorModeValue('#2D2D2A', '#F0EAD6')
-  const inactiveColor = useColorModeValue('#2D2D2A80', '#F0EAD680')
+  const activeColor = useColorModeValue('#B85D3B', '#D4A373')
+  const inactiveColor = useColorModeValue('blackAlpha.600', 'whiteAlpha.600')
   const hoverBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
 
   return (
     <Link
       as={NextLink}
       href={href}
-      p={3}
-      borderRadius="xl"
+      px={{ base: 4, sm: 5 }}
+      py={2}
+      borderRadius="2xl"
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      gap={1}
       bg={active ? activeBg : 'transparent'}
       color={active ? activeColor : inactiveColor}
-      transition="all 0.3s ease"
+      transition="all 0.25s ease"
       aria-label={ariaLabel}
       _hover={{
         textDecoration: 'none',
+        color: activeColor,
         bg: hoverBg
       }}
     >
-      <Icon size={24} aria-hidden="true" />
+      <Icon size={20} aria-hidden="true" />
+      <Text
+        fontSize="10px"
+        fontWeight={active ? '800' : '600'}
+        fontFamily="heading"
+        letterSpacing="0.04em"
+        lineHeight="1"
+      >
+        {label}
+      </Text>
     </Link>
   )
 }
 
 const BottomDock = ({ path }) => {
-  const dockBg = useColorModeValue('#FFFCF5CC', '#1A1A1ACC')
+  const dockBg = useColorModeValue('#FFFCF5E6', '#1A1A1AE6')
 
   return (
     <Box
       display={{ base: 'block', md: 'none' }}
       position="fixed"
-      bottom={6}
+      bottom="calc(1.25rem + env(safe-area-inset-bottom, 0px))"
       left="50%"
       transform="translateX(-50%)"
       w="auto"
       bg={dockBg}
-      css={{ backdropFilter: 'blur(15px)' }}
-      borderRadius="3xl"
+      css={{ backdropFilter: 'blur(16px)' }}
+      borderRadius="full"
       border="1px solid"
-      borderColor={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
-      boxShadow="0 10px 40px rgba(0,0,0,0.1)"
-      zIndex={20}
+      borderColor={useColorModeValue('blackAlpha.150', 'whiteAlpha.150')}
+      boxShadow="0 12px 36px rgba(0,0,0,0.12)"
+      zIndex={80}
       px={2}
-      py={2}
+      py={1.5}
     >
-      <Stack direction="row" spacing={2} align="center">
-        <DockItem href="/" icon={IoHomeOutline} active={path === '/'} aria-label="Home" />
+      <Stack direction="row" spacing={1} align="center">
+        <DockItem
+          href="/"
+          icon={IoHomeOutline}
+          label="Home"
+          active={path === '/'}
+          aria-label="Home"
+        />
         <DockItem
           href="/works"
           icon={IoCodeWorkingOutline}
+          label="Works"
           active={path === '/works' || path.startsWith('/works/')}
           aria-label="Works"
         />
         <DockItem
           href="/blogs"
           icon={IoBookOutline}
+          label="Blogs"
           active={path === '/blogs' || path.startsWith('/blogs/')}
           aria-label="Blogs"
         />
@@ -144,11 +171,11 @@ const Navbar = props => {
         <Container
           display="flex"
           p={3}
-          px={6}
-          maxW="container.md"
-          wrap="wrap"
-          align="center"
-          justify="space-between"
+          px={{ base: 4, md: 8 }}
+          maxW="container.lg"
+          flexWrap="wrap"
+          alignItems="center"
+          justifyContent="space-between"
         >
           <Flex align="center" mr={5}>
             <Heading as="h1" size="lg" letterSpacing={'tighter'}>
@@ -173,7 +200,7 @@ const Navbar = props => {
             </LinkItem>
           </Stack>
 
-          <Box flex={1} align="right">
+          <Box flex={1} textAlign="right">
             <ThemeToggleButton />
           </Box>
         </Container>
