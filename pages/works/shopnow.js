@@ -1,26 +1,18 @@
-import {
-  Badge,
-  Box,
-  Link,
-  SimpleGrid,
-  Text,
-  useColorModeValue
-} from '@chakra-ui/react'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
+import { Box, SimpleGrid } from '@chakra-ui/react'
 import {
   Title,
   WorkImage,
   SubTitle,
   WorkStats,
-  StatBox
+  StatBox,
+  WorkLink,
+  WorkPagination
 } from '../../components/work'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
 import CommitInfo from '../../components/commit-info'
 
 const Work = () => {
-  const accentColor = useColorModeValue('#E29578', '#D4A373')
-
   return (
     <Layout
       title="Shop Now"
@@ -28,36 +20,16 @@ const Work = () => {
       image="/images/works/shopnow/shopnow-thumb.png"
       slug="works/shopnow"
     >
-      <Title>
-        Shop Now{' '}
-        <Badge
-          ml={2}
-          px={2}
-          py={1}
-          fontSize="10px"
-          fontWeight="bold"
-          letterSpacing="0.1em"
-          variant="subtle"
-          borderRadius="full"
-          colorScheme="orange"
-          opacity={0.8}
-        >
-          2022
-        </Badge>
-      </Title>
+      <Title year="2022">Shop Now</Title>
 
       <WorkStats>
-        <StatBox label="Stack">Laravel</StatBox>
+        <StatBox label="Stack">Laravel, PHP, Blade, MySQL</StatBox>
         <StatBox label="Platform">Website</StatBox>
         <StatBox label="Features">Payments, Shipping</StatBox>
         <StatBox label="Source">
-          <Link
-            href="https://github.com/ralfarishi/Larastore"
-            isExternal
-            color={accentColor}
-          >
-            Larastore <ExternalLinkIcon ml={1} />
-          </Link>
+          <WorkLink href="https://github.com/ralfarishi/Larastore">
+            Larastore
+          </WorkLink>
         </StatBox>
         <CommitInfo repoName="Larastore" />
       </WorkStats>
@@ -74,6 +46,7 @@ const Work = () => {
 
       <SimpleGrid columns={1} spacing={{ base: 4, md: 12 }}>
         <WorkImage
+          priority
           my={0}
           src="/images/works/shopnow/shopnow-thumb.png"
           alt="shopnow"
@@ -94,6 +67,8 @@ const Work = () => {
           alt="shopnow"
         />
       </SimpleGrid>
+
+      <WorkPagination currentId="shopnow" />
     </Layout>
   )
 }

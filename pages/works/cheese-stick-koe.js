@@ -1,26 +1,18 @@
-import {
-  Badge,
-  Box,
-  Link,
-  useColorModeValue,
-  Heading,
-  SimpleGrid
-} from '@chakra-ui/react'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
+import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import {
   Title,
   WorkImage,
   SubTitle,
   WorkStats,
-  StatBox
+  StatBox,
+  WorkLink,
+  WorkPagination
 } from '../../components/work'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
 import CommitInfo from '../../components/commit-info'
 
 const Work = () => {
-  const accentColor = useColorModeValue('#E29578', '#D4A373')
-
   return (
     <Layout
       title="Cheese Stick Koe"
@@ -28,36 +20,16 @@ const Work = () => {
       image="/images/works/cheese-stick-koe/cheese_stick_1.jpg"
       slug="works/cheese-stick-koe"
     >
-      <Title>
-        Cheese Stick Koe{' '}
-        <Badge
-          ml={2}
-          px={2}
-          py={1}
-          fontSize="10px"
-          fontWeight="bold"
-          letterSpacing="0.1em"
-          variant="subtle"
-          borderRadius="full"
-          colorScheme="orange"
-          opacity={0.8}
-        >
-          2022
-        </Badge>
-      </Title>
+      <Title year="2022">Cheese Stick Koe</Title>
 
       <WorkStats>
-        <StatBox label="Stack">Next.js, Tailwind</StatBox>
+        <StatBox label="Stack">Next.js, Tailwind CSS, TypeScript</StatBox>
         <StatBox label="Platform">Website</StatBox>
-        <StatBox label="Nature">E-Commerce Catalog</StatBox>
+        <StatBox label="Nature">E-Commerce Showcase</StatBox>
         <StatBox label="Live Preview">
-          <Link
-            href="https://cheesestick-koe.my.id/"
-            isExternal
-            color={accentColor}
-          >
-            cheesestick-koe.my.id <ExternalLinkIcon ml={1} />
-          </Link>
+          <WorkLink href="https://cheesestick-koe.my.id/">
+            cheesestick-koe.my.id
+          </WorkLink>
         </StatBox>
         <CommitInfo repoName="Cheese-Stick-Koe" />
       </WorkStats>
@@ -85,6 +57,7 @@ const Work = () => {
 
       <SimpleGrid columns={1} spacing={{ base: 4, md: 12 }}>
         <WorkImage
+          priority
           my={0}
           src="/images/works/cheese-stick-koe/cheese_stick_1.jpg"
           alt="Cheese Stick Koe"
@@ -95,6 +68,8 @@ const Work = () => {
           alt="Cheese Stick Koe"
         />
       </SimpleGrid>
+
+      <WorkPagination currentId="cheese-stick-koe" />
     </Layout>
   )
 }

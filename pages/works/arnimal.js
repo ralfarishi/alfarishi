@@ -1,26 +1,18 @@
-import {
-  Badge,
-  Box,
-  Link,
-  useColorModeValue,
-  SimpleGrid,
-  Heading
-} from '@chakra-ui/react'
+import { Box, SimpleGrid, Heading } from '@chakra-ui/react'
 import Layout from '../../components/layouts/article'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
 import {
   Title,
   WorkImage,
   SubTitle,
   WorkStats,
-  StatBox
+  StatBox,
+  WorkLink,
+  WorkPagination
 } from '../../components/work'
 import P from '../../components/paragraph'
 import CommitInfo from '../../components/commit-info'
 
 const Work = () => {
-  const accentColor = useColorModeValue('#E29578', '#D4A373')
-
   return (
     <Layout
       title="ARnimal"
@@ -28,36 +20,16 @@ const Work = () => {
       image="/images/works/arnimal/arnimal-cat.png"
       slug="works/arnimal"
     >
-      <Title>
-        ARnimal{' '}
-        <Badge
-          ml={2}
-          px={2}
-          py={1}
-          fontSize="10px"
-          fontWeight="bold"
-          letterSpacing="0.1em"
-          variant="subtle"
-          borderRadius="full"
-          colorScheme="orange"
-          opacity={0.8}
-        >
-          2022
-        </Badge>
-      </Title>
+      <Title year="2022">ARnimal</Title>
 
       <WorkStats>
-        <StatBox label="Stack">Spark AR, JS</StatBox>
+        <StatBox label="Stack">Spark AR, JavaScript, 3D</StatBox>
         <StatBox label="Platform">Instagram</StatBox>
         <StatBox label="Nature">Augmented Reality</StatBox>
         <StatBox label="Source">
-          <Link
-            href="https://github.com/ralfarishi/Animal-AR"
-            isExternal
-            color={accentColor}
-          >
-            Animal-AR <ExternalLinkIcon ml={1} />
-          </Link>
+          <WorkLink href="https://github.com/ralfarishi/Animal-AR">
+            Animal-AR
+          </WorkLink>
         </StatBox>
         <CommitInfo repoName="Animal-AR" />
       </WorkStats>
@@ -90,6 +62,7 @@ const Work = () => {
         mb={6}
       >
         <WorkImage
+          priority
           my={0}
           src="/images/works/arnimal/arnimal-cat.png"
           alt="arnimal"
@@ -117,6 +90,8 @@ const Work = () => {
           alt="arnimal"
         />
       </Box>
+
+      <WorkPagination currentId="arnimal" />
     </Layout>
   )
 }

@@ -1,67 +1,34 @@
-import {
-  Badge,
-  Heading,
-  SimpleGrid,
-  Box,
-  Text,
-  useColorModeValue,
-  Link
-} from '@chakra-ui/react'
+import { Heading, SimpleGrid, Box, Text } from '@chakra-ui/react'
 import {
   Title,
   WorkImage,
   SubTitle,
   WorkStats,
-  StatBox
+  StatBox,
+  WorkLink,
+  WorkPagination
 } from '../../components/work'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 const Work = () => {
-  const accentColor = useColorModeValue('#E29578', '#D4A373')
   return (
-    <Layout title="LabaLab">
+    <Layout
+      title="LabaLab"
+      description="A retail operating system for the organized and the overwhelmed. Turning stockroom chaos into structured data with a side of profit."
+      image="/images/works/labalab/thumbnail.png"
+      slug="works/labalab"
+    >
       {/* HEADER SECTION */}
-      <Title>
-        LabaLab{' '}
-        <Badge
-          ml={2}
-          px={2}
-          py={1}
-          fontSize="10px"
-          fontWeight="bold"
-          letterSpacing="0.1em"
-          variant="subtle"
-          borderRadius="full"
-          colorScheme="orange"
-          opacity={0.8}
-        >
-          2026
-        </Badge>
-      </Title>
+      <Title year="2026">LabaLab</Title>
 
       {/* QUICK INFO GRID */}
       <WorkStats>
         <StatBox label="Stack">Next.js, Drizzle, Supabase, Tailwind</StatBox>
-        <StatBox label="Platform">Website</StatBox>
-        <StatBox label="Source">
-          <Link
-            href="https://github.com/ralfarishi/labalab"
-            isExternal
-            color={accentColor}
-          >
-            View Repo <ExternalLinkIcon ml={1} />
-          </Link>
-        </StatBox>
+        <StatBox label="Platform">Website (Retail OS)</StatBox>
+        <StatBox label="Source">In Development</StatBox>
         <StatBox label="Live Preview">
-          <Link
-            href="https://labalab.vercel.app/"
-            isExternal
-            color={accentColor}
-          >
-            View Site <ExternalLinkIcon ml={1} />
-          </Link>
+          <WorkLink href="https://labalab.vercel.app/">View Site</WorkLink>
         </StatBox>
       </WorkStats>
 
@@ -138,6 +105,7 @@ const Work = () => {
 
       <SimpleGrid columns={1} spacing={{ base: 4, md: 12 }}>
         <WorkImage
+          priority
           my={0}
           src="/images/works/labalab/dashboard.png"
           alt="LabaLab Dashboard"
@@ -172,6 +140,9 @@ const Work = () => {
           />
         </SimpleGrid>
       </SimpleGrid>
+
+      {/* BOTTOM PAGINATION */}
+      <WorkPagination currentId="labalab" />
     </Layout>
   )
 }

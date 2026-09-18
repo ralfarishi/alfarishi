@@ -1,27 +1,18 @@
-import {
-  Badge,
-  Heading,
-  Link,
-  SimpleGrid,
-  Box,
-  Text,
-  useColorModeValue
-} from '@chakra-ui/react'
+import { Heading, SimpleGrid, Box, Text } from '@chakra-ui/react'
 import {
   Title,
   WorkImage,
   SubTitle,
   WorkStats,
-  StatBox
+  StatBox,
+  WorkLink,
+  WorkPagination
 } from '../../components/work'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
 import CommitInfo from '../../components/commit-info'
 
 const Work = () => {
-  const accentColor = useColorModeValue('#E29578', '#D4A373')
-
   return (
     <Layout
       title="Suzerain Save Editor"
@@ -30,45 +21,21 @@ const Work = () => {
       slug="works/suzerain-save-editor"
     >
       {/* HEADER SECTION */}
-      <Title>
-        Suzerain The Game{' '}
-        <Badge
-          ml={2}
-          px={2}
-          py={1}
-          fontSize="10px"
-          fontWeight="bold"
-          letterSpacing="0.1em"
-          variant="subtle"
-          borderRadius="full"
-          colorScheme="orange"
-          opacity={0.8}
-        >
-          2025
-        </Badge>
-      </Title>
+      <Title year="2025">Suzerain The Game</Title>
 
       {/* QUICK INFO GRID (SPEC SHEET) */}
       <WorkStats>
-        <StatBox label="Stack">Bun, Vite, Tailwind</StatBox>
+        <StatBox label="Stack">Bun, Vite, Tailwind, TypeScript</StatBox>
         <StatBox label="Platform">Web Application</StatBox>
         <StatBox label="Source">
-          <Link
-            href="https://github.com/ralfarishi/suzerain-save-editor"
-            isExternal
-            color={accentColor}
-          >
-            View Repo <ExternalLinkIcon ml={1} />
-          </Link>
+          <WorkLink href="https://github.com/ralfarishi/suzerain-save-editor">
+            View Repo
+          </WorkLink>
         </StatBox>
         <StatBox label="Live Preview">
-          <Link
-            href="https://suzerain-save-editor.vercel.app/"
-            isExternal
-            color={accentColor}
-          >
-            View Site <ExternalLinkIcon ml={1} />
-          </Link>
+          <WorkLink href="https://suzerain-save-editor.vercel.app/">
+            View Site
+          </WorkLink>
         </StatBox>
         <CommitInfo repoName="suzerain-save-editor" />
       </WorkStats>
@@ -79,31 +46,55 @@ const Work = () => {
         <P>
           Because being a president is hard enough without having to live with
           your choices. Manipulate the political fabric of Sordland with this
-          save editor. Rewriting history, one JSON line at a time. No
+          interactive save editor. Rewriting history, balancing the national
+          budget, and averting geopolitical crises — one JSON line at a time. No
           impeachment guaranteed.
         </P>
       </Box>
 
       {/* FEATURE SPOTLIGHT */}
       <Box mb={16}>
-        <SubTitle>Features</SubTitle>
+        <SubTitle>Engineering & Features</SubTitle>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
           <Box>
             <Text fontWeight="800" fontSize="lg" mb={2}>
-              Intelligence Auto-fill
+              Client-Side Local Parser
             </Text>
             <Text opacity={0.7} fontSize="sm">
-              Advanced input detection that populates game variables instantly
-              as you type.
+              Processes proprietary nested game save files 100% locally
+              in-browser using modern Web APIs, guaranteeing absolute privacy,
+              zero server uploads, and instant processing of multi-megabyte save
+              states.
             </Text>
           </Box>
           <Box>
             <Text fontWeight="800" fontSize="lg" mb={2}>
-              Nuclear Reset
+              Fuzzy Variable Auto-fill
             </Text>
             <Text opacity={0.7} fontSize="sm">
-              Instantly revert any accidental changes to the baseline state
-              without corrupting the save.
+              Search and auto-completion engine indexing hundreds of political
+              variables, economic indices, and faction relationships with live
+              validation to prevent game save corruption.
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="800" fontSize="lg" mb={2}>
+              Non-Destructive Delta Exports
+            </Text>
+            <Text opacity={0.7} fontSize="sm">
+              Maintains original save file structure, headers, and metadata
+              formatting. Only targeted key-value pairs are modified, ensuring
+              seamless game engine re-hydration without crash triggers.
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="800" fontSize="lg" mb={2}>
+              Instant State Snapshot & Revert
+            </Text>
+            <Text opacity={0.7} fontSize="sm">
+              In-memory state staging allowing players to preview variable
+              changes, calculate budget impacts, and roll back unintended edits
+              with a single click before export.
             </Text>
           </Box>
         </SimpleGrid>
@@ -122,9 +113,13 @@ const Work = () => {
       </Heading>
 
       <WorkImage
+        priority
         src="/images/works/suzerain-save-editor/suzerain.png"
         alt="Suzerain Preview"
       />
+
+      {/* BOTTOM PAGINATION */}
+      <WorkPagination currentId="suzerain-save-editor" />
     </Layout>
   )
 }

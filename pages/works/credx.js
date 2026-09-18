@@ -1,27 +1,18 @@
-import {
-  Badge,
-  Box,
-  Link,
-  Text,
-  useColorModeValue,
-  Heading,
-  SimpleGrid
-} from '@chakra-ui/react'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
+import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import {
   Title,
   WorkImage,
   SubTitle,
   WorkStats,
-  StatBox
+  StatBox,
+  WorkLink,
+  WorkPagination
 } from '../../components/work'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
 import CommitInfo from '../../components/commit-info'
 
 const Work = () => {
-  const accentColor = useColorModeValue('#E29578', '#D4A373')
-
   return (
     <Layout
       title="CredX"
@@ -29,47 +20,76 @@ const Work = () => {
       image="/images/works/credx/credx-2.png"
       slug="works/credx"
     >
-      <Title>
-        CredX{' '}
-        <Badge
-          ml={2}
-          px={2}
-          py={1}
-          fontSize="10px"
-          fontWeight="bold"
-          letterSpacing="0.1em"
-          variant="subtle"
-          borderRadius="full"
-          colorScheme="orange"
-          opacity={0.8}
-        >
-          2023
-        </Badge>
-      </Title>
+      <Title year="2023">CredX</Title>
 
       <WorkStats>
-        <StatBox label="Stack">Python</StatBox>
-        <StatBox label="Platform">CLI</StatBox>
-        <StatBox label="Security">Encrypted</StatBox>
+        <StatBox label="Stack">Python, CLI Tool, Cryptography</StatBox>
+        <StatBox label="Platform">CLI (Terminal)</StatBox>
+        <StatBox label="Security">AES Encryption</StatBox>
         <StatBox label="Source">
-          <Link
-            href="https://github.com/ralfarishi/CredX"
-            isExternal
-            color={accentColor}
-          >
-            CredX <ExternalLinkIcon ml={1} />
-          </Link>
+          <WorkLink href="https://github.com/ralfarishi/CredX">CredX</WorkLink>
         </StatBox>
         <CommitInfo repoName="CredX" />
       </WorkStats>
 
+      {/* MISSION & OVERVIEW */}
       <Box mb={16}>
         <SubTitle>The Mission</SubTitle>
         <P>
-          Command-line credential crating. Because &quot;123456&quot; isn&apos;t
-          a security strategy, it&apos;s a prayer. A digital vault in your
-          terminal.
+          Command-line credential management for engineers who live in the
+          terminal. Because &quot;123456&quot; isn&apos;t a security strategy,
+          it&apos;s a prayer. CredX provides a hardened local vault where
+          sensitive access tokens, secrets, and credentials can be generated,
+          securely encrypted, and managed without relying on third-party cloud
+          intermediaries.
         </P>
+      </Box>
+
+      {/* TECHNICAL HIGHLIGHTS */}
+      <Box mb={16}>
+        <SubTitle>Technical Specifications</SubTitle>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+          <Box>
+            <Text fontWeight="800" fontSize="lg" mb={2}>
+              AES-256 Encryption
+            </Text>
+            <Text opacity={0.7} fontSize="sm">
+              All stored records are encrypted at rest using Python&apos;s
+              cryptography primitives. Each vault item is protected by key
+              derivation with unique salts, preventing rainbow table attacks.
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="800" fontSize="lg" mb={2}>
+              Master Key Hashing
+            </Text>
+            <Text opacity={0.7} fontSize="sm">
+              Single master authentication key using PBKDF2 with SHA-256.
+              Zero-knowledge local verification ensures master passwords are
+              never stored in plaintext on disk.
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="800" fontSize="lg" mb={2}>
+              Entropy Password Generator
+            </Text>
+            <Text opacity={0.7} fontSize="sm">
+              Built-in cryptographically secure pseudo-random number generator
+              (CSPRNG) that outputs configurable alphanumeric and
+              special-character passwords with custom entropy thresholds.
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="800" fontSize="lg" mb={2}>
+              Zero-Dependency Terminal UX
+            </Text>
+            <Text opacity={0.7} fontSize="sm">
+              Lightweight CLI interface designed for fast pipeline integration,
+              shell scripting, and quick clipboard synchronization without
+              bloated external dependencies.
+            </Text>
+          </Box>
+        </SimpleGrid>
       </Box>
 
       <Heading
@@ -86,6 +106,7 @@ const Work = () => {
 
       <SimpleGrid columns={1} spacing={{ base: 4, md: 12 }}>
         <WorkImage
+          priority
           my={0}
           src="/images/works/credx/credx-2.png"
           alt="CredX preview 1"
@@ -96,6 +117,8 @@ const Work = () => {
           alt="CredX preview 2"
         />
       </SimpleGrid>
+
+      <WorkPagination currentId="credx" />
     </Layout>
   )
 }

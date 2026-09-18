@@ -1,25 +1,17 @@
-import {
-  Badge,
-  Box,
-  Link,
-  useColorModeValue,
-  Heading,
-  SimpleGrid
-} from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import {
   Title,
   WorkImage,
   SubTitle,
   WorkStats,
-  StatBox
+  StatBox,
+  WorkLink,
+  WorkPagination
 } from '../../components/work'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 const Work = () => {
-  const accentColor = useColorModeValue('#E29578', '#D4A373')
-
   return (
     <Layout
       title="Pasar Top Up"
@@ -27,31 +19,13 @@ const Work = () => {
       image="/images/works/pstopup/pstopup.png"
       slug="works/pstopup"
     >
-      <Title>
-        Pasar Top Up{' '}
-        <Badge
-          ml={2}
-          px={2}
-          py={1}
-          fontSize="10px"
-          fontWeight="bold"
-          letterSpacing="0.1em"
-          variant="subtle"
-          borderRadius="full"
-          colorScheme="orange"
-          opacity={0.8}
-        >
-          2024
-        </Badge>
-      </Title>
+      <Title year="2024">Pasar Top Up</Title>
 
       <WorkStats>
-        <StatBox label="Stack">PHP Native</StatBox>
+        <StatBox label="Stack">PHP Native, Payment Gateway</StatBox>
         <StatBox label="Platform">Website (Game Top-Up)</StatBox>
         <StatBox label="Live Preview">
-          <Link href="https://pasartopupid.com" isExternal color={accentColor}>
-            pasartopupid.com <ExternalLinkIcon ml={1} />
-          </Link>
+          <WorkLink href="https://pasartopupid.com">pasartopupid.com</WorkLink>
         </StatBox>
       </WorkStats>
 
@@ -78,6 +52,7 @@ const Work = () => {
 
       <SimpleGrid columns={1} spacing={{ base: 4, md: 12 }}>
         <WorkImage
+          priority
           my={0}
           src="/images/works/pstopup/pstopup.png"
           alt="Home page"
@@ -88,6 +63,8 @@ const Work = () => {
           alt="Voucher page"
         />
       </SimpleGrid>
+
+      <WorkPagination currentId="pstopup" />
     </Layout>
   )
 }

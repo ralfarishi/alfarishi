@@ -1,16 +1,11 @@
-import {
-  Badge,
-  Box,
-  useColorModeValue,
-  Heading,
-  SimpleGrid
-} from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import {
   Title,
   WorkImage,
   SubTitle,
   WorkStats,
-  StatBox
+  StatBox,
+  WorkPagination
 } from '../../components/work'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -23,23 +18,7 @@ const Work = () => {
       image="/images/works/arya-tech/arya-tech.png"
       slug="works/arya-tech"
     >
-      <Title>
-        Arya Tech Mandiri{' '}
-        <Badge
-          ml={2}
-          px={2}
-          py={1}
-          fontSize="10px"
-          fontWeight="bold"
-          letterSpacing="0.1em"
-          variant="subtle"
-          borderRadius="full"
-          colorScheme="orange"
-          opacity={0.8}
-        >
-          2024
-        </Badge>
-      </Title>
+      <Title year="2024">Arya Tech Mandiri</Title>
 
       <WorkStats>
         <StatBox label="Stack">React, Bootstrap 5</StatBox>
@@ -71,6 +50,7 @@ const Work = () => {
 
       <SimpleGrid columns={1} spacing={{ base: 4, md: 12 }}>
         <WorkImage
+          priority
           my={0}
           src="/images/works/arya-tech/arya-tech.png"
           alt="Home page"
@@ -81,6 +61,8 @@ const Work = () => {
           alt="About page"
         />
       </SimpleGrid>
+
+      <WorkPagination currentId="arya-tech" />
     </Layout>
   )
 }
