@@ -5,13 +5,14 @@ import dynamic from 'next/dynamic'
 import {
   Link,
   Text,
-  Container,
   Heading,
   Box,
   SimpleGrid,
   Button,
   List,
-  ListItem,
+  Badge,
+  Tooltip,
+  useClipboard,
   useColorModeValue,
   chakra
 } from '@chakra-ui/react'
@@ -29,6 +30,7 @@ import Paragraph from '../components/paragraph'
 import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
+import { WorkGridItem } from '../components/grid-item'
 
 const Certificate = dynamic(() => import('../components/certificate'), {
   loading: () => null,
@@ -41,8 +43,9 @@ const ProfileImage = chakra(Image, {
 })
 
 const Home = () => {
+  const { hasCopied, onCopy } = useClipboard('ralfarishi@gmail.com')
   const bgBox = useColorModeValue('#F7E3DC', '#2D2824')
-  const accentColor = useColorModeValue('#E29578', '#D4A373')
+  const accentColor = useColorModeValue('#B85D3B', '#D4A373')
 
   return (
     <Layout
@@ -50,7 +53,7 @@ const Home = () => {
       description="Self-taught web developer from Indonesia. I build websites people love to use and systems that solve real problems."
       slug=""
     >
-      <Container maxW="container.lg" px={6}>
+      <Box as="div">
         {/* HERO SECTION */}
         <Section delay={0.1}>
           <Box
@@ -58,34 +61,68 @@ const Home = () => {
             flexDirection={{ base: 'column', md: 'row' }}
             alignItems="center"
             justifyContent="center"
-            pt={{ base: 4, md: 20 }}
-            mb={{ base: 6, md: 20 }}
+            pt={{ base: 4, md: 16 }}
+            mb={{ base: 8, md: 16 }}
             position="relative"
           >
             <Box
               flexShrink={0}
               mt={{ base: 4, md: 0 }}
               ml={{ md: 6 }}
-              textAlign="center"
+              textAlign={{ base: 'center', md: 'left' }}
               order={{ base: 2, md: 1 }}
               zIndex={1}
             >
+              {/* Availability Badge */}
+              <Box
+                display="inline-flex"
+                alignItems="center"
+                gap={2}
+                px={3.5}
+                py={1.5}
+                borderRadius="full"
+                bg={useColorModeValue('blackAlpha.50', 'whiteAlpha.100')}
+                border="1px solid"
+                borderColor={useColorModeValue(
+                  'blackAlpha.100',
+                  'whiteAlpha.200'
+                )}
+                mb={4}
+              >
+                <Box
+                  w={2}
+                  h={2}
+                  borderRadius="full"
+                  bg="green.400"
+                  boxShadow="0 0 8px rgba(74, 222, 128, 0.7)"
+                />
+                <Text
+                  fontSize="xs"
+                  fontWeight="700"
+                  letterSpacing="0.06em"
+                  textTransform="uppercase"
+                  opacity={0.8}
+                >
+                  Available for Opportunities
+                </Text>
+              </Box>
+
               <Heading
                 as="h2"
                 fontSize={{ base: '4xl', md: '7xl' }}
-                fontFamily="'Outfit', sans-serif"
+                fontFamily="heading"
                 fontWeight="800"
                 letterSpacing="-0.04em"
-                lineHeight="0.9"
+                lineHeight="0.95"
               >
                 Ramiza <br />
                 <chakra.span color={accentColor}>Al Farishi</chakra.span>
               </Heading>
               <Text
-                fontFamily="'Instrument Serif', serif"
+                fontFamily="serif"
                 fontSize={{ base: '1.5rem', md: '2.5rem' }}
                 fontStyle="italic"
-                opacity={0.8}
+                opacity={0.85}
                 mt={4}
               >
                 Web Developer & AI Enthusiast
@@ -94,7 +131,7 @@ const Home = () => {
 
             <Box
               flexShrink={0}
-              mt={{ base: 10, md: 0 }}
+              mt={{ base: 8, md: 0 }}
               ml={{ md: 10 }}
               order={{ base: 1, md: 2 }}
               position="relative"
@@ -106,7 +143,7 @@ const Home = () => {
                 w="120%"
                 h="120%"
                 bg={accentColor}
-                opacity={0.1}
+                opacity={0.12}
                 borderRadius="full"
                 filter="blur(60px)"
               />
@@ -126,7 +163,7 @@ const Home = () => {
               >
                 <ProfileImage
                   src="/images/profile-pic.jpg"
-                  alt="Profile image"
+                  alt="Ramiza Al Farishi"
                   width="300"
                   height="300"
                   priority={true}
@@ -142,10 +179,10 @@ const Home = () => {
             display="flex"
             flexDirection="column"
             alignItems={{ base: 'flex-start', md: 'flex-end' }}
-            mb={{ base: 12, md: 20 }}
+            mb={{ base: 12, md: 18 }}
           >
             <Box
-              maxW={{ base: '100%', md: '60%' }}
+              maxW={{ base: '100%', md: '65%' }}
               position="relative"
               _before={{
                 content: '"“"',
@@ -153,7 +190,7 @@ const Home = () => {
                 top: '-40px',
                 left: '-20px',
                 fontSize: '8xl',
-                fontFamily: "'Instrument Serif', serif",
+                fontFamily: 'serif',
                 opacity: 0.1,
                 color: accentColor
               }}
@@ -171,11 +208,11 @@ const Home = () => {
           </Box>
         </Section>
 
-        {/* CONTENT GRID */}
+        {/* ABOUT & EDUCATION GRID */}
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
-          spacing={{ base: 12, md: 20 }}
-          mb={{ base: 12, md: 20 }}
+          spacing={{ base: 10, md: 16 }}
+          mb={{ base: 14, md: 20 }}
         >
           {/* ABOUT SECTION */}
           <Section delay={0.3}>
@@ -190,7 +227,7 @@ const Home = () => {
               ones). I&apos;m all about building things that run smoothly, look
               sharp, and make life a bit more <code>flex</code>-ible.
             </Paragraph>
-            <Box mt={6}>
+            <Box mt={6} display="flex" flexWrap="wrap" gap={3}>
               <Button
                 as={NextLink}
                 rightIcon={
@@ -201,31 +238,41 @@ const Home = () => {
                 }
                 href="/works"
                 scroll={false}
-                variant="outline"
-                borderColor={accentColor}
-                color={accentColor}
-                borderRadius="full"
-                px={8}
-                height="52px"
-                fontWeight="800"
-                fontFamily="'Outfit', sans-serif"
-                letterSpacing="0.02em"
-                transition="all 0.4s cubic-bezier(0.16, 1, 0.3, 1)"
+                variant="pill-outline"
                 role="group"
-                _hover={{
-                  bg: accentColor,
-                  color: useColorModeValue('white', '#F0EAD6'),
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)'
-                }}
               >
                 Explore Works
               </Button>
+              <Tooltip
+                label={
+                  hasCopied ? 'Email address copied!' : 'Click to copy email'
+                }
+                hasArrow
+                placement="top"
+                closeOnClick={false}
+              >
+                <Button
+                  onClick={onCopy}
+                  variant="ghost"
+                  borderRadius="full"
+                  height="52px"
+                  px={6}
+                  fontWeight="700"
+                  fontFamily="heading"
+                  opacity={0.85}
+                  _hover={{
+                    opacity: 1,
+                    bg: useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
+                  }}
+                >
+                  {hasCopied ? 'Email Copied!' : 'Get in Touch'}
+                </Button>
+              </Tooltip>
             </Box>
           </Section>
 
           {/* BIO SECTION */}
-          <Section delay={0.4}>
+          <Section delay={0.35}>
             <Heading as="h3" variant="section-title">
               Educations
             </Heading>
@@ -240,33 +287,209 @@ const Home = () => {
               </BioSection>
               <BioSection>
                 <BioYear>2023</BioYear>
-                Gunadarma University (CS)
+                Gunadarma University (Computer Science)
               </BioSection>
             </Box>
           </Section>
         </SimpleGrid>
 
+        {/* SELECTED WORKS SHOWCASE */}
+        <Section delay={0.4}>
+          <Box mb={14}>
+            <Box
+              display="flex"
+              alignItems="flex-end"
+              justifyContent="space-between"
+              mb={6}
+            >
+              <Box>
+                <Text
+                  fontSize="xs"
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                  letterSpacing="0.2em"
+                  color={accentColor}
+                >
+                  Featured
+                </Text>
+                <Heading as="h3" variant="section-title" mt={0}>
+                  Selected Works
+                </Heading>
+              </Box>
+              <Button
+                as={NextLink}
+                href="/works"
+                variant="ghost"
+                size="sm"
+                rightIcon={<ChevronRightIcon />}
+                color={accentColor}
+                fontWeight="700"
+                fontFamily="heading"
+                _hover={{ bg: 'transparent', transform: 'translateX(2px)' }}
+              >
+                View All Works
+              </Button>
+            </Box>
+
+            <SimpleGrid
+              columns={{ base: 1, md: 2 }}
+              spacing={{ base: 6, md: 6 }}
+            >
+              <WorkGridItem
+                id="labalab"
+                title="LabaLab"
+                thumbnail="/images/works/labalab/thumbnail.png"
+                tags={['Next.js', 'Drizzle', 'Supabase', 'Tailwind']}
+              >
+                A retail operating system turning stockroom chaos into
+                structured data with a side of profit.
+              </WorkGridItem>
+              <WorkGridItem
+                id="suzerain-save-editor"
+                title="Suzerain Save Editor"
+                thumbnail="/images/works/suzerain-save-editor/suzerain-thumbnail.webp"
+                tags={['Bun', 'Vite', 'Tailwind']}
+              >
+                Manipulate Sordland&apos;s political fabric with this
+                interactive save editor.
+              </WorkGridItem>
+            </SimpleGrid>
+          </Box>
+        </Section>
+
+        {/* CORE TECH STACK */}
+        <Section delay={0.45}>
+          <Box mb={14}>
+            <Text
+              fontSize="xs"
+              fontWeight="bold"
+              textTransform="uppercase"
+              letterSpacing="0.2em"
+              color={accentColor}
+            >
+              Toolkit
+            </Text>
+            <Heading as="h3" variant="section-title" mt={0}>
+              Core Stack
+            </Heading>
+
+            <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={4} mt={4}>
+              {[
+                {
+                  category: 'Frontend',
+                  skills: [
+                    'React',
+                    'Next.js',
+                    'TypeScript',
+                    'Tailwind CSS',
+                    'Chakra UI'
+                  ]
+                },
+                {
+                  category: 'Backend & DB',
+                  skills: [
+                    'Node.js',
+                    'Laravel',
+                    'PostgreSQL',
+                    'Supabase',
+                    'REST APIs'
+                  ]
+                },
+                {
+                  category: 'Workflow & Tools',
+                  skills: [
+                    'Git & GitHub',
+                    'Vercel',
+                    'Docker',
+                    'Linux / WSL',
+                    'Figma'
+                  ]
+                }
+              ].map(group => (
+                <Box
+                  key={group.category}
+                  p={5}
+                  borderRadius="2xl"
+                  bg={useColorModeValue('blackAlpha.50', 'whiteAlpha.50')}
+                  border="1px solid"
+                  borderColor={useColorModeValue(
+                    'blackAlpha.100',
+                    'whiteAlpha.100'
+                  )}
+                  transition="all 0.3s ease"
+                  _hover={{
+                    borderColor: useColorModeValue(
+                      'blackAlpha.200',
+                      'whiteAlpha.300'
+                    ),
+                    transform: 'translateY(-2px)'
+                  }}
+                >
+                  <Text
+                    fontSize="xs"
+                    fontWeight="800"
+                    textTransform="uppercase"
+                    letterSpacing="0.15em"
+                    color={accentColor}
+                    mb={3}
+                  >
+                    {group.category}
+                  </Text>
+                  <Box display="flex" flexWrap="wrap" gap={1.5}>
+                    {group.skills.map(skill => (
+                      <Badge
+                        key={skill}
+                        variant="subtle"
+                        bg={useColorModeValue(
+                          'blackAlpha.100',
+                          'whiteAlpha.100'
+                        )}
+                        color={useColorModeValue(
+                          'blackAlpha.800',
+                          'whiteAlpha.800'
+                        )}
+                        borderRadius="md"
+                        px={2.5}
+                        py={1}
+                        fontSize="xs"
+                        fontWeight="600"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </Box>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </Box>
+        </Section>
+
         {/* THINGS I LOVE & CERTIFICATIONS */}
-        <Box display="flex" flexDirection="column" gap={{ base: 12, md: 20 }}>
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap={{ base: 12, md: 16 }}
+          mb={16}
+        >
           <SimpleGrid
             columns={{ base: 1, md: 2 }}
-            spacing={{ base: 12, md: 20 }}
+            spacing={{ base: 10, md: 16 }}
           >
             <Section delay={0.5}>
               <Heading as="h3" variant="section-title">
-                Things I ♥
+                Things I Love
               </Heading>
-              <Text fontSize="lg" opacity={0.8}>
+              <Text fontSize="lg" opacity={0.8} lineHeight="1.7">
                 Music, football, movies, & speed running my token limit (and
                 occasionally my deployment pipeline).
               </Text>
             </Section>
 
-            <Section delay={0.6}>
+            <Section delay={0.55}>
               <Heading as="h3" variant="section-title">
                 Certifications
               </Heading>
-              <List spacing={4} mt={4} styleType="none">
+              <List spacing={3} mt={4} styleType="none">
                 <Certificate
                   link="https://buildwithangga.com/talent/ralfarishi/full-stack-web-developer-toko-online"
                   name="BWA - E-Commerce"
@@ -286,8 +509,8 @@ const Home = () => {
             </Section>
           </SimpleGrid>
 
-          {/* FIND ME ON */}
-          <Section delay={0.7}>
+          {/* LET'S CONNECT */}
+          <Section delay={0.6}>
             <Box
               display="flex"
               flexDirection={{ base: 'column', md: 'row' }}
@@ -298,34 +521,29 @@ const Home = () => {
                 'blackAlpha.100',
                 'whiteAlpha.100'
               )}
-              pt={12}
-              gap={8}
+              pt={10}
+              gap={6}
             >
               <Box>
                 <Heading
                   as="h3"
                   fontSize="2xl"
-                  fontFamily="'Outfit', sans-serif"
+                  fontFamily="heading"
                   fontWeight="800"
                 >
                   Let&apos;s Connect
                 </Heading>
                 <Text opacity={0.6} mt={1}>
-                  Available for new opportunities.
+                  Available for new opportunities and collaborations.
                 </Text>
               </Box>
 
-              <Box display="flex" flexWrap="wrap" gap={6}>
+              <Box display="flex" flexWrap="wrap" gap={3}>
                 {[
                   {
-                    label: 'Github',
+                    label: 'GitHub',
                     href: 'https://github.com/ralfarishi',
                     icon: IoLogoGithub
-                  },
-                  {
-                    label: 'Instagram',
-                    href: 'https://instagram.com/ramiza27_',
-                    icon: IoLogoInstagram
                   },
                   {
                     label: 'LinkedIn',
@@ -333,9 +551,9 @@ const Home = () => {
                     icon: IoLogoLinkedin
                   },
                   {
-                    label: 'Email',
-                    href: 'mailto:ralfarishi@gmail.com',
-                    icon: IoMailOutline
+                    label: 'Instagram',
+                    href: 'https://instagram.com/ramiza27_',
+                    icon: IoLogoInstagram
                   }
                 ].map(link => (
                   <Link
@@ -350,34 +568,75 @@ const Home = () => {
                       alignItems="center"
                       gap={2}
                       px={4}
-                      py={2}
+                      py={2.5}
                       borderRadius="xl"
                       bg={bgBox}
                       transition="all 0.3s ease"
                       _groupHover={{
                         bg: accentColor,
-                        color: useColorModeValue('white', '#F0EAD6'),
+                        color: useColorModeValue('white', '#1A1A1A'),
                         transform: 'translateY(-2px)',
                         boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
                       }}
                     >
-                      <link.icon />
+                      <link.icon size={18} />
                       <Text
                         fontWeight="700"
-                        fontFamily="'Instrument Serif', serif"
-                        fontStyle="italic"
-                        fontSize="xl"
+                        fontFamily="heading"
+                        fontSize="sm"
+                        letterSpacing="0.02em"
                       >
                         {link.label}
                       </Text>
                     </Box>
                   </Link>
                 ))}
+
+                {/* Email Copy-to-Clipboard Action */}
+                <Tooltip
+                  label={
+                    hasCopied ? 'Email address copied!' : 'Click to copy email'
+                  }
+                  closeOnClick={false}
+                  hasArrow
+                  placement="top"
+                >
+                  <Box
+                    as="button"
+                    onClick={onCopy}
+                    display="flex"
+                    alignItems="center"
+                    gap={2}
+                    px={4}
+                    py={2.5}
+                    borderRadius="xl"
+                    bg={bgBox}
+                    transition="all 0.3s ease"
+                    role="group"
+                    cursor="pointer"
+                    _hover={{
+                      bg: accentColor,
+                      color: useColorModeValue('white', '#1A1A1A'),
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
+                    }}
+                  >
+                    <IoMailOutline size={18} />
+                    <Text
+                      fontWeight="700"
+                      fontFamily="heading"
+                      fontSize="sm"
+                      letterSpacing="0.02em"
+                    >
+                      {hasCopied ? 'Copied!' : 'Email'}
+                    </Text>
+                  </Box>
+                </Tooltip>
               </Box>
             </Box>
           </Section>
         </Box>
-      </Container>
+      </Box>
     </Layout>
   )
 }

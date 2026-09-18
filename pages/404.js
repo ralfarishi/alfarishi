@@ -11,34 +11,34 @@ import {
 import Layout from '../components/layouts/article'
 
 const NotFound = () => {
-  const accentColor = useColorModeValue('#E29578', '#D4A373')
+  const accentColor = useColorModeValue('#B85D3B', '#D4A373')
 
   return (
     <Layout title="Not Found">
-      <Container maxW="container.md" px={6} centerContent>
+      <Box px={6} textAlign="center" py={12}>
         <Heading
           as="h1"
           fontSize={{ base: '6xl', md: '8xl' }}
-          fontFamily="'Outfit', sans-serif"
+          fontFamily="heading"
           fontWeight="900"
           letterSpacing="-0.04em"
           lineHeight="0.9"
           color={accentColor}
-          mt={10}
+          mt={6}
         >
           404
         </Heading>
         <Heading
           as="h2"
           fontSize={{ base: '2xl', md: '3xl' }}
-          fontFamily="'Outfit', sans-serif"
+          fontFamily="heading"
           fontWeight="800"
           mt={6}
         >
           Lost in Space
         </Heading>
         <Text
-          fontFamily="'Instrument Serif', serif"
+          fontFamily="serif"
           fontSize={{ base: 'xl', md: '2xl' }}
           fontStyle="italic"
           opacity={0.8}
@@ -47,35 +47,15 @@ const NotFound = () => {
         >
           The page you&apos;re looking for was not found.
         </Text>
-        <Divider my={6} opacity={0.2} />
+        <Divider my={6} opacity={0.2} maxW="md" mx="auto" />
         <Box my={6} align="center">
-          <Button
-            as={NextLink}
-            href="/"
-            variant="outline"
-            borderColor={accentColor}
-            color={accentColor}
-            borderRadius="full"
-            px={8}
-            height="52px"
-            fontWeight="800"
-            fontFamily="'Outfit', sans-serif"
-            letterSpacing="0.02em"
-            transition="all 0.4s cubic-bezier(0.16, 1, 0.3, 1)"
-            _hover={{
-              bg: accentColor,
-              color: useColorModeValue('white', '#F0EAD6'),
-              transform: 'translateY(-2px)',
-              boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)'
-            }}
-          >
+          <Button as={NextLink} href="/" variant="pill-outline">
             Return to home
           </Button>
         </Box>
-      </Container>
+      </Box>
     </Layout>
   )
 }
 
 export default NotFound
-
