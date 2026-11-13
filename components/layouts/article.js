@@ -10,12 +10,12 @@ const variants = {
 const BASE_URL = 'https://www.alfarishi.my.id'
 
 const Layout = ({ children, title, description, image, slug }) => {
-  const pageTitle = title
+  const fullTitle = title
     ? `${title} | Ramiza Al Farishi`
-    : 'Ramiza Al Farishi | Personal Website'
+    : 'Ramiza Al Farishi | Web Developer & Software Engineer'
   const pageDescription =
     description ||
-    `${title} - A project by Ramiza Al Farishi. Explore the details, tech stack, and features.`
+    'Web developer and software engineer building modern websites, custom web applications, and high-performance digital experiences.'
   const pageUrl = slug ? `${BASE_URL}/${slug.replace(/^\//, '')}` : BASE_URL
   const pageImage = image
     ? image.startsWith('http')
@@ -26,27 +26,27 @@ const Layout = ({ children, title, description, image, slug }) => {
   return (
     <>
       <NextSeo
-        title={pageTitle}
+        title={title || undefined}
         description={pageDescription}
         canonical={pageUrl}
         openGraph={{
-          type: 'article',
+          type: 'website',
           url: pageUrl,
-          title: pageTitle,
+          title: fullTitle,
           description: pageDescription,
           images: [
             {
               url: pageImage,
               width: 1200,
               height: 630,
-              alt: title || 'Ramiza Al Farishi Portfolio'
+              alt: title || 'Ramiza Al Farishi - Web Developer & Software Engineer'
             }
           ],
-          siteName: 'Ramiza Al Farishi | Personal Website'
+          siteName: 'Ramiza Al Farishi Portfolio'
         }}
         twitter={{
           cardType: 'summary_large_image',
-          title: pageTitle,
+          title: fullTitle,
           description: pageDescription
         }}
       />

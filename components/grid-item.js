@@ -113,6 +113,8 @@ export const WorkGridItem = ({
   const bg = useColorModeValue('blackAlpha.50', 'whiteAlpha.50')
   const borderColor = useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
   const hoverBorderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200')
+  const tagBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
+  const tagColor = useColorModeValue('blackAlpha.800', 'whiteAlpha.800')
 
   return (
     <Box w="100%">
@@ -166,8 +168,8 @@ export const WorkGridItem = ({
                 <Badge
                   key={tag}
                   variant="subtle"
-                  bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
-                  color={useColorModeValue('blackAlpha.800', 'whiteAlpha.800')}
+                  bg={tagBg}
+                  color={tagColor}
                   borderRadius="md"
                   px={2}
                   py={0.5}

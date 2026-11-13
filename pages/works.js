@@ -46,6 +46,10 @@ const Works = () => {
   const activeColor = useColorModeValue('white', '#1A1A1A')
   const inactiveColor = useColorModeValue('blackAlpha.800', 'whiteAlpha.800')
   const pillBorderColor = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
+  const pillHoverBorderColor = useColorModeValue(
+    'blackAlpha.400',
+    'whiteAlpha.400'
+  )
   const countBadgeBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
 
   const catCounts = useMemo(
@@ -130,7 +134,7 @@ const Works = () => {
                   _hover={{
                     borderColor: isActive
                       ? 'transparent'
-                      : useColorModeValue('blackAlpha.400', 'whiteAlpha.400')
+                      : pillHoverBorderColor
                   }}
                   _focusVisible={{
                     outline: '2px solid',

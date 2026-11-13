@@ -39,7 +39,7 @@ const Certificate = ({ link, name, year }) => {
             fontSize="xs"
             fontWeight="800"
             fontFamily="heading"
-            fontVariantNumeric="tabular-nums"
+            sx={{ fontVariantNumeric: 'tabular-nums' }}
             opacity={0.6}
             letterSpacing="0.05em"
             flexShrink={0}

@@ -1,5 +1,10 @@
 import { Analytics } from '@vercel/analytics/react'
-import { Outfit, Plus_Jakarta_Sans, Instrument_Serif } from 'next/font/google'
+import {
+  Outfit,
+  Plus_Jakarta_Sans,
+  Instrument_Serif,
+  JetBrains_Mono
+} from 'next/font/google'
 
 import Layout from '../components/layouts/main'
 import { AnimatePresence } from 'framer-motion'
@@ -30,6 +35,12 @@ const instrumentSerif = Instrument_Serif({
   display: 'swap'
 })
 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap'
+})
+
 if (typeof window !== 'undefined') {
   window.history.scrollRestoration = 'manual'
 }
@@ -37,11 +48,12 @@ if (typeof window !== 'undefined') {
 function Website({ Component, pageProps, router, cookies }) {
   return (
     <div
-      className={`${outfit.variable} ${jakarta.variable} ${instrumentSerif.variable}`}
+      className={`${outfit.variable} ${jakarta.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
       style={{
         '--font-outfit': outfit.style.fontFamily,
         '--font-jakarta': jakarta.style.fontFamily,
-        '--font-instrument-serif': instrumentSerif.style.fontFamily
+        '--font-instrument-serif': instrumentSerif.style.fontFamily,
+        '--font-mono': jetbrainsMono.style.fontFamily
       }}
     >
       <DefaultSeo {...SEOConfig} />

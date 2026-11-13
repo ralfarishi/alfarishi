@@ -46,6 +46,18 @@ const Home = () => {
   const { hasCopied, onCopy } = useClipboard('ralfarishi@gmail.com')
   const bgBox = useColorModeValue('#F7E3DC', '#2D2824')
   const accentColor = useColorModeValue('#B85D3B', '#D4A373')
+  const toolkitBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.50')
+  const toolkitBorderColor = useColorModeValue(
+    'blackAlpha.100',
+    'whiteAlpha.100'
+  )
+  const toolkitHoverBorderColor = useColorModeValue(
+    'blackAlpha.200',
+    'whiteAlpha.300'
+  )
+  const skillBadgeBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
+  const skillBadgeColor = useColorModeValue('blackAlpha.800', 'whiteAlpha.800')
+  const socialHoverColor = useColorModeValue('white', '#1A1A1A')
 
   return (
     <Layout
@@ -336,13 +348,13 @@ const Home = () => {
               spacing={{ base: 6, md: 6 }}
             >
               <WorkGridItem
-                id="labalab"
-                title="LabaLab"
-                thumbnail="/images/works/labalab/thumbnail.png"
-                tags={['Next.js', 'Drizzle', 'Supabase', 'Tailwind']}
+                id="cheese-stick-koe"
+                title="Cheese Stick Koe"
+                thumbnail="/images/works/cheese-stick-koe/cheese_stick_1.jpg"
+                tags={['Next.js', 'Tailwind', 'TypeScript']}
               >
-                A retail operating system turning stockroom chaos into
-                structured data with a side of profit.
+                Commercial brand website with interactive product showcase,
+                dynamic catalog, and responsive order inquiry system.
               </WorkGridItem>
               <WorkGridItem
                 id="suzerain-save-editor"
@@ -410,18 +422,12 @@ const Home = () => {
                   key={group.category}
                   p={5}
                   borderRadius="2xl"
-                  bg={useColorModeValue('blackAlpha.50', 'whiteAlpha.50')}
+                  bg={toolkitBg}
                   border="1px solid"
-                  borderColor={useColorModeValue(
-                    'blackAlpha.100',
-                    'whiteAlpha.100'
-                  )}
+                  borderColor={toolkitBorderColor}
                   transition="all 0.3s ease"
                   _hover={{
-                    borderColor: useColorModeValue(
-                      'blackAlpha.200',
-                      'whiteAlpha.300'
-                    ),
+                    borderColor: toolkitHoverBorderColor,
                     transform: 'translateY(-2px)'
                   }}
                 >
@@ -440,14 +446,8 @@ const Home = () => {
                       <Badge
                         key={skill}
                         variant="subtle"
-                        bg={useColorModeValue(
-                          'blackAlpha.100',
-                          'whiteAlpha.100'
-                        )}
-                        color={useColorModeValue(
-                          'blackAlpha.800',
-                          'whiteAlpha.800'
-                        )}
+                        bg={skillBadgeBg}
+                        color={skillBadgeColor}
                         borderRadius="md"
                         px={2.5}
                         py={1}
@@ -574,7 +574,7 @@ const Home = () => {
                       transition="all 0.3s ease"
                       _groupHover={{
                         bg: accentColor,
-                        color: useColorModeValue('white', '#1A1A1A'),
+                        color: socialHoverColor,
                         transform: 'translateY(-2px)',
                         boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
                       }}

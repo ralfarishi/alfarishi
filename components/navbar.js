@@ -6,8 +6,11 @@ import {
   Link,
   Stack,
   Text,
+  chakra,
+  shouldForwardProp,
   useColorModeValue
 } from '@chakra-ui/react'
+import { motion, isValidMotionProp } from 'framer-motion'
 import {
   IoHomeOutline,
   IoCodeWorkingOutline,
@@ -17,6 +20,10 @@ import ThemeToggleButton from './theme-toggle-button'
 import Logo from './logo'
 import NextLink from 'next/link'
 
+const MotionBox = chakra(motion.div, {
+  shouldForwardProp: prop => isValidMotionProp(prop) || shouldForwardProp(prop)
+})
+
 const DockItem = ({
   href,
   icon: Icon,
@@ -24,49 +31,77 @@ const DockItem = ({
   active,
   'aria-label': ariaLabel
 }) => {
-  const activeBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
   const activeColor = useColorModeValue('#B85D3B', '#D4A373')
   const inactiveColor = useColorModeValue('blackAlpha.600', 'whiteAlpha.600')
-  const hoverBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
+  const activePillBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.150')
 
   return (
-    <Link
-      as={NextLink}
-      href={href}
-      px={{ base: 4, sm: 5 }}
-      py={2}
-      borderRadius="2xl"
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      gap={1}
-      bg={active ? activeBg : 'transparent'}
-      color={active ? activeColor : inactiveColor}
-      transition="all 0.25s ease"
-      aria-label={ariaLabel}
-      _hover={{
-        textDecoration: 'none',
-        color: activeColor,
-        bg: hoverBg
-      }}
-    >
-      <Icon size={20} aria-hidden="true" />
-      <Text
-        fontSize="10px"
-        fontWeight={active ? '800' : '600'}
-        fontFamily="heading"
-        letterSpacing="0.04em"
-        lineHeight="1"
+    <Box position="relative">
+      <Link
+        as={NextLink}
+        href={href}
+        px={{ base: 4, sm: 5 }}
+        py={2}
+        borderRadius="xl"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        gap={1}
+        color={active ? activeColor : inactiveColor}
+        position="relative"
+        zIndex={1}
+        aria-label={ariaLabel}
+        _hover={{
+          textDecoration: 'none',
+          color: activeColor
+        }}
+        _active={{
+          transform: 'scale(0.94)'
+        }}
+        transition="color 0.2s ease, transform 0.12s ease"
       >
-        {label}
-      </Text>
-    </Link>
+        <Icon size={18} aria-hidden="true" />
+        <Text
+          fontSize="10px"
+          fontWeight={active ? '800' : '600'}
+          fontFamily="heading"
+          letterSpacing="0.04em"
+          lineHeight="1"
+        >
+          {label}
+        </Text>
+      </Link>
+      {active && (
+        <MotionBox
+          layoutId="activeDockIndicator"
+          position="absolute"
+          top={0}
+          left={0}
+          right={0}
+          bottom={0}
+          bg={activePillBg}
+          borderRadius="xl"
+          zIndex={0}
+          transition={{
+            type: 'spring',
+            stiffness: 400,
+            damping: 32
+          }}
+        />
+      )}
+    </Box>
   )
 }
 
 const BottomDock = ({ path }) => {
   const dockBg = useColorModeValue('#FFFCF5E6', '#1A1A1AE6')
+  const borderColor = useColorModeValue('blackAlpha.150', 'whiteAlpha.150')
+
+  // Suppress BottomDock on /consult to prevent dual bottom bar collisions with Scoping Form Dock
+  if (typeof path === 'string' && path.startsWith('/consult')) {
+    return null
+  }
 
   return (
     <Box
@@ -80,7 +115,7 @@ const BottomDock = ({ path }) => {
       css={{ backdropFilter: 'blur(16px)' }}
       borderRadius="full"
       border="1px solid"
-      borderColor={useColorModeValue('blackAlpha.150', 'whiteAlpha.150')}
+      borderColor={borderColor}
       boxShadow="0 12px 36px rgba(0,0,0,0.12)"
       zIndex={80}
       px={2}
@@ -197,6 +232,9 @@ const Navbar = props => {
             </LinkItem>
             <LinkItem href="/blogs" path={path}>
               Blogs
+            </LinkItem>
+            <LinkItem href="/consult" path={path}>
+              Consult
             </LinkItem>
           </Stack>
 

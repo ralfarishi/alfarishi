@@ -28,6 +28,55 @@ export default class Document extends NextDocument {
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@graph': [
+                  {
+                    '@type': 'Person',
+                    '@id': 'https://www.alfarishi.my.id/#person',
+                    name: 'Ramiza Al Farishi',
+                    jobTitle: 'Web Developer & Software Engineer',
+                    url: 'https://www.alfarishi.my.id',
+                    image: 'https://www.alfarishi.my.id/images/profile-pic.jpg',
+                    sameAs: [
+                      'https://github.com/ralfarishi',
+                      'https://linkedin.com/in/ramiza-al-farishi-a82a55208/',
+                      'https://instagram.com/ramiza27_'
+                    ],
+                    knowsAbout: [
+                      'Web Development',
+                      'Frontend Engineering',
+                      'Fullstack Web Applications',
+                      'Next.js',
+                      'React',
+                      'TypeScript',
+                      'Tailwind CSS'
+                    ]
+                  },
+                  {
+                    '@type': 'WebSite',
+                    '@id': 'https://www.alfarishi.my.id/#website',
+                    url: 'https://www.alfarishi.my.id',
+                    name: 'Ramiza Al Farishi Portfolio',
+                    publisher: { '@id': 'https://www.alfarishi.my.id/#person' }
+                  },
+                  {
+                    '@type': 'ProfessionalService',
+                    '@id': 'https://www.alfarishi.my.id/#service',
+                    name: 'Ramiza Al Farishi - Web Development Services',
+                    url: 'https://www.alfarishi.my.id',
+                    image: 'https://www.alfarishi.my.id/images/og-default.png',
+                    description:
+                      'Professional web development, modern landing pages, e-commerce, and custom dynamic web applications.',
+                    provider: { '@id': 'https://www.alfarishi.my.id/#person' }
+                  }
+                ]
+              })
+            }}
+          />
         </Head>
         <body>
           <ColorModeScript

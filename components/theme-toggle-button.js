@@ -5,6 +5,16 @@ import { SunIcon, MoonIcon } from '@chakra-ui/icons'
 const ThemeToggleButton = () => {
   const { toggleColorMode } = useColorMode()
 
+  const handleToggle = () => {
+    if (typeof document !== 'undefined' && 'startViewTransition' in document) {
+      document.startViewTransition(() => {
+        toggleColorMode()
+      })
+    } else {
+      toggleColorMode()
+    }
+  }
+
   return (
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
@@ -19,7 +29,7 @@ const ThemeToggleButton = () => {
           aria-label="Toggle theme"
           variant="soft"
           icon={useColorModeValue(<MoonIcon />, <SunIcon />)}
-          onClick={toggleColorMode}
+          onClick={handleToggle}
           borderRadius="xl"
           _active={{ transform: 'scale(0.95)' }}
         ></IconButton>
