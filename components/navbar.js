@@ -98,11 +98,6 @@ const BottomDock = ({ path }) => {
   const dockBg = useColorModeValue('#FFFCF5E6', '#1A1A1AE6')
   const borderColor = useColorModeValue('blackAlpha.150', 'whiteAlpha.150')
 
-  // Suppress BottomDock on /consult to prevent dual bottom bar collisions with Scoping Form Dock
-  if (typeof path === 'string' && path.startsWith('/consult')) {
-    return null
-  }
-
   return (
     <Box
       display={{ base: 'block', md: 'none' }}
@@ -189,9 +184,7 @@ const LinkItem = ({ href, path, target, children, ...props }) => {
   )
 }
 
-const Navbar = props => {
-  const { path } = props
-
+const Navbar = ({ path, ...props }) => {
   return (
     <>
       <Box
@@ -232,9 +225,6 @@ const Navbar = props => {
             </LinkItem>
             <LinkItem href="/blogs" path={path}>
               Blogs
-            </LinkItem>
-            <LinkItem href="/consult" path={path}>
-              Consult
             </LinkItem>
           </Stack>
 
