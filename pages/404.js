@@ -14,7 +14,7 @@ const NotFound = () => {
   const accentColor = useColorModeValue('#B85D3B', '#D4A373')
 
   return (
-    <Layout title="Not Found">
+    <Layout title="Not Found" noindex>
       <Box px={6} textAlign="center" py={12}>
         <Heading
           as="h1"

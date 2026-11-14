@@ -7,9 +7,16 @@ const variants = {
   exit: { opacity: 0, x: -0, y: 30 }
 }
 
-const BASE_URL = 'https://www.alfarishi.my.id'
+const BASE_URL = 'https://alfarishi.my.id'
 
-const Layout = ({ children, title, description, image, slug }) => {
+const Layout = ({
+  children,
+  title,
+  description,
+  image,
+  slug,
+  noindex = false
+}) => {
   const fullTitle = title
     ? `${title} | Ramiza Al Farishi`
     : 'Ramiza Al Farishi | Web Developer & Software Engineer'
@@ -28,7 +35,9 @@ const Layout = ({ children, title, description, image, slug }) => {
       <NextSeo
         title={title || undefined}
         description={pageDescription}
-        canonical={pageUrl}
+        canonical={noindex ? undefined : pageUrl}
+        noindex={noindex}
+        nofollow={noindex}
         openGraph={{
           type: 'website',
           url: pageUrl,

@@ -36,11 +36,11 @@ export default class Document extends NextDocument {
                 '@graph': [
                   {
                     '@type': 'Person',
-                    '@id': 'https://www.alfarishi.my.id/#person',
+                    '@id': 'https://alfarishi.my.id/#person',
                     name: 'Ramiza Al Farishi',
                     jobTitle: 'Web Developer & Software Engineer',
-                    url: 'https://www.alfarishi.my.id',
-                    image: 'https://www.alfarishi.my.id/images/profile-pic.jpg',
+                    url: 'https://alfarishi.my.id',
+                    image: 'https://alfarishi.my.id/images/profile-pic.jpg',
                     sameAs: [
                       'https://github.com/ralfarishi',
                       'https://linkedin.com/in/ramiza-al-farishi-a82a55208/',
@@ -58,20 +58,20 @@ export default class Document extends NextDocument {
                   },
                   {
                     '@type': 'WebSite',
-                    '@id': 'https://www.alfarishi.my.id/#website',
-                    url: 'https://www.alfarishi.my.id',
+                    '@id': 'https://alfarishi.my.id/#website',
+                    url: 'https://alfarishi.my.id',
                     name: 'Ramiza Al Farishi Portfolio',
-                    publisher: { '@id': 'https://www.alfarishi.my.id/#person' }
+                    publisher: { '@id': 'https://alfarishi.my.id/#person' }
                   },
                   {
                     '@type': 'ProfessionalService',
-                    '@id': 'https://www.alfarishi.my.id/#service',
+                    '@id': 'https://alfarishi.my.id/#service',
                     name: 'Ramiza Al Farishi - Web Development Services',
-                    url: 'https://www.alfarishi.my.id',
-                    image: 'https://www.alfarishi.my.id/images/og-default.png',
+                    url: 'https://alfarishi.my.id',
+                    image: 'https://alfarishi.my.id/images/og-default.png',
                     description:
                       'Professional web development, modern landing pages, e-commerce, and custom dynamic web applications.',
-                    provider: { '@id': 'https://www.alfarishi.my.id/#person' }
+                    provider: { '@id': 'https://alfarishi.my.id/#person' }
                   }
                 ]
               })
